@@ -4,7 +4,7 @@ FreeCodeCamp projects and exercises
 ## Streak
 
 - 29/05 - X
-- 30/05 - O
+- 30/05 - X
 - 31/05 - O
 - 01/06 - O
 - 02/06 - O
