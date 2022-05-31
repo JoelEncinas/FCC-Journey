@@ -5,7 +5,7 @@ FreeCodeCamp projects and exercises
 
 - 29/05 - X
 - 30/05 - X
-- 31/05 - O
+- 31/05 - X
 - 01/06 - O
 - 02/06 - O
 - 03/06 - O
