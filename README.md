@@ -15,7 +15,7 @@ All the projects from my FreeCodeCamp journey
 - 30/05 - X
 - 31/05 - X
 - 01/06 - X
-- 02/06 - O
+- 02/06 - X
 - 03/06 - O
 - 04/06 - O
 - 05/06 - O
