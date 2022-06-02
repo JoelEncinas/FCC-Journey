@@ -5,6 +5,10 @@ All the projects from my FreeCodeCamp journey
 
 - [Survey form]()
 - [Tribute page](https://codepen.io/JoelEncinasMartin/pen/wvyjxpN) ✔️
+  - box model
+  - page structure
+  - clases, ids & selectors
+  - color theory
 - [Technical documentation page]()
 - [Product landing page]()
 - [Personal portfolio page]()
