@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Page</title>
+    <title>BattleHeaven RPG</title>
 
     <!-- favicon -->
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
@@ -20,7 +20,54 @@
 </head>
 
 <body>
+    <h1 id="title">RPG Character Creation</h1>
+    <p id="description">Forge your hero and start your adventure!</p>
 
+    <form action="#" method="GET" id="survey-form">
+        <!-- Explicit type of label/input -->
+        <!-- NAME -->
+        <label for="name" id="name-label">Name</label>
+        <input type="text" id="name" name="name" placeholder="" required>
+
+        <!-- EMAIL -->
+        <label for="email" id="email-label">Email</label>
+        <input type="email" name="email" id="email" placeholder="" required>
+
+        <!-- AGE -->
+        <label for="number" id="number-label">Number</label>
+        <input type="number" name="number" id="number" placeholder="" min="" max="">
+
+        <!-- DROPDOWN -->
+        <label for="dropdown" id="dropdown-label">Dropdown</label>
+        <select name="" id="dropdown">
+            <option value="">-- * --</option> 
+            <option value="1">1</option> 
+            <option value="1">1</option> 
+        </select>
+
+        <!-- GENGER -->
+        <label for="male" id="male-label">Male</label>
+        <input type="radio" id="male" name="gender" value="male"><br>
+        <label for="female" id="female-label">Female</label>
+        <input type="radio" id="female" name="gender" value="female"><br>
+        <label for="other" id="other-label">Other</label>
+        <input type="radio" id="other" name="gender" value="other">
+
+
+        <!-- ITEM -->
+        <label for="item-ring" id="item-ring-label">Ring</label>
+        <input type="checkbox" id="item-ring" name="item-ring" value="ring">
+
+        <label for="item-talisman" id="item-talisman-label">Cursed Talisman</label>
+        <input type="checkbox" id="item-talisman" name="item-talisman" value="talisman">
+
+        <!-- BIO -->
+        <label for="bio" id="bio-label">Bio</label>
+        <textarea name="bio" id="bio" cols="30" rows="10" placeholder="My history"></textarea>
+
+        <!-- SUBMIT BTN -->
+        <button type="submit" id="submit">Send</button>
+    </form>
 </body>
 
 </html>
