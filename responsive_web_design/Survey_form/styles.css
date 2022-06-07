@@ -7,13 +7,80 @@
 
 body {
     margin: 0;
-    background-color: #fff;
-    color: #000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+    padding: 0;
+    height: 100vh;
+    color: aliceblue;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    /* TODO change for github url*/
+    background: linear-gradient(#ececec, #a8a8a8);
 }
 
 p {
-    color: #000;
     line-height: 1.6;
+}
+
+
+/* PAGE STYLE*/
+
+#main,
+#header {
+    max-width: 800px;
+    margin: auto;
+}
+
+
+/* HEADER */
+
+#header {
+    padding: 20px 0;
+}
+
+#title,
+#description {
+    text-align: center;
+    margin: 0;
+    color: rgb(32, 32, 32);
+}
+
+#title {
+    font-weight: bold;
+}
+
+#description {
+    font-style: italic;
+    padding: 15px
+}
+
+
+/* MAIN */
+
+#main {
+    background-color: #93A169;
+    padding: 30px;
+    margin: 50px auto;
+}
+
+
+/* FOOTER */
+
+#footer {
+    padding: 20px 0;
+}
+
+#footer-description {
+    text-align: center;
+    margin: 0;
+    color: rgb(32, 32, 32);
+    font-size: 16px;
+}
+
+#footer-description a {
+    text-decoration: none;
+    color: #6e794e;
+}
+
+#footer-description a:hover {
+    text-decoration: none;
+    color: #393f29;
 }
