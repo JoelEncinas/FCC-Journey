@@ -3,14 +3,14 @@
 * {
     scroll-behavior: smooth;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
     margin: 0;
     padding: 0;
     height: 100vh;
-    color: aliceblue;
-    font-family: 'Open Sans', sans-serif;
+    color: white;
     font-size: 20px;
     /* TODO change for github url*/
     background: linear-gradient(#ececec, #a8a8a8);
@@ -40,11 +40,11 @@ p {
 #description {
     text-align: center;
     margin: 0;
-    color: rgb(32, 32, 32);
+    color: #202020;
 }
 
 #title {
-    font-weight: bold;
+    font-size: 70px;
 }
 
 #description {
@@ -61,17 +61,175 @@ p {
     margin: 50px auto;
 }
 
+label {
+    display: block;
+    margin: 0.5rem 0;
+}
+
+input,
+textarea,
+select {
+    margin: 10px 0 0 0;
+    width: 100%;
+    min-height: 2em;
+    color: #93A169;
+}
+
+::placeholder {
+    color: #93A169;
+    opacity: 0.5;
+}
+
+
+/* CUSTOM RADIOBOXES */
+
+.radio-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    user-select: none;
+}
+
+.radio-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark-radio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.radio-label:hover input~.checkmark-radio {
+    background-color: #ccc;
+}
+
+.radio-label input:checked~.checkmark-radio {
+    background-color: #b3c481;
+}
+
+.checkmark-radio:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.radio-label input:checked~.checkmark-radio:after {
+    display: block;
+}
+
+.radio-label .checkmark-radio:after {
+    top: 9px;
+    left: 9px;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+
+
+/* CUSTOM CHECKBOXES */
+
+.checkbox-label {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark-box {
+    position: absolute;
+    top: 0;
+    left: 250px;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.checkbox-label:hover input~.checkmark-box {
+    background-color: #ccc;
+}
+
+.checkbox-label input:checked~.checkmark-box {
+    background-color: #b3c481;
+    ;
+    border: 1px solid white;
+}
+
+.checkmark-box:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-label input:checked~.checkmark-box:after {
+    display: block;
+}
+
+.checkbox-label .checkmark-box:after {
+    left: 8px;
+    top: 4px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+#submit {
+    cursor: pointer;
+    display: block;
+    width: 60%;
+    margin: 1em auto;
+    height: 75px;
+    font-size: 25px;
+    text-transform: uppercase;
+    background-color: white;
+    color: #93A169;
+    border: none;
+    min-width: 300px;
+}
+
+#submit:hover {
+    background-color: #b3c481;
+    color: white;
+}
+
+#submit:active {
+    background-color: #bfd188;
+    color: white;
+}
+
 
 /* FOOTER */
 
 #footer {
-    padding: 20px 0;
+    padding: 50px 0;
 }
 
 #footer-description {
     text-align: center;
     margin: 0;
-    color: rgb(32, 32, 32);
+    color: #202020;
     font-size: 16px;
 }
 
@@ -82,5 +240,5 @@ p {
 
 #footer-description a:hover {
     text-decoration: none;
-    color: #393f29;
+    color: #505a35;
 }

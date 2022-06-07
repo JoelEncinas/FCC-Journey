@@ -25,7 +25,7 @@
 
 <body>
     <header id="header">
-        <h1 id="title">RPG Character Creation</h1>
+        <h1 id="title">Character Creation</h1>
         <p id="description">Forge your hero and start your adventure!</p>
     </header>
 
@@ -47,26 +47,36 @@
             <!-- DROPDOWN -->
             <label for="dropdown" id="dropdown-label">Dropdown</label>
             <select name="" id="dropdown">
-            <option value="">-- * --</option> 
-            <option value="1">1</option> 
-            <option value="1">1</option> 
-        </select>
+                <option value disabled selected>Select an option</option> 
+                <option value="1">1</option> 
+                <option value="1">1</option> 
+            </select>
 
-            <!-- GENGER -->
-            <label for="male" id="male-label">Male</label>
-            <input type="radio" id="male" name="gender" value="male"><br>
-            <label for="female" id="female-label">Female</label>
-            <input type="radio" id="female" name="gender" value="female"><br>
-            <label for="other" id="other-label">Other</label>
-            <input type="radio" id="other" name="gender" value="other">
 
+            <!-- GENDER -->
+            <label for="male" id="male-label" class="radio-label">Male
+                <input type="radio" id="male" name="gender" value="male">
+                <span class="checkmark-radio"></span>
+            </label>
+            <label for="female" id="female-label" class="radio-label">Female
+                <input type="radio" id="female" name="gender" value="female">
+                    <span class="checkmark-radio"></span>
+            </label>
+            <label for="other" id="other-label" class="radio-label">Other
+                <input type="radio" id="other" name="gender" value="other">
+                    <span class="checkmark-radio"></span>
+            </label>
 
             <!-- ITEM -->
-            <label for="item-ring" id="item-ring-label">Ring</label>
-            <input type="checkbox" id="item-ring" name="item-ring" value="ring">
+            <label for="item-ring" id="item-ring-label" class="checkbox-label">Ring
+                <input type="checkbox" id="item-ring" name="item-ring" value="ring">
+                <span class="checkmark-box"></span>
+            </label>
 
-            <label for="item-talisman" id="item-talisman-label">Cursed Talisman</label>
-            <input type="checkbox" id="item-talisman" name="item-talisman" value="talisman">
+            <label for="item-talisman" id="item-talisman-label" class="checkbox-label">Cursed Talisman
+                <input type="checkbox" id="item-talisman" name="item-talisman" value="talisman">
+                <span class="checkmark-box"></span>
+            </label>
 
             <!-- BIO -->
             <label for="bio" id="bio-label">Bio</label>
@@ -79,7 +89,7 @@
 
     <footer id="footer">
         <p id="footer-description">Made by
-            <a href="https://github.com/JoelEncinas">Joel</a>
+            <a href="https://github.com/JoelEncinas" target="_blank">Joel</a>
         </p>
     </footer>
 </body>
