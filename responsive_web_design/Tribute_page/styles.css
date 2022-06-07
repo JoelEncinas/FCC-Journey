@@ -3,6 +3,7 @@
 * {
     scroll-behavior: smooth;
     box-sizing: border-box;
+    letter-spacing: 0.6px;
 }
 
 body {
