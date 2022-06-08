@@ -12,35 +12,50 @@
 </head>
 
 <body>
-    <nav id="navbar">
-        <header class="doc-header">TypeScript Basics</header>
-        <ul>
-            <li><a class="nav-link" href="#The_Basics">The Basics</a></li>
-            <li>
-                <a class="nav-link" href="#Static_type-checking">Static type-checking</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#Non-exception_Failures">Non-exception Failures</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#Types_for_Tooling">Types for Tooling</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#The_TypeScript_compiler">The TypeScript compiler</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#Explicit_Types">Explicit Types</a>
-            </li>
-            <li>
-                <a class="nav-link" href="#Downleveling">Downleveling</a>
-            </li>
-        </ul>
-    </nav>
-    <main id="main-doc">
-        <section id="The_Basics" class="main-section">
-            <header class="section-title">The Basics</header>
-            <p>Each and every value in JavaScript has a set of behaviors you can observe from running different operations. That sounds abstract, but as a quick example, consider some operations we might run on a variable named <code>message</code>.</p>
-            <pre>
+    <div id="container">
+        <nav id="navbar">
+            <header class="doc-header">TypeScript Basics</header>
+            <ul>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#The_Basics">The Basics</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#Static_type-checking">Static type-checking</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#Non-exception_Failures">Non-exception Failures</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#Types_for_Tooling">Types for Tooling</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#The_TypeScript_compiler">The TypeScript compiler</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#Explicit_Types">Explicit Types</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#Downleveling">Downleveling</a>
+                </li>
+                <hr>
+                <li>
+                    <a class="nav-link" href="#Reference">Reference</a>
+                </li>
+                <hr>
+            </ul>
+        </nav>
+        <main id="main-doc">
+            <section id="The_Basics" class="main-section">
+                <header class="section-title">The Basics</header>
+                <p>Each and every value in JavaScript has a set of behaviors you can observe from running different operations. That sounds abstract, but as a quick example, consider some operations we might run on a variable named <code>message</code>.</p>
+                <pre>
                 <code>
     // Accessing the property 'toLowerCase'
     // on 'message' and then calling it
@@ -49,58 +64,58 @@
     message();
                 </code>
             </pre>
-            <p>If we break this down, the first runnable line of code accesses a property called <code>toLowerCase</code> and then calls it. The second one tries to call <code>message</code> directly.</p>
-            <p>But assuming we don’t know the value of <code>message</code> - and that’s pretty common - we can’t reliably say what results we’ll get from trying to run any of this code. The behavior of each operation depends entirely on what value we had
-                in the first place.</p>
-            <ul>
-                <li>Is <code>message</code> callable?</li>
-                <li>Does it have a property called <code>toLowerCase </code> on it?</li>
-                <li>If it does, is <code>toLowerCase</code> even callable?</li>
-                <li>If both of these values are callable, what do they return?</li>
-                <li>Is <code>message</code> undefined?</li>
-            </ul>
-            <p>The answers to these questions are usually things we keep in our heads when we write JavaScript, and we have to hope we got all the details right.</p>
-            <p>Let’s say <code>message</code> was defined in the following way.</p>
-            <pre>
+                <p>If we break this down, the first runnable line of code accesses a property called <code>toLowerCase</code> and then calls it. The second one tries to call <code>message</code> directly.</p>
+                <p>But assuming we don’t know the value of <code>message</code> - and that’s pretty common - we can’t reliably say what results we’ll get from trying to run any of this code. The behavior of each operation depends entirely on what value we
+                    had in the first place.</p>
+                <ul>
+                    <li>Is <code>message</code> callable?</li>
+                    <li>Does it have a property called <code>toLowerCase </code> on it?</li>
+                    <li>If it does, is <code>toLowerCase</code> even callable?</li>
+                    <li>If both of these values are callable, what do they return?</li>
+                    <li>Is <code>message</code> undefined?</li>
+                </ul>
+                <p>The answers to these questions are usually things we keep in our heads when we write JavaScript, and we have to hope we got all the details right.</p>
+                <p>Let’s say <code>message</code> was defined in the following way.</p>
+                <pre>
                 <code>
     const message = "Hello World!";
                 </code>
             </pre>
-            <p>As you can probably guess, if we try to run <code>message.toLowerCase()</code>, we’ll get the same string only in lower-case.</p>
-            <p>What about that second line of code? If you’re familiar with JavaScript, you’ll know this fails with an exception:</p>
-            <pre>
+                <p>As you can probably guess, if we try to run <code>message.toLowerCase()</code>, we’ll get the same string only in lower-case.</p>
+                <p>What about that second line of code? If you’re familiar with JavaScript, you’ll know this fails with an exception:</p>
+                <pre>
                 <code>
     TypeError: message is not a function
                 </code>
             </pre>
-            <p>It’d be great if we could avoid mistakes like this.</p>
-            <p>When we run our code, the way that our JavaScript runtime chooses what to do is by figuring out the <span class="italic-font">type</span> of the value - what sorts of behaviors and capabilities it has. That’s part of what that <code>TypeError</code>                is alluding to - it’s saying that the string <code>"Hello World!"</code> cannot be called as a function.</p>
-            <p>For some values, such as the primitives <code>string</code> and <code>number</code>, we can identify their type at runtime using the <code>typeof</code> operator. But for other things like functions, there’s no corresponding runtime mechanism
-                to identify their types. For example, consider this function:</p>
-            <pre>
+                <p>It’d be great if we could avoid mistakes like this.</p>
+                <p>When we run our code, the way that our JavaScript runtime chooses what to do is by figuring out the <span class="italic-font">type</span> of the value - what sorts of behaviors and capabilities it has. That’s part of what that <code>TypeError</code>                    is alluding to - it’s saying that the string <code>"Hello World!"</code> cannot be called as a function.</p>
+                <p>For some values, such as the primitives <code>string</code> and <code>number</code>, we can identify their type at runtime using the <code>typeof</code> operator. But for other things like functions, there’s no corresponding runtime mechanism
+                    to identify their types. For example, consider this function:</p>
+                <pre>
                 <code>
     function fn(x) {
         return x.flip();
     }
                 </code>
             </pre>
-            <p>We can observe by reading the code that this function will only work if given an object with a callable <code>flip</code> property, but JavaScript doesn’t surface this information in a way that we can check while the code is running. The only
-                way in pure JavaScript to tell what <code>fn</code> does with a particular value is to call it and see what happens. This kind of behavior makes it hard to predict what code will do before it runs, which means it’s harder to know what
-                your code is going to do while you’re writing it.</p>
-            <p>Seen in this way, a <span class="italic-font">type</span> is the concept of describing which values can be passed to <code>fn</code> and which will crash. JavaScript only truly provides <span class="italic-font">dynamic</span> typing - running
-                the code to see what happens.</p>
-            <p>The alternative is to use a <span class="italic-font">static</span> type system to make predictions about what code is expected <span class="italic-font">before</span> it runs.</p>
-        </section>
+                <p>We can observe by reading the code that this function will only work if given an object with a callable <code>flip</code> property, but JavaScript doesn’t surface this information in a way that we can check while the code is running. The
+                    only way in pure JavaScript to tell what <code>fn</code> does with a particular value is to call it and see what happens. This kind of behavior makes it hard to predict what code will do before it runs, which means it’s harder to know
+                    what your code is going to do while you’re writing it.</p>
+                <p>Seen in this way, a <span class="italic-font">type</span> is the concept of describing which values can be passed to <code>fn</code> and which will crash. JavaScript only truly provides <span class="italic-font">dynamic</span> typing -
+                    running the code to see what happens.</p>
+                <p>The alternative is to use a <span class="italic-font">static</span> type system to make predictions about what code is expected <span class="italic-font">before</span> it runs.</p>
+            </section>
 
-        <section id="Static_type-checking" class="main-section">
-            <header class="section-title">Static type-checking</header>
-            <p>Think back to that <code>TypeError</code> we got earlier from trying to call a <code>string</code> as a function. Most people don’t like to get any sorts of errors when running their code - those are considered bugs! And when we write new
-                code, we try our best to avoid introducing new bugs.</p>
-            <p>If we add just a bit of code, save our file, re-run the code, and immediately see the error, we might be able to isolate the problem quickly; but that’s not always the case. We might not have tested the feature thoroughly enough, so we might
-                never actually run into a potential error that would be thrown! Or if we were lucky enough to witness the error, we might have ended up doing large refactorings and adding a lot of different code that we’re forced to dig through.</p>
-            <p>Ideally, we could have a tool that helps us find these bugs before our code runs. That’s what a static type-checker like TypeScript does. Static types systems describe the shapes and behaviors of what our values will be when we run our programs.
-                A type-checker like TypeScript uses that information and tells us when things might be going off the rails.</p>
-            <pre>
+            <section id="Static_type-checking" class="main-section">
+                <header class="section-title">Static type-checking</header>
+                <p>Think back to that <code>TypeError</code> we got earlier from trying to call a <code>string</code> as a function. Most people don’t like to get any sorts of errors when running their code - those are considered bugs! And when we write
+                    new code, we try our best to avoid introducing new bugs.</p>
+                <p>If we add just a bit of code, save our file, re-run the code, and immediately see the error, we might be able to isolate the problem quickly; but that’s not always the case. We might not have tested the feature thoroughly enough, so we
+                    might never actually run into a potential error that would be thrown! Or if we were lucky enough to witness the error, we might have ended up doing large refactorings and adding a lot of different code that we’re forced to dig through.</p>
+                <p>Ideally, we could have a tool that helps us find these bugs before our code runs. That’s what a static type-checker like TypeScript does. Static types systems describe the shapes and behaviors of what our values will be when we run our
+                    programs. A type-checker like TypeScript uses that information and tells us when things might be going off the rails.</p>
+                <pre>
                 <code>
     const message = "hello!";
 
@@ -108,15 +123,15 @@
     // This expression is not callable.
                 </code>
             </pre>
-            <p>Running that last sample with TypeScript will give us an error message before we run the code in the first place.</p>
-        </section>
+                <p>Running that last sample with TypeScript will give us an error message before we run the code in the first place.</p>
+            </section>
 
-        <section id="Non-exception_Failures" class="main-section">
-            <header class="section-title">Non-exception Failures</header>
-            <p>So far we’ve been discussing certain things like runtime errors - cases where the JavaScript runtime tells us that it thinks something is nonsensical. Those cases come up because <a href="https://tc39.es/ecma262/" target="_blank">the ECMAScript specification</a>                has explicit instructions on how the language should behave when it runs into something unexpected.</p>
-            <p>For example, the specification says that trying to call something that isn’t callable should throw an error. Maybe that sounds like “obvious behavior”, but you could imagine that accessing a property that doesn’t exist on an object should
-                throw an error too. Instead, JavaScript gives us different behavior and returns the value <code>undefined</code>:</p>
-            <pre>
+            <section id="Non-exception_Failures" class="main-section">
+                <header class="section-title">Non-exception Failures</header>
+                <p>So far we’ve been discussing certain things like runtime errors - cases where the JavaScript runtime tells us that it thinks something is nonsensical. Those cases come up because <a href="https://tc39.es/ecma262/" target="_blank">the ECMAScript specification</a>                    has explicit instructions on how the language should behave when it runs into something unexpected.</p>
+                <p>For example, the specification says that trying to call something that isn’t callable should throw an error. Maybe that sounds like “obvious behavior”, but you could imagine that accessing a property that doesn’t exist on an object should
+                    throw an error too. Instead, JavaScript gives us different behavior and returns the value <code>undefined</code>:</p>
+                <pre>
                 <code>
     const user = {
         name: "Daniel",
@@ -125,40 +140,56 @@
     user.location; // returns undefined
                 </code>
             </pre>
-        </section>
+            </section>
 
-        <section id="Types_for_Tooling" class="main-section">
-            <header class="section-title">Types for Tooling</header>
-            <p>TypeScript can catch bugs when we make mistakes in our code. That’s great, but TypeScript can also prevent us from making those mistakes in the first place.</p>
-            <p>The type-checker has information to check things like whether we’re accessing the right properties on variables and other properties. Once it has that information, it can also start suggesting which properties you might want to use.</p>
-            <p>That means TypeScript can be leveraged for editing code too, and the core type-checker can provide error messages and code completion as you type in the editor. That’s part of what people often refer to when they talk about tooling in TypeScript.</p>
-        </section>
+            <section id="Types_for_Tooling" class="main-section">
+                <header class="section-title">Types for Tooling</header>
+                <p>TypeScript can catch bugs when we make mistakes in our code. That’s great, but TypeScript can also prevent us from making those mistakes in the first place.</p>
+                <p>The type-checker has information to check things like whether we’re accessing the right properties on variables and other properties. Once it has that information, it can also start suggesting which properties you might want to use.</p>
+                <p>That means TypeScript can be leveraged for editing code too, and the core type-checker can provide error messages and code completion as you type in the editor. That’s part of what people often refer to when they talk about tooling in
+                    TypeScript.
+                </p>
+            </section>
 
-        <section id="The_TypeScript_compiler" class="main-section">
-            <header class="section-title">The TypeScript compiler</header>
-            <p>We’ve been talking about type-checking, but we haven’t yet used our type-checker. Let’s get acquainted with our new friend <code>tsc</code>, the TypeScript compiler. First we’ll need to grab it via npm.</p>
-            <pre>
+            <section id="The_TypeScript_compiler" class="main-section">
+                <header class="section-title">The TypeScript compiler</header>
+                <p>We’ve been talking about type-checking, but we haven’t yet used our type-checker. Let’s get acquainted with our new friend <code>tsc</code>, the TypeScript compiler. First we’ll need to grab it via npm.</p>
+                <pre>
                 <code>
     npm install -g typescript
                 </code>
             </pre>
-        </section>
+            </section>
 
-        <section id="Explicit_Types" class="main-section">
-            <header class="section-title">Explicit Types</header>
-            <p>Up until now, we haven’t told TypeScript what <code>person</code> or <code>date</code> are. Let’s edit the code to tell TypeScript that <code>person</code> is a <code>string</code>, and that <code>date</code> should be a <code>Date</code>                object. We’ll also use the <code>toDateString()</code> method on <code>date</code>.</p>
-        </section>
+            <section id="Explicit_Types" class="main-section">
+                <header class="section-title">Explicit Types</header>
+                <p>Up until now, we haven’t told TypeScript what <code>person</code> or <code>date</code> are. Let’s edit the code to tell TypeScript that <code>person</code> is a <code>string</code>, and that <code>date</code> should be a <code>Date</code>                    object. We’ll also use the <code>toDateString()</code> method on <code>date</code>.</p>
+            </section>
 
-        <section id="Downleveling" class="main-section">
-            <header class="section-title">Downleveling</header>
-            <p>One other difference from the above was that our template string was rewritten from</p>
-            <pre>
+            <section id="Downleveling" class="main-section">
+                <header class="section-title">Downleveling</header>
+                <p>One other difference from the above was that our template string was rewritten from</p>
+                <pre>
                 <code>
     `Hello ${person}, today is ${date.toDateString()}!`;
                 </code>
             </pre>
-        </section>
-    </main>
+            </section>
+
+            <section id="Reference" class="main-section">
+                <header class="section-title">Reference</header>
+                <ul>
+                    <li>All the documentation in this page is taken from <a href="https://www.typescriptlang.org/docs/handbook/2/narrowing.html" target="_blank">TypeScripLang</a>.</li>
+                </ul>
+            </section>
+
+            <footer id="footer">
+                <p>Made By <a class="footer-link" href="https://github.com/JoelEncinas" target="_blank">Joel</a></p>
+            </footer>
+        </main>
+
+
+    </div>
 </body>
 
 </html>
