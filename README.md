@@ -12,15 +12,16 @@ All the projects from my FreeCodeCamp journey
   
 - Tribute page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/wvyjxpN) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Tribute_page)
 
-  - page structure
+  - html structure
   - color theory
-  - good readability
+  - user readability
   
-- [Technical documentation page]()
+- Technical documentation page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/zYRmzoM) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Technical_Documentation_page)
 
   - flexbox
   - media queries
   - page layout
+  - keyframes
   
 - [Product landing page]()
 - [Personal portfolio page]()
