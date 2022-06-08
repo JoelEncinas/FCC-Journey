@@ -6,17 +6,22 @@ All the projects from my FreeCodeCamp journey
 - Survey form ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/QWQVJar) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Survey_form)
 
   - handle formularies
+  - clases, ids & selectors
   - different types of inputs
   - design user-friendly UI
   
 - Tribute page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/wvyjxpN) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Tribute_page)
 
-  - structure a page
-  - clases, ids & selectors
+  - page structure
   - color theory
-  - readability
+  - good readability
   
 - [Technical documentation page]()
+
+  - flexbox
+  - media queries
+  - page layout
+  
 - [Product landing page]()
 - [Personal portfolio page]()
 
