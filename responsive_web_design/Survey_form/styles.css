@@ -9,7 +9,7 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    height: 100%;
     color: white;
     font-size: 20px;
     /* TODO change for github url*/
@@ -25,7 +25,7 @@ p {
 
 #main,
 #header {
-    max-width: 800px;
+    max-width: 600px;
     margin: auto;
 }
 
@@ -33,7 +33,7 @@ p {
 /* HEADER */
 
 #header {
-    padding: 20px 0;
+    padding: 40px 0 10px 0;
 }
 
 #title,
@@ -44,7 +44,7 @@ p {
 }
 
 #title {
-    font-size: 70px;
+    font-size: 60px;
 }
 
 #description {
@@ -63,21 +63,56 @@ p {
 
 label {
     display: block;
-    margin: 0.5rem 0;
 }
 
 input,
-textarea,
 select {
     margin: 10px 0 0 0;
     width: 100%;
-    min-height: 2em;
+    height: 40px;
+    padding: 8px 15px;
+    color: #93A169;
+}
+
+option,
+ ::placeholder,
+input,
+select {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+option:disabled {
+    background-color: #c2c2c2;
+}
+
+textarea {
+    margin: 10px 0 0 0;
+    width: 100%;
+    height: 100px;
+    padding: 8px 15px;
     color: #93A169;
 }
 
 ::placeholder {
-    color: #93A169;
+    color: #b2bd90;
+    font-weight: lighter;
     opacity: 0.5;
+}
+
+.form-section {
+    margin-top: 20px;
+}
+
+.form-section-header {
+    margin-bottom: 20px;
+}
+
+.capitalize-first::first-letter {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 32px;
+    color: #ececec;
+    letter-spacing: 2px;
 }
 
 
@@ -87,7 +122,6 @@ select {
     display: block;
     padding-left: 35px;
     margin-bottom: 12px;
-    font-size: 22px;
 }
 
 .checkmark-radio {
@@ -134,6 +168,9 @@ select {
     position: relative;
     cursor: pointer;
     user-select: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: 16px;
 }
 
 .checkmark-box:after,
@@ -170,7 +207,7 @@ select {
 .checkmark-radio,
 .checkmark-box {
     position: absolute;
-    top: 0;
+    top: 5px;
     height: 25px;
     width: 25px;
     background-color: white;
@@ -182,10 +219,10 @@ select {
 #submit {
     cursor: pointer;
     display: block;
-    width: 60%;
+    width: 100%;
     margin: 1em auto;
-    height: 75px;
-    font-size: 25px;
+    height: 60px;
+    font-size: 22px;
     text-transform: uppercase;
     background-color: white;
     color: #93A169;
@@ -207,22 +244,23 @@ select {
 /* FOOTER */
 
 #footer {
-    padding: 50px 0;
+    height: 100px;
+    background-color: #202020;
 }
 
 #footer-description {
     text-align: center;
-    margin: 0;
-    color: #202020;
-    font-size: 16px;
+    padding-top: 30px;
+    color: white;
+    font-size: 18px;
 }
 
 #footer-description a {
     text-decoration: none;
-    color: #6e794e;
+    color: #b3c286;
 }
 
 #footer-description a:hover {
     text-decoration: none;
-    color: #505a35;
+    color: #86965b;
 }

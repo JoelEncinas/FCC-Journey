@@ -26,36 +26,29 @@
 <body>
     <header id="header">
         <h1 id="title">Character Creation</h1>
-        <p id="description">Forge your hero and start your adventure!</p>
+        <p id="description">Create your hero and start your adventure!</p>
     </header>
 
     <main id="main">
         <form action="#" method="GET" id="survey-form">
             <!-- Explicit type of label/input -->
             <!-- NAME -->
-            <label for="name" id="name-label">Name</label>
-            <input type="text" id="name" name="name" placeholder="name" required>
+            <label for="name" id="name-label" class="form-section capitalize-first">Hero's Name *</label>
+            <input type="text" id="name" name="name" placeholder="Some Mighty Name" required>
 
-            <!-- EMAIL -->
-            <label for="email" id="email-label">Email</label>
-            <input type="email" name="email" id="email" placeholder="email" required>
-
-            <!-- AGE -->
-            <label for="number" id="number-label">Age</label>
-            <input type="number" name="number" id="number" placeholder="5" min="1" max="5">
-
-            <!-- DROPDOWN -->
-            <label for="dropdown" id="dropdown-label">Dropdown</label>
-            <select name="" id="dropdown">
-                <option value disabled selected>Select an option</option> 
-                <option value="1">1</option> 
-                <option value="1">1</option> 
+            <!-- Race -->
+            <label for="dropdown-race" id="dropdown-label" class="form-section capitalize-first">Race *</label>
+            <select name="" id="dropdown-race" required>
+                <option value disabled selected>Select one</option> 
+                <option value="orc">Orc - Ruthless</option> 
+                <option value="human">Human - Noble</option> 
+                <option value="elf">Elf - Wise</option> 
             </select>
 
-
             <!-- GENDER -->
+            <label class="form-section form-section-header capitalize-first">Gender *</label>
             <label for="male" id="male-label" class="radio-label">Male
-                <input type="radio" id="male" name="gender" value="male">
+                <input type="radio" id="male" name="gender" value="male" required>
                 <span class="checkmark-radio"></span>
             </label>
             <label for="female" id="female-label" class="radio-label">Female
@@ -67,8 +60,31 @@
                     <span class="checkmark-radio"></span>
             </label>
 
+            <!-- AGE -->
+            <label for="number" id="number-label" class="form-section capitalize-first">Age</label>
+            <input type="number" name="number" id="number" placeholder="Over 18" min="18" max="99">
+
+            <!-- Armor -->
+            <label for="dropdown-armor" id="dropdown-label" class="form-section capitalize-first">Armor *</label>
+            <select name="" id="dropdown-armor" required>
+                <option value disabled selected>Select one</option> 
+                <option value="light">Light - Float like a buttlerfly</option> 
+                <option value="medium">Medium - Good mix between offense and defense</option> 
+                <option value="heavy">Heavy - Increase durability in battle</option> 
+            </select>
+
+            <!-- Weapon -->
+            <label for="dropdown" id="dropdown-label" class="form-section capitalize-first">Starting Weapon</label>
+            <select name="" id="dropdown">
+                <option value disabled selected>Select one</option> 
+                <option value="sword">Rusty sword</option> 
+                <option value="dagger">Sharpless dagger</option> 
+                <option value="book">Candle magic spell book</option> 
+            </select>
+
             <!-- ITEM -->
-            <label for="item-ring" id="item-ring-label" class="checkbox-label">Ring
+            <label class="form-section form-section-header capitalize-first">Select starting items</label>
+            <label for="item-ring" id="item-ring-label" class="checkbox-label">Copper Ring
                 <input type="checkbox" id="item-ring" name="item-ring" value="ring">
                 <span class="checkmark-box"></span>
             </label>
@@ -78,18 +94,27 @@
                 <span class="checkmark-box"></span>
             </label>
 
+            <label for="item-photo" id="item-photo-label" class="checkbox-label">Old Photo
+                <input type="checkbox" id="item-photo" name="item-photo" value="photo">
+                <span class="checkmark-box"></span>
+            </label>
+
             <!-- BIO -->
-            <label for="bio" id="bio-label">Bio</label>
-            <textarea name="bio" id="bio" cols="30" rows="10" placeholder="My history"></textarea>
+            <label for="bio" id="bio-label" class="form-section capitalize-first">My History</label>
+            <textarea name="bio" id="bio" cols="30" rows="10" placeholder="We grew up quite poor in a small village south from here but one day..."></textarea>
+
+            <!-- EMAIL -->
+            <label for="email" id="email-label" class="form-section capitalize-first">Email *</label>
+            <input type="email" name="email" id="Email" placeholder="(No spam will be sent)" required>
 
             <!-- SUBMIT BTN -->
-            <button type="submit" id="submit">Send</button>
+            <button type="submit" id="submit">Submit</button>
         </form>
     </main>
 
     <footer id="footer">
         <p id="footer-description">Made by
-            <a href="https://github.com/JoelEncinas" target="_blank">Joel</a>
+            <a href="https://github.com/JoelEncinas" target="_blank">&nbsp;Joel</a>
         </p>
     </footer>
 </body>
