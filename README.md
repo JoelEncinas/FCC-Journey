@@ -16,7 +16,7 @@ All the projects from my FreeCodeCamp journey
   - color theory
   - user readability
   
-- Technical documentation page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/zYRmzoM) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Technical_Documentation_page)
+- Technical documentation page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/zYRmzoM) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Technical_documentation_page)
 
   - flexbox
   - media queries
