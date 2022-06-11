@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FCC Chess</title>
+    <title>Arcade Skate</title>
 
     <!-- styles -->
     <link rel="stylesheet" href="styles.css">
@@ -14,10 +14,81 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
 </head>
 
 <body>
+    <div id="page-wrapper">
 
+        <!-- HEADER -->
+        <header id="header">
+            <div id="navbar">
+                <div id="navbar-left">
+                    <img src="https://raw.githubusercontent.com/JoelEncinas/ArcadeSkate/main/Assets/Images/game_icon.PNG" alt="arcade skate game logo" id="header-img">
+                </div>
+                <div id="navbar-right">
+                    <nav id="nav-bar">
+                        <div class="nav-link-wrapper">
+                            <a href="#features" class="nav-link">Features</a>
+                        </div>
+                        <div class="nav-link-wrapper">
+                            <a href="#developer" class="nav-link">Developer</a>
+                        </div>
+                        <div class="nav-link-wrapper">
+                            <a href="#newsletter" class="nav-link">Newsletter</a>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+
+        <!-- HERO -->
+        <div id="hero">
+            <h1 id="main-title">
+
+            </h1>
+            <h2 id="description">
+
+            </h2>
+            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/uHY7l0irGPU?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- MAIN -->
+        <main id="main">
+
+            <section id="features">
+
+            </section>
+
+            <section id="developer">
+
+            </section>
+        </main>
+
+        <!-- NEWSLETTER -->
+        <section id="newsletter">
+            <form action="https://www.freecodecamp.com/email-submit" id="form">
+                <div id="label-wrapper">
+                    <p>Receive news about the game</p>
+                    <label for="email" id="email-label">
+                        <input id="email" type="email" name="email" placeholder="example@mail.com">
+                    </label>
+                </div>
+
+                <div id="submit-wrapper">
+                    <input id="submit" type="submit">Submit</input>
+                </div>
+            </form>
+        </section>
+
+        <!-- FOOTER -->
+        <footer id="footer">
+
+        </footer>
+    </div>
 </body>
 
 </html>
