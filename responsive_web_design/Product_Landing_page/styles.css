@@ -4,6 +4,7 @@
     --purple: #aa80ff;
     --black: #1A181A;
     --white: #ebebeb;
+    --gray: #b1b1b1;
     --gate-green: #48A852;
     --gate-red: #873B3B;
     --gate-blue: #488FA8;
@@ -58,14 +59,55 @@ input {
 #header {
     position: fixed;
     top: 0;
+    width: 100%;
+    height: 100px;
+    background-color: var(--black);
+}
+
+#nav-bar-left {
+    display: flex;
+}
+
+#header-img {
+    width: 100px;
+    padding: 10px;
+    height: 100%;
+}
+
+#nav-bar-container {
+    display: flex;
+    justify-content: space-between;
 }
 
 #nav-bar {
     display: flex;
+    height: 100px;
+}
+
+.nav-link {
+    font-size: 1.75rem;
+    height: 100%;
+    padding: 5px 20px;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    color: var(--white);
+    background-color: var(--black);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.nav-link:hover {
+    color: var(--gray);
 }
 
 
 /* HERO */
+
+#hero {
+    padding-top: 100px;
+}
 
 
 /* PLAY THE GAME */
@@ -89,8 +131,26 @@ input {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 600px) {
+    #header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 160px;
+        background-color: var(--black);
+    }
+    #nav-bar-container {
+        display: block;
+        justify-content: space-between;
+    }
+    #nav-bar-left {
+        display: none;
+    }
     #nav-bar {
+        display: contents;
         flex-direction: column;
+    }
+    .nav-link {
+        padding: 15px 30px;
     }
 }
 
