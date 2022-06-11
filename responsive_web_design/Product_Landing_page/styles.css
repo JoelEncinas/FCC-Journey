@@ -41,6 +41,9 @@ p {
 /* HERO */
 
 
+/* PLAY THE GAME */
+
+
 /* MAIN */
 
 
@@ -52,8 +55,14 @@ p {
 
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 425px) {
+@media only screen and (max-width: 600px) {
     #nav-bar {
         flex-direction: column;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    #nav-bar {
+        flex-direction: row;
     }
 }

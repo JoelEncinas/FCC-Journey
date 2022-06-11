@@ -25,7 +25,7 @@
 
         <!-- HEADER -->
         <header id="header">
-            <div id="navbar">
+            <div id="nav-bar-container">
                 <div id="navbar-left">
                     <img src="https://raw.githubusercontent.com/JoelEncinas/ArcadeSkate/main/Assets/Images/game_icon.PNG" alt="arcade skate game logo" id="header-img">
                 </div>
@@ -47,24 +47,47 @@
 
         <!-- HERO -->
         <div id="hero">
-            <h1 id="main-title">
+            <h1 id="main-title">Arcade Skate</h1>
+            <h2 id="description"> Test your reflexes in this action packed endless runner and unlock unique skins for your character!</h2>
+            <iframe id="video" src="https://www.youtube.com/embed/uHY7l0irGPU?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
 
-            </h1>
-            <h2 id="description">
-
-            </h2>
-            <iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/uHY7l0irGPU?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <!-- PLAY THE GAME -->
+        <div id="play-game">
+            <h2 id="play-game-title">Try it out!</h2>
+            <a id="play-game-btn" href="https://joelencinas.itch.io/arcade-skate" target="_blank">Play</a>
         </div>
 
         <!-- MAIN -->
         <main id="main">
 
             <section id="features">
-
+                <h2>Features</h2>
+                <div id="features-wrapper">
+                    <div id="feature">
+                        <i class="fa-solid fa-flag"></i>
+                        <h3>Break your record</h3>
+                        <p>Try to increase your score in each gameplay and achieve a new high-score!</p>
+                    </div>
+                    <div id="feature">
+                        <i class="fa-solid fa-coins"></i>
+                        <h3>Unlock items</h3>
+                        <p>Use your coins to unlock new skins for your character or to get a litle further with an extra life.</p>
+                    </div>
+                    <div id="feature">
+                        <i class="fa-regular fa-eye"></i>
+                        <h3>Test your reflexes</h3>
+                        <p>You will need good coordination in order to keep avoiding obstacles.</p>
+                    </div>
+                </div>
             </section>
 
             <section id="developer">
-
+                <div id="developer-wrapper">
+                    <img src="https://raw.githubusercontent.com/JoelEncinas/JoelEncinas/main/me.png" alt="portrait photo of the developer">
+                    <h2><a href="https://github.com/JoelEncinas" target="_blank">Joel Encinas</a></h2>
+                    <p>Hey! Im a passionate self taught web & game developer.</p>
+                </div>
             </section>
         </main>
 
@@ -72,7 +95,7 @@
         <section id="newsletter">
             <form action="https://www.freecodecamp.com/email-submit" id="form">
                 <div id="label-wrapper">
-                    <p>Receive news about the game</p>
+                    <p>Receive info about the latest updates of the game!</p>
                     <label for="email" id="email-label">
                         <input id="email" type="email" name="email" placeholder="example@mail.com">
                     </label>
@@ -86,7 +109,9 @@
 
         <!-- FOOTER -->
         <footer id="footer">
-
+            <div id="footer-wrapper">
+                <p>Made by <a href="https://github.com/JoelEncinas">Joel</a></p>
+            </div>
         </footer>
     </div>
 </body>
