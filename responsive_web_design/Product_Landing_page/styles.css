@@ -2,6 +2,12 @@
 
 :root {
     --purple: #aa80ff;
+    --black: #1A181A;
+    --white: #ebebeb;
+    --gate-green: #48A852;
+    --gate-red: #873B3B;
+    --gate-blue: #488FA8;
+    --gate-gold: #C89A49;
 }
 
 
@@ -12,17 +18,38 @@
     box-sizing: border-box;
 }
 
-body {
-    margin: 0;
-    background-color: #fff;
-    color: #000;
-    font-family: 'Poppins', sans-serif;
-    font-size: 16px;
+html {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 62.5%;
 }
 
-p {
-    color: #000;
-    line-height: 1.6;
+body {
+    margin: 0;
+    background-color: #9A9797;
+    color: var(--white);
+}
+
+input {
+    font-family: 'Roboto Mono', monospace;
+}
+
+h1 {
+    font-size: 5rem;
+}
+
+h2 {
+    font-size: 3.5rem;
+}
+
+h3 {
+    font-size: 2.5rem;
+}
+
+p,
+a,
+i,
+input {
+    font-size: 2rem;
 }
 
 
@@ -45,6 +72,12 @@ p {
 
 
 /* MAIN */
+
+
+/* FEATURES */
+
+
+/* DEVELOPER */
 
 
 /* NEWSLETTER */
