@@ -152,6 +152,9 @@ input {
     .nav-link {
         padding: 15px 30px;
     }
+    #hero {
+        padding-top: 160px;
+    }
 }
 
 @media only screen and (min-width: 1200px) {
