@@ -23,8 +23,14 @@ All the projects from my FreeCodeCamp journey
   - page layout
   - keyframes
   
-- [Product landing page]()
+- [Product landing page]() | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Product_Landing_page)
+
+  - grid
+  - css variables
+  
 - [Personal portfolio page]()
 
+  - everything put together
+
 ## Streak 
-✔️ 29 ✔️ 30 ✔️ 31 ✔️ 01 ✔️ 02 ✔️ 03 ✔️ 04 ✔️ 05 ✔️ 06 ✔️ 07 ✔️ 08 ✔️ 09 ❌ 10 ❌ 11 ❌ 12 ❌ 13 ❌ 14 ❌ 15 ❌ 16 ❌ 17 ❌ 18 ❌ 19 ❌ 20 ❌ 21 ❌ 22 ❌ 23 ❌ 24 ❌ 25 ❌ 26 ❌ 27 ❌ 28 ❌ 29 ❌ 30  
+✔️ 29 ✔️ 30 ✔️ 31 ✔️ 01 ✔️ 02 ✔️ 03 ✔️ 04 ✔️ 05 ✔️ 06 ✔️ 07 ✔️ 08 ✔️ 09 ✔️ 10 ✔️ 11 ❌ 12 ❌ 13 ❌ 14 ❌ 15 ❌ 16 ❌ 17 ❌ 18 ❌ 19 ❌ 20 ❌ 21 ❌ 22 ❌ 23 ❌ 24 ❌ 25 ❌ 26 ❌ 27 ❌ 28 ❌ 29 ❌ 30  
