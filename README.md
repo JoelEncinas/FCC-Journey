@@ -23,7 +23,7 @@ All the projects from my FreeCodeCamp journey
   - page layout
   - keyframes
   
-- [Product landing page](https://codepen.io/JoelEncinasMartin/pen/JjpwbXE) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Product_Landing_page)
+- Product landing page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/JjpwbXE) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Product_Landing_page)
 
   - css variables
   
