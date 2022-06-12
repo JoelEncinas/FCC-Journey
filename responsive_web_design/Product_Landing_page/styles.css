@@ -181,11 +181,23 @@ input {
     background-color: var(--gate-green);
 }
 
+#features h2 {
+    padding-bottom: 60px;
+}
+
+#features-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .feature {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    max-width: 300px;
+    padding: 30px 20px;
 }
 
 
@@ -230,6 +242,12 @@ input {
     }
     #video {
         min-height: 300px;
+    }
+    #features-wrapper {
+        flex-direction: column;
+    }
+    .feature {
+        padding: 30px 0;
     }
 }
 
