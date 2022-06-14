@@ -13,7 +13,7 @@ body {
 }
 
 p {
-    color: #000;
+    color: #dadada;
     font-size: 18px;
     line-height: 1.6;
 }
@@ -28,6 +28,8 @@ ul {
 
 li {
     padding: 5px;
+    color: #dadada;
+    font-size: 18px;
 }
 
 pre {
@@ -40,6 +42,7 @@ code {
     font-size: 18px;
     padding: 2px 4px;
     background-color: #2e3133;
+    color: #bbbbbb;
 }
 
 hr {
@@ -135,12 +138,12 @@ hr {
 }
 
 .footer-link {
-    color: #27609E;
+    color: #d19e40;
     text-decoration: none;
 }
 
 .footer-link:hover {
-    color: #3784d6;
+    color: rgb(190, 136, 35);
 }
 
 
