@@ -31,3 +31,9 @@ myHeroTitle.textContent = 'My First Component on React';
 
 myHero.append(myHeroTitle);
 document.body.append(myHero);
+
+//JSX
+const myElement = <h1 className="hero-title">Understanding JSX</h1>
+// jsx creates an object with properties that define the html element
+
+ReactDOM.render(myElement, document.getElementById('root'));
