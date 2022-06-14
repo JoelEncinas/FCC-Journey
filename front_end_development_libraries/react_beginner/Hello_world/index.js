@@ -20,3 +20,14 @@ document.getElementById('root'))
 */
 
 ReactDOM.render(<Hero/>, document.getElementById('root'))
+
+// Create the component in vanilla JS
+let myHero = document.createElement("div");
+let myHeroTitle = document.createElement("h1");
+
+myHero.className = 'hero';
+myHeroTitle.className = 'hero-title';
+myHeroTitle.textContent = 'My First Component on React';
+
+myHero.append(myHeroTitle);
+document.body.append(myHero);

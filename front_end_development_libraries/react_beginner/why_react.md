@@ -4,4 +4,5 @@
 - Styling
 
 ### Why
-React is composable
+- is composable
+- is declarative "what should be done?" / imperative "how should it be done"
