@@ -19,7 +19,9 @@ body {
 
 #page-wrapper {
     display: grid;
-    grid-template: [main-left] "aside  main" 1fr [main-right] [footer-left] "aside  foot" 50px [footer-right];
+    grid-template-areas: "aside  main" "aside  foot";
+    grid-template-rows: 1fr;
+    grid-template-columns: 200px 1fr;
 }
 
 #navbar {
@@ -34,9 +36,16 @@ body {
     grid-area: aside;
 }
 
+
+/* MAIN */
+
 #main {
     background-color: yellow;
     grid-area: main;
+}
+
+#projects {
+    padding-top: 30px;
 }
 
 #footer {
@@ -45,7 +54,13 @@ body {
 }
 
 @media only screen and (max-width: 425px) {
-    #main {
-        background-color: red;
+    #page-wrapper {
+        display: grid;
+        grid-template-areas: "main" "foot";
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+    }
+    #extra-info {
+        display: none;
     }
 }
