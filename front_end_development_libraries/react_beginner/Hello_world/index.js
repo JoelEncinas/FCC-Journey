@@ -37,3 +37,49 @@ const myElement = <h1 className="hero-title">Understanding JSX</h1>
 // jsx creates an object with properties that define the html element
 
 ReactDOM.render(myElement, document.getElementById('root'));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// create a navbar in JSX
