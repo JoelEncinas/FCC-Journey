@@ -28,7 +28,7 @@ body {
   background-color: #3671b4;
 }
 
-.nav--icon {
+.nav__icon {
   width: 40px;
 }
 
@@ -45,6 +45,6 @@ body {
   background-color: #272727;
 }
 
-.footer--dev_link {
+.footer__dev-link {
   color: #ccc;
 }

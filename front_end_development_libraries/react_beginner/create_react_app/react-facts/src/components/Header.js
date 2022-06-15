@@ -7,9 +7,9 @@ function Header() {
             <img
                 src={reactLogo}
                 alt="React logo"
-                className="nav--icon"
+                className="nav__icon"
             />
-            <h3 className="nav--logo_text">ReactFacts</h3>
+            <h3 className="nav__logo-text">ReactFacts</h3>
         </nav>
     )
 }
