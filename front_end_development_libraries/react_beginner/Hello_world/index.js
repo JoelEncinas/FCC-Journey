@@ -38,7 +38,19 @@ const myElement = <h1 className="hero-title">Understanding JSX</h1>
 
 ReactDOM.render(myElement, document.getElementById('root'));
 
+// create a navbar in JSX
+const navbar = (
+    <nav>
+        <h1 className="header">ArcadeSkate</h1>
+        <ul>
+            <li>Gameplay</li>
+            <li>About</li>
+            <li>Contact</li>
+        </ul>
+    </nav>
+)
 
+ReactDOM.render(navbar, document.getElementById('root'));
 
 
 
