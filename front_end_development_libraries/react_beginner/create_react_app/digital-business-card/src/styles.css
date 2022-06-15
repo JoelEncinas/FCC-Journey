@@ -18,6 +18,10 @@ body {
 
 /* HEADER */
 
+.header__image {
+  width: 100px;
+}
+
 /* CONTACT */
 
 /* INFO */
