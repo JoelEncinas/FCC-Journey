@@ -50,7 +50,7 @@ const navbar = (
     </nav>
 )
 
-ReactDOM.render(navbar, document.getElementById('root'));
+ReactDOM.render(navbar, document.getElementById('root'))
 
 
 
