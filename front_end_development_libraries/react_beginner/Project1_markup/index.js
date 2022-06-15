@@ -2,6 +2,7 @@
 // import ReactDOM from "react-dom"
 
 // #1 SOLUTION - custom component
+// Pascal case 
 function Page() {
     return (
         <div className="page-wrapper">
@@ -37,6 +38,5 @@ const page = (
         </ul>
     </div>
 )
-
 
 ReactDOM.render(<Page/>, document.getElementById('root'))
