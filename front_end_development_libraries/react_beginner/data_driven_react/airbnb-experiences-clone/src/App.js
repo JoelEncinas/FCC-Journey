@@ -11,14 +11,15 @@ function App() {
     { return (
       <Card 
         key = {card['id']}
-        cardPhoto = {card['coverImg']} 
+        item = {card}
+        // cardPhoto = {card['coverImg']} 
         star = {starPath} 
-        ratingValue = {card['stats']['rating']} 
-        ratingAvailability = {card['stats']['reviewCount']} 
-        location = {card['location']} 
-        cardDescription = {card['title']} 
-        cardPrice = {card['price']} 
-        openSpots = {card['openSpots']}
+        // ratingValue = {card['stats']['rating']} 
+        // ratingAvailability = {card['stats']['reviewCount']} 
+        // location = {card['location']} 
+        // cardDescription = {card['title']} 
+        // cardPrice = {card['price']} 
+        // openSpots = {card['openSpots']}
       />) }
   )
 
