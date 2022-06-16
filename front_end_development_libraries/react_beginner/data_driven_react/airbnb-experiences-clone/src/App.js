@@ -10,10 +10,14 @@ function App() {
   const cards = data.map(card => 
     { return (
       <Card 
+        // pass whole item instead of every prop of data
         key = {card['id']}
+        // can use spread operator too to simplify it even more
+        // although it obscures the data that we are pasing
+        // {...card}
         item = {card}
-        // cardPhoto = {card['coverImg']} 
         star = {starPath} 
+        // cardPhoto = {card['coverImg']} 
         // ratingValue = {card['stats']['rating']} 
         // ratingAvailability = {card['stats']['reviewCount']} 
         // location = {card['location']} 
