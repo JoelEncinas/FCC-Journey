@@ -9,25 +9,31 @@ function App() {
       <Joke
         setup = {jokesDB[i]['setup']}
         punchline = {jokesDB[i]['punchline']}
+        isPun = {jokesDB[i]['isPun']}
         {...i++}        
       />
       <Joke 
         setup = {jokesDB[i]['setup']}
         punchline = {jokesDB[i]['punchline']}
+        isPun = {jokesDB[i]['isPun']}
         {...i++}
       />
       <Joke 
         setup = {jokesDB[i]['setup']}
         punchline = {jokesDB[i]['punchline']}
+        isPun = {jokesDB[i]['isPun']}
         {...i++}
       />
       <Joke 
         setup = {jokesDB[i]['setup']}
         punchline = {jokesDB[i]['punchline']}
+        isPun = {jokesDB[i]['isPun']}
         {...i++}
       />
       <Joke 
         setup = {jokesDB[i]['setup']}
+        punchline = {jokesDB[i]['punchline']}
+        isPun = {jokesDB[i]['isPun']}
       />
     </div>
   );
@@ -36,22 +42,27 @@ function App() {
 const jokesDB = [
   {
     setup : 'What\'s the best thing about Switzerland?',
-    punchline : 'I don\'t know, but the flag is a big plus.'
+    punchline : 'I don\'t know, but the flag is a big plus.',
+    isPun : true
   },
   {
     setup : 'I invented a new word!',
-    punchline : 'Plagiarism!'
+    punchline : 'Plagiarism!',
+    isPun : true
   },
   {
     setup : 'Why do we tell actors to “break a leg?”',
-    punchline : 'Because every play has a cast.'
+    punchline : 'Because every play has a cast.',
+    isPun : true
   },
   {
     setup : 'Hear about the new restaurant called Karma?',
-    punchline : 'There\'s no menu: You get what you deserve.'
+    punchline : 'There\'s no menu: You get what you deserve.',
+    isPun : true
   },
   {
-    setup : 'What do you call a joke that isn\'t funny? A sentence.'
+    setup : 'What do you call a joke that isn\'t funny? A sentence.',
+    isPun : false
   }
 ]
 
