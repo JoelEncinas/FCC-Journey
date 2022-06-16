@@ -8,7 +8,18 @@ function App() {
   const starPath = 'red-star.png'
 
   const cards = data.map(card => 
-    { return <Card cardPhoto = {card['coverImg']} star = {starPath} ratingValue = {card['stats']['rating']} ratingAvailability = {card['stats']['reviewCount']} location = {card['location']} cardDescription = {card['title']} cardPrice = {card['price']} /> }
+    { return (
+      <Card 
+        key = {card['id']}
+        cardPhoto = {card['coverImg']} 
+        star = {starPath} 
+        ratingValue = {card['stats']['rating']} 
+        ratingAvailability = {card['stats']['reviewCount']} 
+        location = {card['location']} 
+        cardDescription = {card['title']} 
+        cardPrice = {card['price']} 
+        openSpots = {card['openSpots']}
+      />) }
   )
 
 
