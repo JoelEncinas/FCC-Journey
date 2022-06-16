@@ -1,40 +1,15 @@
 import Joke from "./components/Joke"
+import jokesDB from "./jokesDB"
 
 function App() {
-  let i = 0
+  const jokeElements = jokesDB.map(joke => {
+    return <Joke setup = {joke['setup']} punchline = {joke['punchline']} isPun = {joke['isPun']}/>
+  })
 
   return (
     <div className="App">
       <h1>Jokesdotcom</h1>
-      <Joke
-        setup = {jokesDB[i]['setup']}
-        punchline = {jokesDB[i]['punchline']}
-        isPun = {jokesDB[i]['isPun']}
-        {...i++}        
-      />
-      <Joke 
-        setup = {jokesDB[i]['setup']}
-        punchline = {jokesDB[i]['punchline']}
-        isPun = {jokesDB[i]['isPun']}
-        {...i++}
-      />
-      <Joke 
-        setup = {jokesDB[i]['setup']}
-        punchline = {jokesDB[i]['punchline']}
-        isPun = {jokesDB[i]['isPun']}
-        {...i++}
-      />
-      <Joke 
-        setup = {jokesDB[i]['setup']}
-        punchline = {jokesDB[i]['punchline']}
-        isPun = {jokesDB[i]['isPun']}
-        {...i++}
-      />
-      <Joke 
-        setup = {jokesDB[i]['setup']}
-        punchline = {jokesDB[i]['punchline']}
-        isPun = {jokesDB[i]['isPun']}
-      />
+      {jokeElements}
     </div>
   );
 }
