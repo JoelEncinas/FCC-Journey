@@ -1,27 +1,33 @@
 import Joke from "./components/Joke"
 
 function App() {
+  let i = 0
+
   return (
     <div className="App">
       <h1>Jokesdotcom</h1>
       <Joke
-        setup = {jokesDB[0]['setup']}
-        punchline = {jokesDB[0]['punchline']}
+        setup = {jokesDB[i]['setup']}
+        punchline = {jokesDB[i]['punchline']}
+        {...i++}        
       />
       <Joke 
-        setup = {jokesDB[1]['setup']}
-        punchline = {jokesDB[1]['punchline']}
+        setup = {jokesDB[i]['setup']}
+        punchline = {jokesDB[i]['punchline']}
+        {...i++}
       />
       <Joke 
-        setup = {jokesDB[2]['setup']}
-        punchline = {jokesDB[2]['punchline']}
+        setup = {jokesDB[i]['setup']}
+        punchline = {jokesDB[i]['punchline']}
+        {...i++}
       />
       <Joke 
-        setup = {jokesDB[3]['setup']}
-        punchline = {jokesDB[3]['punchline']}
+        setup = {jokesDB[i]['setup']}
+        punchline = {jokesDB[i]['punchline']}
+        {...i++}
       />
       <Joke 
-        setup = {jokesDB[4]['setup']}
+        setup = {jokesDB[i]['setup']}
       />
     </div>
   );
@@ -29,8 +35,8 @@ function App() {
 
 const jokesDB = [
   {
-    setup : 'What’s the best thing about Switzerland?',
-    punchline : 'I don’t know, but the flag is a big plus.'
+    setup : 'What\'s the best thing about Switzerland?',
+    punchline : 'I don\'t know, but the flag is a big plus.'
   },
   {
     setup : 'I invented a new word!',
@@ -42,10 +48,10 @@ const jokesDB = [
   },
   {
     setup : 'Hear about the new restaurant called Karma?',
-    punchline : 'There’s no menu: You get what you deserve.'
+    punchline : 'There\'s no menu: You get what you deserve.'
   },
   {
-    setup : 'What do you call a joke that isn\'t funny?A sentence.',
+    setup : 'What do you call a joke that isn\'t funny? A sentence.'
   }
 ]
 
