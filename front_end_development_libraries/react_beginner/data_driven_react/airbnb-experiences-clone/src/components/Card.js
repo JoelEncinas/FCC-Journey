@@ -1,18 +1,16 @@
 import React from "react";
-import photo from "./../images/swimming.jpeg";
-import star from "./../images/red-star.png";
 
-function Card() {
+function Card(props) {
     return (
         <div className="card">
-            <img className="card__photo" src={photo} alt="someone swimming"/>
+            <img className="card__photo" src={`../images/${props.cardPhoto}`} alt="someone swimming"/>
             <div className="rating">
-                <img className="rating__star" src={star} alt="red star"/>
-                <p className="rating__value">5.0</p>
-                <p className="rating__availability">(6) • USA</p>
+                <img className="rating__star" src={`../images/${props.star}`} alt="red star"/>
+                <p className="rating__value">{props.ratingValue}</p>
+                <p className="rating__availability">({props.ratingAvailability}) • USA</p>
             </div>
-            <p className="card__description">Swimming lessons</p>
-            <p className="card__price"><span className="bold">From $136 /</span> person</p>
+            <p className="card__description">{props.cardDescription}</p>
+            <p className="card__price"><span className="bold">From $ {props.cardPrice}/</span> person</p>
         </div>
     )
 }

@@ -8,7 +8,14 @@ function App() {
     <div className="page-container">
       <Navbar/>
       <Hero/>
-      <Card/>
+      <Card
+        cardPhoto = 'swimming.jpeg'
+        ratingValue = '5.0'
+        ratingAvailability = '6'
+        cardDescription = 'Swimming lessons'
+        cardPrice = {136}
+        star = 'red-star.png'
+      />
     </div>
   );
 }
