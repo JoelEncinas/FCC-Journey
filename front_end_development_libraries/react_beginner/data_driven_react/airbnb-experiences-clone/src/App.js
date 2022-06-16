@@ -16,7 +16,9 @@ function App() {
     <div className="page-container">
       <Navbar/>
       <Hero/>
-      {cards}
+      <div className="card-container">
+        {cards}
+      </div>
     </div>
   );
 }
