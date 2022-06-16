@@ -11,5 +11,7 @@ What I've learned
 - Data driven React
     - Props
     - Creating components from an array
+    - Using map() to render component props
+    - Spread operator for props
 
 2:43:52
