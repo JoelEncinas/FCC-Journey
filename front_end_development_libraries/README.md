@@ -13,5 +13,11 @@ What I've learned
     - Creating components from an array of data
     - Mapping data (using map() to render component props)
     - Use spread operator for props
+    
+- Manipulating state
+    - Event listeners
+    - State
+    - Conditional rendering
+    - Forms
 
 Timestamp of video > 4:41:37
