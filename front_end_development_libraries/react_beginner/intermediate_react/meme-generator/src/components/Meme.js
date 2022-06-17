@@ -6,6 +6,10 @@ function Meme() {
         console.log('click')
     }
 
+    function handleMouseEnter(){
+        console.log('entered img')
+    }
+
     return (
         <main className="meme">
             <form className="meme__form">
@@ -14,7 +18,7 @@ function Meme() {
                     <input className="meme__input" type='text' placeholder="Bottom text"></input>
                 </div>
                 <button className="meme__input-submit" onClick={handleClick}>Generate meme</button>
-                <img className="meme__image" src={image} alt="meme"/>
+                <img className="meme__image" onMouseEnter={handleMouseEnter} src={image} alt="meme"/>
             </form>
         </main>
     )
