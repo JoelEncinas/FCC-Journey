@@ -1,6 +1,11 @@
 import React from "react"
+import image from "./../images/shut-up-and-take-my-money.jpg"
 
 function Meme() {
+    function handleClick() {
+        console.log('click')
+    }
+
     return (
         <main className="meme">
             <form className="meme__form">
@@ -8,7 +13,8 @@ function Meme() {
                     <input className="meme__input" type='text' placeholder="Top text"></input>
                     <input className="meme__input" type='text' placeholder="Bottom text"></input>
                 </div>
-                <button className="meme__input-submit">Generate meme</button>
+                <button className="meme__input-submit" onClick={handleClick}>Generate meme</button>
+                <img className="meme__image" src={image} alt="meme"/>
             </form>
         </main>
     )

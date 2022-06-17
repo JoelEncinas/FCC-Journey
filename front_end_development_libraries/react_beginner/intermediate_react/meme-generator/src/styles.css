@@ -4,10 +4,9 @@
 
 body {
   margin: 0;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-input, button {
+body, input, button {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -50,6 +49,8 @@ input, button {
 
 .meme__inputs {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .meme__input {
@@ -69,4 +70,10 @@ input, button {
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.meme__image {
+  padding: 10px 10px;
+  width: 100%;
+  height: auto;
 }
