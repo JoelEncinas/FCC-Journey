@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+/* NAVBAR */
+
+.navbar {
+  background-color: #791F9E;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px;
+}
+
+.navbar > img {
+  width: 50px;
+  margin-right: 20px;
+}
