@@ -2,6 +2,8 @@ import React from 'react';
 import Counter from './Counter'
 
 function App() {
+  console.log('app rendered');
+
   let [counter, setCount] = React.useState(0)
 
   /*
