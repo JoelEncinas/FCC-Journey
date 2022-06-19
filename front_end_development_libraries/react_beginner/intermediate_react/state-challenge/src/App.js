@@ -1,4 +1,5 @@
 import React from 'react';
+import Counter from './Counter'
 
 function App() {
   let [counter, setCount] = React.useState(0)
@@ -23,9 +24,7 @@ function App() {
   return (
     <div className="App">
       <button className='counter__minus' onClick={decreaseCounter}>-</button>
-      <div className='counter__count'>
-        <h1>{counter}</h1>
-      </div>
+      <Counter number={counter}/>
       <button className='counter__plus' onClick={increaseCounter}>+</button>
     </div>
   );
