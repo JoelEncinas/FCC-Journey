@@ -12,6 +12,16 @@ function Meme() {
         console.log('entered img')
     }
 
+    /* CHALLENGE
+    let thingsArray = ['Thing 1']
+
+    function addItemToArray(){
+        thingsArray.push('Thing ' + (thingsArray.length + 1))
+        console.log(thingsArray.length)
+        console.log(thingsArray)
+    }
+    */
+
     return (
         <main className="meme">
             <div className="meme__form">
