@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  background-color: #000;
+}
+
+.App {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter__minus,
+.counter__plus,
+.counter__count {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.counter__minus,
+.counter__plus {
+  font-size: 40px;
+}
+
+.counter__minus:hover,
+.counter__plus:hover {
+  cursor: pointer;
+  background-color: #ccc;
+}
+
+h1 {
+  text-align: center;
+  color: #fff;
+  background-color: #ccc;
+  border-radius: 10px;
+  margin: 10px;
+}
+
+
