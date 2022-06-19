@@ -20,4 +20,4 @@ What I've learned
     - Conditional rendering
     - Forms
 
-Timestamp of video > 4:41:37
+Timestamp of video > 5:02:54
