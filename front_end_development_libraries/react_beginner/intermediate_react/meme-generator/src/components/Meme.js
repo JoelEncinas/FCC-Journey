@@ -3,20 +3,19 @@ import image from "./../images/shut-up-and-take-my-money.jpg"
 import memesData from "../memesData"
 
 function Meme() {
-    const [result, func] = React.useState('hello')
-    console.log(result)
+    const [currentImage, newImage] = React.useState(image)
 
     function getMemeImage() {
         let random = Math.floor(Math.random() * memesData.data.memes.length)
-        console.log(memesData.data.memes[random].url)
+        changeState(memesData.data.memes[random].url)
     }
 
     function handleMouseEnter(){
-        console.log('entered img')
+        // console.log('entered img')
     }
 
-    function changeState(){
-        func('goodbye')
+    function changeState(newState){
+        newImage(newState)
     }
 
     /* CHALLENGE
@@ -38,11 +37,9 @@ function Meme() {
                         <input className="meme__input" type='text' placeholder="Bottom text"></input>
                     </div>
                     <button className="meme__input-submit" onClick={getMemeImage}>Generate meme</button>
-                    <img className="meme__image" onMouseEnter={handleMouseEnter} src={image} alt="meme"/>
+                    <img className="meme__image" onMouseEnter={handleMouseEnter} src={currentImage} alt="meme"/>
                 </div>
             </main>
-
-            <p style={{textAlign: 'center'}} onClick={changeState}>{result}</p>
         </div>
     )
 }
