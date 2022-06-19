@@ -3,6 +3,9 @@ import image from "./../images/shut-up-and-take-my-money.jpg"
 import memesData from "../memesData"
 
 function Meme() {
+    const [result, func] = React.useState('hello')
+    console.log(result)
+
     function getMemeImage() {
         let random = Math.floor(Math.random() * memesData.data.memes.length)
         console.log(memesData.data.memes[random].url)
@@ -10,6 +13,10 @@ function Meme() {
 
     function handleMouseEnter(){
         console.log('entered img')
+    }
+
+    function changeState(){
+        func('goodbye')
     }
 
     /* CHALLENGE
@@ -23,16 +30,20 @@ function Meme() {
     */
 
     return (
-        <main className="meme">
-            <div className="meme__form">
-                <div className="meme__inputs">
-                    <input className="meme__input" type='text' placeholder="Top text"></input>
-                    <input className="meme__input" type='text' placeholder="Bottom text"></input>
+        <div>
+            <main className="meme">
+                <div className="meme__form">
+                    <div className="meme__inputs">
+                        <input className="meme__input" type='text' placeholder="Top text"></input>
+                        <input className="meme__input" type='text' placeholder="Bottom text"></input>
+                    </div>
+                    <button className="meme__input-submit" onClick={getMemeImage}>Generate meme</button>
+                    <img className="meme__image" onMouseEnter={handleMouseEnter} src={image} alt="meme"/>
                 </div>
-                <button className="meme__input-submit" onClick={getMemeImage}>Generate meme</button>
-                <img className="meme__image" onMouseEnter={handleMouseEnter} src={image} alt="meme"/>
-            </div>
-        </main>
+            </main>
+
+            <p style={{textAlign: 'center'}} onClick={changeState}>{result}</p>
+        </div>
     )
 }
 
