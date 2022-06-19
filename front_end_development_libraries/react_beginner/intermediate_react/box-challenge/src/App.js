@@ -1,5 +1,6 @@
 import React from 'react';
 import boxes from './boxes'
+import Box from './Box'
 
 /**
  * Challenge part 1:
@@ -10,11 +11,11 @@ import boxes from './boxes'
  *    (Don't worry about using the "on" property yet)
  */
 
-function App() {
+function App(props) {
   const [boxesArray, changeState] = React.useState(boxes)
 
   let boxesElements = boxesArray.map(box => {
-    return <div className='box' key={box.id}></div>
+    return <Box key={box.id} isOn={box.on}/>
   })
 
   return (
