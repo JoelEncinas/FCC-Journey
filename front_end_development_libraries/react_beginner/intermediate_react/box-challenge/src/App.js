@@ -14,14 +14,30 @@ import Box from './Box'
 function App() {
   const [boxesArray, changeState] = React.useState(boxes)
 
-  function toggle(){
-    console.log('click');
+  function toggle(id){
+    changeState(prevBoxes => {
+      const newBoxes = []
+      for(let i = 0; i < prevBoxes.length; i++){
+        const currentBox = prevBoxes[i]
+        if(currentBox.id === id){
+          const updatedBox = {
+            ...currentBox,
+            on: !currentBox.on
+          }
+          newBoxes.push(updatedBox)
+        } else {
+          newBoxes.push(currentBox)
+        }
+      }
+
+      return newBoxes
+    })
   }
 
   let boxesElements = boxesArray.map(box => {
     // use handleClick instead of onClick as you can name it
     // whatever we want to avoid confusion
-    return <Box key={box.id} isOn={box.on} handleClick={toggle}/>
+    return <Box key={box.id} id={box.id} isOn={box.on} handleClick={toggle}/>
   })
 
   return (
