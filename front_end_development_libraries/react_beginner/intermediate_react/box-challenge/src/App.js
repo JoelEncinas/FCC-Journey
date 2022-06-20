@@ -11,7 +11,7 @@ import Box from './Box'
  *    (Don't worry about using the "on" property yet)
  */
 
-function App(props) {
+function App() {
   const [boxesArray, changeState] = React.useState(boxes)
 
   let boxesElements = boxesArray.map(box => {
