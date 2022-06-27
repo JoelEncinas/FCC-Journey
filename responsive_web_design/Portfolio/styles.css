@@ -18,12 +18,35 @@ body {
     transform: rotate(-90deg);
 }
 
+.arrow {
+    animation: MoveUpDown 1s ease infinite;
+}
 
-/* MAIN */
+.arrow::before,
+.arrow::after {
+    position: relative;
+    content: '';
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: #000;
+}
+
+.arrow::before {
+    transform: rotate(45deg);
+}
+
+.arrow::after {
+    left: 14px;
+    transform: rotate(-45deg);
+}
+
+
+/* NAVBAR */
 
 #page-wrapper {
     display: grid;
-    grid-template-areas: "aside-welcome  main" "aside-projects  main" "aside-contact  main" "foot  foot";
+    grid-template-areas: "aside-welcome  main""aside-projects  main""aside-contact  main""foot  foot";
     grid-template-rows: 100vh;
     grid-template-columns: 200px 1fr;
 }
@@ -79,7 +102,9 @@ body {
 }
 
 .welcome-section__wrapper {
-
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* PROJECTS */
@@ -90,9 +115,7 @@ body {
 
 /* CONTACT */
 
-#contact {
-
-}
+#contact {}
 
 #footer {
     background-color: red;
@@ -100,14 +123,31 @@ body {
     text-align: center;
 }
 
+/* MEDIA QUERIES */
+
 @media only screen and (max-width: 425px) {
     #page-wrapper {
         display: grid;
-        grid-template-areas: "main" "foot";
+        grid-template-areas: "main""foot";
         grid-template-rows: 1fr;
         grid-template-columns: 1fr;
     }
+
     #extra-info {
         display: none;
+    }
+}
+
+/* ANIMATIONS */
+
+@keyframes MoveUpDown {
+
+    0%,
+    100% {
+        transform: translate(0);
+    }
+
+    50% {
+        transform: translate(0, 20px);
     }
 }
