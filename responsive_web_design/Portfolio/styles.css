@@ -14,13 +14,17 @@ body {
     position: relative;
 }
 
+.rotated-text {
+    transform: rotate(-90deg);
+}
+
 
 /* MAIN */
 
 #page-wrapper {
     display: grid;
-    grid-template-areas: "aside  main" "aside  foot";
-    grid-template-rows: 1fr;
+    grid-template-areas: "aside-welcome  main" "aside-projects  main" "aside-contact  main" "foot  foot";
+    grid-template-rows: 100vh;
     grid-template-columns: 200px 1fr;
 }
 
@@ -29,11 +33,25 @@ body {
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 9;
 }
 
-#extra-info {
-    background-color: lightblue;
-    grid-area: aside;
+#welcome-extra-info {
+    background-color: #91966ee8;
+    grid-area: aside-welcome;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#projects-extra-info {
+    background-color: blanchedalmond;
+    grid-area: aside-projects;
+}
+
+#contact-extra-info {
+    background-color: darkslategray;
+    grid-area: aside-contact;
 }
 
 
@@ -44,13 +62,42 @@ body {
     grid-area: main;
 }
 
+#welcome-section,
+#projects,
+#contact {
+    height: 100vh;
+}
+
+/* WELCOME */
+
+#welcome-section {
+    background-color: #91966E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.welcome-section__wrapper {
+
+}
+
+/* PROJECTS */
+
 #projects {
     padding-top: 30px;
+}
+
+/* CONTACT */
+
+#contact {
+
 }
 
 #footer {
     background-color: red;
     grid-area: foot;
+    text-align: center;
 }
 
 @media only screen and (max-width: 425px) {
