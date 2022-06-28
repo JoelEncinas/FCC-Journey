@@ -80,6 +80,7 @@ h1 {
 }
 
 .navbar__link {
+    color: var(--black);
     margin: 0 20px;
     text-decoration: none;
 }
