@@ -3,6 +3,7 @@
 :root {
     --white: #fff;
     --black: #000;
+    --gray: #161616;
     --blue: #C4E8DF;
     --green: #D8F6D6;
     --yellow-green: #EEFBDD;
@@ -18,7 +19,7 @@
 
 body {
     margin: 0;
-    background-color:var(--white);
+    background-color: var(--white);
     color: var(--black);
     font-family: 'Poppins', sans-serif;
     font-size: 18px;
@@ -30,6 +31,7 @@ body {
 }
 
 .arrow {
+    margin-top: 20px;
     animation: MoveUpDown 1s ease infinite;
 }
 
@@ -55,6 +57,26 @@ body {
 
 /* NAVBAR */
 
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 9;
+    background-color: var(--red);
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar__link {
+    margin: 0 20px;
+    text-decoration: none;
+}
+
+
+/* PAGE STRUCTURE */
+
 #page-wrapper {
     display: grid;
     grid-template-areas: "aside-welcome  main""aside-projects  main""aside-contact  main""foot  foot";
@@ -62,29 +84,27 @@ body {
     grid-template-columns: 200px 1fr;
 }
 
-#navbar {
-    background-color: lime;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 9;
-}
-
-#welcome-extra-info {
-    background-color: #91966ee8;
-    grid-area: aside-welcome;
+#welcome-extra-info,
+#projects-extra-info,
+#contact-extra-info {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+#welcome-extra-info {
+    background-color: var(--blue);
+    grid-area: aside-welcome;
+
+}
+
 #projects-extra-info {
-    background-color: blanchedalmond;
+    background-color: var(--green);
     grid-area: aside-projects;
 }
 
 #contact-extra-info {
-    background-color: darkslategray;
+    background-color: var(--yellow-green);
     grid-area: aside-contact;
 }
 
@@ -92,7 +112,7 @@ body {
 /* MAIN */
 
 #main {
-    background-color: yellow;
+    background-color: var(--white);
     grid-area: main;
 }
 
@@ -105,7 +125,7 @@ body {
 /* WELCOME */
 
 #welcome-section {
-    background-color: #91966E;
+    background-color: var(--yellow);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -116,20 +136,36 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: 500px;
 }
 
 /* PROJECTS */
 
 #projects {
-    padding-top: 30px;
+    background-color: var(--yellow);
 }
 
 /* CONTACT */
 
-#contact {}
+#contact {
+    background-color: var(--yellow);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.contact-section__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 500px;
+}
+
+/* FOOTER */
 
 #footer {
-    background-color: red;
+    background-color: var(--red);
     grid-area: foot;
     text-align: center;
 }
@@ -137,6 +173,16 @@ body {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 425px) {
+    #navbar {
+        height: 150px;
+        flex-direction: column;
+    }
+
+    .navbar__link {
+        margin: 10px 0;
+        text-decoration: none;
+    }
+
     #page-wrapper {
         display: grid;
         grid-template-areas: "main""foot";
@@ -144,8 +190,14 @@ body {
         grid-template-columns: 1fr;
     }
 
-    #extra-info {
+    #welcome-extra-info,
+    #projects-extra-info,
+    #contact-extra-info {
         display: none;
+    }
+
+    #projects {
+        padding-top: 300px;
     }
 }
 
