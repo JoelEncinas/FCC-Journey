@@ -27,7 +27,7 @@ All the projects from my FreeCodeCamp journey
 
   - css variables
   
-- [Personal portfolio page]()
+- Personal portfolio page ✔️  [see page](https://codepen.io/JoelEncinasMartin/pen/LYQMabB) | [code](https://github.com/JoelEncinas/FCC-journey/tree/main/responsive_web_design/Portfolio)
 
   - grid
   - transitions
