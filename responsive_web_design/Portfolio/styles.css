@@ -26,8 +26,17 @@ body {
     position: relative;
 }
 
+h1 {
+    font-size: 40px;
+    margin: 10px;
+}
+
 .rotated-text {
     transform: rotate(-90deg);
+}
+
+.italic {
+    font-style: italic;
 }
 
 .arrow {
@@ -161,6 +170,21 @@ body {
     align-items: center;
     max-width: 500px;
 }
+
+.contact-section__link {
+    padding: 5px 15px;
+    color: var(--black);
+    font-size: 25px;
+}
+
+.contact-section__link > i {
+    transition: transform 0.3s ease-out;
+}
+
+.contact-section__link:hover > i {
+    transform: scale(1.2);
+}
+
 
 /* FOOTER */
 
