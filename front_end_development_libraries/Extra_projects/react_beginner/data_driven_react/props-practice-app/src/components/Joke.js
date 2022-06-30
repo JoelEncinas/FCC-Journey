@@ -7,7 +7,6 @@ function Joke(props) {
         showJoke(function(isShown){
             return !isShown
         })
-        console.log(isShown);
     }
 
     /*
@@ -30,7 +29,7 @@ function Joke(props) {
         <div className='joke'>
             <h2 className='setup'>{props.setup}</h2>
             <button className='show__joke' onClick={changeState}>Show</button>
-            <p className='punchline' style={{display: (isShown ? 'block' : 'none')}}>{props.punchline}</p>
+            <p className='punchline' style={{display: isShown ? 'block' : 'none'}}>{props.punchline}</p>
             <small style={{display: props.isPun ? "block" : "none"}}>has pun</small>
             <hr></hr>
         </div>
