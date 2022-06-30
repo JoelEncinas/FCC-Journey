@@ -1,6 +1,16 @@
 import React from 'react';
 
 function Joke(props) {
+    let [isShown, showJoke] = React.useState(false)
+
+    function changeState() {
+        showJoke(function(isShown){
+            return !isShown
+        })
+        console.log(isShown);
+    }
+
+    /*
     let displayValue = ''
 
     if(props.punchline){
@@ -8,6 +18,7 @@ function Joke(props) {
     } else {
         displayValue = 'none'
     }
+    */
 
     /* 
     the condition can be done:
@@ -18,7 +29,8 @@ function Joke(props) {
     return (
         <div className='joke'>
             <h2 className='setup'>{props.setup}</h2>
-            <p className='punchline' style={{display: displayValue}}>{props.punchline}</p>
+            <button className='show__joke' onClick={changeState}>Show</button>
+            <p className='punchline' style={{display: (isShown ? 'block' : 'none')}}>{props.punchline}</p>
             <small style={{display: props.isPun ? "block" : "none"}}>has pun</small>
             <hr></hr>
         </div>
