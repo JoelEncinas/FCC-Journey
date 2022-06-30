@@ -28,7 +28,7 @@ function Joke(props) {
     return (
         <div className='joke'>
             <h2 className='setup'>{props.setup}</h2>
-            <button className='show__joke' onClick={changeState}>Show</button>
+            <button className='show__joke' onClick={changeState}>{isShown ? 'Hide' : 'Show'}</button>
             {/*{isShown && <p>{props.puncline}</p>}*/}
             <p className='punchline' style={{display: isShown ? 'block' : 'none'}}>{props.punchline}</p>
             <small style={{display: props.isPun ? "block" : "none"}}>has pun</small>
