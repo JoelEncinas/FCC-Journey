@@ -8,6 +8,7 @@ export default function Form() {
     comment: "",
     isFriendly: true,
     employment: "",
+    favColor: "",
   });
 
   console.log(formData);
@@ -94,6 +95,19 @@ export default function Form() {
         ></input>
         <label htmlFor="fullTime">Full Time</label>
       </fieldset>
+
+      <label htmlFor="favColor">What is your favorite color?</label>
+      <select
+        id="favColor"
+        value={formData.favColor}
+        onChange={handleChange}
+        name="favColor"
+      >
+        <option value="">Choose</option>
+        <option value="red">Red</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+      </select>
     </form>
   );
 }
