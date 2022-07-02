@@ -4,6 +4,7 @@ export default function Form() {
   const [formData, setFormData] = React.useState({
     firstName: "",
     lastName: "",
+    email: ""
   });
 
   console.log(formData);
@@ -21,6 +22,7 @@ export default function Form() {
     <form>
       <input type="text" placeholder="First Name" name="firstName" onChange={handleChange} />
       <input type="text" placeholder="Last Name" name="lastName" onChange={handleChange} />
+      <input type="email" placeholder="jhon@mail.com" name="email" onChange={handleChange} />
     </form>
   );
 }
