@@ -11,8 +11,6 @@ export default function Form() {
     favColor: "",
   });
 
-  console.log(formData);
-
   function handleChange(event) {
     const { name, value, type, checked } = event.target;
 
@@ -24,8 +22,14 @@ export default function Form() {
     });
   }
 
+  function handleSubmit(event) {
+    // prevents the reload of the page
+    event.preventDefault();
+    console.log(formData);
+  }
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       {/* Controlled components by setting value equal to the state */}
       <input
         type="text"
@@ -108,6 +112,9 @@ export default function Form() {
         <option value="green">Green</option>
         <option value="blue">Blue</option>
       </select>
+
+      {/*the button is defaulted to submit if inside a form*/}
+      <button>Submit</button>
     </form>
   );
 }
