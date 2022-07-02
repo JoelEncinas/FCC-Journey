@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Form() {
-  const [userInfo, setName] = React.useState([], []);
+  const [userInfo, setName] = React.useState([,]);
 
   console.log(userInfo);
 
