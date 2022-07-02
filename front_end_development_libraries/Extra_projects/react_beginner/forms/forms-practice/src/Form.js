@@ -7,6 +7,7 @@ export default function Form() {
     email: "",
     comment: "",
     isFriendly: true,
+    employment: "",
   });
 
   console.log(formData);
@@ -60,6 +61,39 @@ export default function Form() {
         onChange={handleChange}
       />
       <label htmlFor="isFriendly">Are you friendly?</label>
+      <fieldset>
+        <legend>Current employment status</legend>
+
+        <input
+          type="radio"
+          id="unemployed"
+          name="employment"
+          value="unemployed"
+          checked={formData.employment === "unemployed"}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="unemployed">Unemployed</label>
+
+        <input
+          type="radio"
+          id="partTime"
+          name="employment"
+          value="partTime"
+          checked={formData.employment === "partTime"}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="partTime">Part Time</label>
+
+        <input
+          type="radio"
+          id="fullTime"
+          name="employment"
+          value="fullTime"
+          checked={formData.employment === "fullTime"}
+          onChange={handleChange}
+        ></input>
+        <label htmlFor="fullTime">Full Time</label>
+      </fieldset>
     </form>
   );
 }
