@@ -22,14 +22,15 @@ export default function Form() {
   function handleSubmit(event) {
     event.preventDefault();
     console.log(formData);
-    if(formData.password === formData.repPassword){
-        console.log("Successfully signed up");
+    if (formData.password === formData.repPassword) {
+      console.log("Successfully signed up");
     } else {
-        console.log("Passwords don't match");
+      console.log("Passwords don't match");
+      return;
     }
 
-    if(formData.newsletter){
-        console.log("Thanks for signing up");
+    if (formData.newsletter) {
+      console.log("Thanks for signing up");
     }
   }
 
@@ -57,7 +58,7 @@ export default function Form() {
         type="checkbox"
         id="newsletter"
         name="newsletter"
-        value={formData.newsletter}
+        checked={formData.newsletter}
         onChange={handleChange}
       ></input>
       <label htmlFor="newsletter">Join the newsletter</label>
