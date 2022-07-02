@@ -5,7 +5,8 @@ export default function Form() {
     firstName: "",
     lastName: "",
     email: "",
-    comment: ""
+    comment: "",
+    isFriendly: true,
   });
 
   console.log(formData);
@@ -49,6 +50,8 @@ export default function Form() {
         value={formData.comment}
         onChange={handleChange}
       />
+      <input type="checkbox" id="isFriendly" checked={formData.isFriendly} />
+      <label htmlFor="isFriendly">Are you friendly?</label>
     </form>
   );
 }
