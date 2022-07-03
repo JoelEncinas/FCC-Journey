@@ -44,7 +44,11 @@ function Meme() {
                         <input className="meme__input" type='text' placeholder="Bottom text"></input>
                     </div>
                     <button className="meme__input-submit" onClick={getMemeImage}>Generate meme</button>
+                    <div className="meme__image-container">
                     <img className="meme__image" onMouseEnter={handleMouseEnter} src={meme.image} alt="meme"/>
+                    <h2 className="meme__text top">One does not simply</h2>
+                    <h2 className="meme__text bottom">Walk into mordor</h2>
+                    </div>
                 </div>
             </main>
         </div>
