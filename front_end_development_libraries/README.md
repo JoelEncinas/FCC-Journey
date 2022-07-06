@@ -19,5 +19,8 @@ What I've learned
     - State
     - Conditional rendering
     - Forms
+    - Event Listeners
+    - Controlled inputs
+    - UseEffect
 
-Timestamp of video > 8:47:42
+Timestamp of video > 9:15:03
