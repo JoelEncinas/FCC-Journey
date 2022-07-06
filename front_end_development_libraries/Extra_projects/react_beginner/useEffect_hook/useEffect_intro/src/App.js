@@ -2,6 +2,7 @@ import React from "react";
 
 function App() {
   const [starWarsData, setStarsWarsData] = React.useState({});
+  const [count, setCount] = React.useState(0);
 
   console.log("rendered");
 
@@ -12,7 +13,7 @@ function App() {
       .then((data) => setStarsWarsData(data));
     // dependencies arrays
     // if array empty it only runs 1 time when component rendered
-  }, []);
+  }, [count]);
 
   // React.useEffect(() => {
   //   console.log("Effect function run");
