@@ -8,20 +8,20 @@ function Meme() {
     bot: "",
   });
 
-  const [allMemes, setAllMemeImages] = React.useState([]);
+  const [allMemes, setAllMemes] = React.useState([]);
 
   React.useEffect(() => {
     fetch("https://api.imgflip.com/get_memes")
       .then((response) => response.json())
-      .then((data) => setAllMemeImages(data.data.memes))
+      .then((data) => setAllMemes(data.data.memes))
       .catch((err) => console.error(err));
   }, []);
 
   console.log(allMemes);
 
   function getMemeImage() {
-    const memesArray = allMemes.data.memes;
-    let random = Math.floor(Math.random() * [].data.memes.length);
+    const memesArray = allMemes;
+    let random = Math.floor(Math.random() * memesArray.length);
     const url = memesArray[random].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
