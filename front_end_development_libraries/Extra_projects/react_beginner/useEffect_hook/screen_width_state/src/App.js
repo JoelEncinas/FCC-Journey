@@ -1,21 +1,19 @@
-import React from 'react';
-import WindowTracker from "./WindowTracker"
+import React from "react";
+import WindowTracker from "./WindowTracker";
 
 function App() {
-  const [show, toggleShow] = React.useState(true)
+  const [show, toggleShow] = React.useState(true);
 
-  function handleChange(){
+  function handleChange() {
     toggleShow((prevValue) => {
-      return !prevValue
-    }) 
+      return !prevValue;
+    });
   }
 
   return (
     <div className="App">
-      <button onClick={handleChange}>
-        Toggle WindowTracker
-      </button>
-      {show && <WindowTracker/>}
+      <button onClick={handleChange}>Toggle WindowTracker</button>
+      {show && <WindowTracker />}
     </div>
   );
 }
