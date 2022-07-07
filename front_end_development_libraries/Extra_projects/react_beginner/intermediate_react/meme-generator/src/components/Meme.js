@@ -1,6 +1,5 @@
 import React from "react";
 import image from "./../images/shut-up-and-take-my-money.jpg";
-import memesData from "../memesData";
 
 function Meme() {
   const [meme, setMeme] = React.useState({
@@ -9,11 +8,20 @@ function Meme() {
     bot: "",
   });
 
-  const [allMemeImages, setAllMemeImages] = React.useState(memesData);
+  const [allMemes, setAllMemeImages] = React.useState([]);
+
+  React.useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((data) => setAllMemeImages(data.data.memes))
+      .catch((err) => console.error(err));
+  }, []);
+
+  console.log(allMemes);
 
   function getMemeImage() {
-    const memesArray = allMemeImages.data.memes;
-    let random = Math.floor(Math.random() * memesData.data.memes.length);
+    const memesArray = allMemes.data.memes;
+    let random = Math.floor(Math.random() * [].data.memes.length);
     const url = memesArray[random].url;
     setMeme((prevMeme) => ({
       ...prevMeme,
@@ -29,11 +37,11 @@ function Meme() {
     const { name, value } = event.target;
 
     setMeme((prevMeme) => {
-        return{
-            ...prevMeme,
-            [name]: value
-        }
-    }) 
+      return {
+        ...prevMeme,
+        [name]: value,
+      };
+    });
   }
 
   /* CHALLENGE
@@ -44,7 +52,7 @@ function Meme() {
         console.log(thingsArray.length)
         console.log(thingsArray)
     }
-    */
+  */
 
   return (
     <div>
