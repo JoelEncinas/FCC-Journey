@@ -2,12 +2,20 @@ import React from 'react';
 import WindowTracker from "./WindowTracker"
 
 function App() {
+  const [show, toggleShow] = React.useState(true)
+
+  function handleChange(){
+    toggleShow((prevValue) => {
+      return !prevValue
+    }) 
+  }
+
   return (
     <div className="App">
-      <button>
+      <button onClick={handleChange}>
         Toggle WindowTracker
       </button>
-      <WindowTracker/>
+      {show && <WindowTracker/>}
     </div>
   );
 }
