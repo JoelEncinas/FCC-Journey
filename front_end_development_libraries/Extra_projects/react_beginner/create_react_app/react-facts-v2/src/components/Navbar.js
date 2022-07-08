@@ -2,6 +2,7 @@ import React from "react";
 import logo from "./../images/logo-react.png";
 
 export default function Navbar(props) {
+
   return (
     <nav className={props.darkMode ? "dark": ""}>
       <div className="logo">
