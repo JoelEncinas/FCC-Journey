@@ -23,4 +23,4 @@ What I've learned
     - Controlled inputs
     - UseEffect
 
-Timestamp of video > 9:48:18
+Timestamp of video > 10:03:22
