@@ -62,14 +62,13 @@ nav {
   color: #6CCFF0;
 }
 
-toggler {
+.toggler {
   display: flex;
   align-items: center;
 }
 
 .toggler p {
-  font-size: 0.625rem;
-  font-weight: 600;
+  font-size: 20px;
 }
 
 .toggler--slider {
