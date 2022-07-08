@@ -7,14 +7,16 @@ export default function App() {
   const [siteMode, setSiteMode] = React.useState({ darkMode: false });
 
   function toggleDarkMode() {
-    setSiteMode((prevState) => {
-      return !prevState.darkMode;
-    });
+    setSiteMode((prevState) => ({
+      darkMode: !prevState.darkMode,
+    }));
+
+    console.log(siteMode.darkMode);
   }
 
   return (
     <div className="container">
-      <Navbar siteMode={siteMode} toggleDarkMode={toggleDarkMode} />
+      <Navbar darkMode={siteMode.darkMode} toggleDarkMode={toggleDarkMode} />
       <Main />
     </div>
   );
