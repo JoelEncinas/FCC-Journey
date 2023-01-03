@@ -22,5 +22,3 @@ What I've learned
     - Event Listeners
     - Controlled inputs
     - UseEffect
-
-Timestamp of video > 10:03:22
