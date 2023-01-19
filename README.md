@@ -38,4 +38,5 @@ All the projects from my FreeCodeCamp journey
 ✔️ 01 ❌ 02 ✔️ 03 ✔️ 03 ✔️ 04 ❌ 05 ❌ 06 ✔️ 07 ✔️ 08
 
 Redux
-D3 visualization + project
+D3 visualization + project 
+Lol data? 
