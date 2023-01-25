@@ -6,5 +6,5 @@ d3.select("body")
     .append('div')
     .text(d => d)
     .style('color', d => {
-        return d < 15 ? 'red' : 'green'
+        return d < 20 ? 'red' : 'green'
     });
