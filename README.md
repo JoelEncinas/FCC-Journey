@@ -38,3 +38,4 @@ All the projects from my FreeCodeCamp journey
 
 
 - d3 theory done
+- scatter plot next project
