@@ -3,8 +3,8 @@ var dataset = [2, 3, 1, 4, 5];
 
 var svgWidth = 500;
 var svgHeight = 300;
-var barPadding = 5;
-var barWidth = svgWidth / dataset.length;
+var barPadding = 25;
+var barWidth = (svgWidth / dataset.length) - 10;
 
 // svg to draw on top
 var svg = d3.select('svg')
@@ -28,22 +28,24 @@ var barChart = svg.selectAll('rect')
     .enter()
     .append('rect')  
     .attr('y', (d) => svgHeight - yScale(d))
-    .attr('height', (d) => yScale(d))
+    .attr('height', (d) => yScale(d) - 20)
     .attr('width', barWidth - barPadding)
     .attr('transform', (d, i) => {
-        var translate = [barWidth * i, 0];
+        var translate = [(barWidth * i) + 60, 10];
         return 'translate(' + translate +')';
     });
 
 // labels
+/*
 var text = svg.selectAll('text')
     .data(dataset)
     .enter()
     .append('text')
     .text((d) => d)
-    .attr('y', (d, i) => svgHeight - d -2)
+    .attr('y', (d, i) => svgHeight - d - 2)
     .attr('x', (d, i) => barWidth * i)
     .style('fill', 'red');
+*/
 
 // axes
 var x_axis = d3.axisBottom().scale(xScale);
