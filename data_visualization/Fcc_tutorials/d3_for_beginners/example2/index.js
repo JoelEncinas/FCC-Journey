@@ -21,3 +21,12 @@ var barChart = svg.selectAll('rect')
         var translate = [barWidth * i, 0];
         return 'translate(' + translate +')';
     });
+
+var text = svg.selectAll('text')
+    .data(dataset)
+    .enter()
+    .append('text')
+    .text((d) => d)
+    .attr('y', (d, i) => svgHeight - d -2)
+    .attr('x', (d, i) => barWidth * i)
+    .style('fill', 'red');
