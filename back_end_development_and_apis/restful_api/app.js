@@ -3,19 +3,19 @@ const app = express();
 const mongoose = require('mongoose');
 require('dotenv/config');
 
-// mongoose setting to avoid deprecated warning
-mongoose.set('strictQuery', true);
+// import routes
+const postsRoute = require('./routes/posts');
+
+app.use('/posts', postsRoute);
 
 // routes
 app.get('/', (req, res) => {
     res.send('We are on home');
 });
 
-app.get('/posts', (req, res) => {
-    res.send('We are on posts');
-});
-
 // connect to db
+// mongoose setting to avoid deprecated warning
+mongoose.set('strictQuery', true);
 mongoose.connect(process.env.DB_CONNECTION, () => {
     console.log('connected to db...');
 });
