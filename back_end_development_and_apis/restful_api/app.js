@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+require('dotenv/config');
+
+// mongoose setting to avoid deprecated warning
+mongoose.set('strictQuery', true);
 
 // routes
 app.get('/', (req, res) => {
@@ -12,7 +16,7 @@ app.get('/posts', (req, res) => {
 });
 
 // connect to db
-mongoose.connect('mongodb+srv://admin:admin@cluster0.pug2uxj.mongodb.net/?retryWrites=true&w=majority', () => {
+mongoose.connect(process.env.DB_CONNECTION, () => {
     console.log('connected to db...');
 });
 
