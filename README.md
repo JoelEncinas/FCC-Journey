@@ -45,7 +45,14 @@ All the projects from my FreeCodeCamp journey. Watch it visually [here](https://
   - Roman numeral converter ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/roman_numeral_converter.js)
   - Caesars cipher ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/caesars_cipher.js)
   - Telephone number validator ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/telephone_number_validator.js)
-  - Cash register ❌ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/palindrome_checker.js)
+  - Cash register ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/cash_register.js)
 
 
 ## <svg width="20px" height="20px" aria-hidden="true" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg" class="cert-header-icon"><path d="M112 48h352v48h48V32a32.09 32.09 0 00-32-32H96a32.09 32.09 0 00-32 32v256H16a16 16 0 00-16 16v16a64.14 64.14 0 0063.91 64H352v-96H112zm492 80H420a36 36 0 00-36 36v312a36 36 0 0036 36h184a36 36 0 0036-36V164a36 36 0 00-36-36zm-12 336H432V176h160z"></path></svg> Back End Development and APIs 
+
+- ####  Projects
+  - Timestamp Microservice ❌ [code](#)
+  - Request Header Parser Microservice ❌ [code](#)
+  - URL Shortener Microservice ❌ [code](#)
+  - Exercise Tracker ❌ [code](#)
+  - File Metadata Microservice ❌ [code](#)
