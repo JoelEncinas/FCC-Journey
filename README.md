@@ -43,7 +43,7 @@ All the projects from my FreeCodeCamp journey. Watch it visually [here](https://
 - ####  Projects
   - Palindrome checker ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/palindrome_checker.js)
   - Roman numeral converter ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/roman_numeral_converter.js)
-  - Caesars cipher ❌ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/palindrome_checker.js)
+  - Caesars cipher ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/caesars_cipher.js)
   - Telephone number validator ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/telephone_number_validator.js)
   - Cash register ❌ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/javascript_algoriths_and_data_structures/palindrome_checker.js)
 
