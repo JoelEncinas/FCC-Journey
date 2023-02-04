@@ -1,8 +1,25 @@
 body,
 html {
     height: 100%;
+    background-color: #FFE5B4 !important;
 }
 
-* {
+.title {
     font-family: 'Roboto', sans-serif;
+    color: #36454F !important;
+}
+
+#editor {
+    font-family: monospace;
+}
+
+#editor, #preview {
+    width: 400px;
+    height: 300px;
+}
+
+#preview {
+    font-family: 'Crimson Text', serif;
+    cursor: auto;
+    overflow-y: auto;
 }

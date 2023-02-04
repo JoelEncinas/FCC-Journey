@@ -23,21 +23,28 @@
 
     <title>Markdown previewer</title>
   </head>
-  <body></body>
-  <!-- jQuery -->
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <body>
+    <div id="#main-container" class="container h-100">
+      <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-8">
+          <h1  class="title">Editor</h1>
+          <textarea id="editor"></textarea>
+          <h1  class="title">Preview</h1>
+          <div id="preview"></div>
+        </div>
+      </div>
+    </div>
 
-  <!-- Marked library -->
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.2.12/marked.min.js"
-    integrity="sha512-uwSxMaa/W7dmSIXEd07BMVymisMRRUS/Pr5a76AquekKKu9HWn4rBiCd+ZtwqnoijAJvttdrz8krzP26kZjg0Q=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  ></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-  <!-- fcc suite -->
-  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <!-- Marked library -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.7/marked.min.js"></script>
 
-  <!-- scripts -->
-  <script src="app.js"></script>
+    <!-- fcc suite -->
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+
+    <!-- scripts -->
+    <script src="app.js"></script>
+  </body>
 </html>
