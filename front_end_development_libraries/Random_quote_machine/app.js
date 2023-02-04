@@ -1,5 +1,5 @@
 // using local json
-const QUOTES_URL = "./quotes.json";
+const QUOTES_URL = "https://raw.githubusercontent.com/JoelEncinas/fcc-journey/main/front_end_development_libraries/Random_quote_machine/quotes.json";
 const TWITTER_URL = "https://twitter.com/intent/tweet";
 
 // page elements
@@ -9,6 +9,19 @@ const newQuoteBtn = $("#new-quote");
 const tweetQuoteBtn = $("#tweet-quote");
 const container = $("#main-container");
 const body = $("body");
+
+const paleColors = [
+    "rgb(255, 204, 153)",
+    "rgb(255, 153, 153)",
+    "rgb(255, 153, 204)",
+    "rgb(204, 153, 255)",
+    "rgb(153, 204, 255)",
+    "rgb(153, 255, 153)",
+    "rgb(204, 255, 153)",
+    "rgb(255, 255, 153)",
+    "rgb(153, 255, 204)",
+    "rgb(204, 153, 204)"
+  ];
 
 // get quote logic
 function getNewQuote() {
