@@ -3,10 +3,6 @@ html {
     height: 100%;
 }
 
-.container, body {
-    background-color: red !important; /* override bootstrap */
-}
-
 #quote-box {
     background-color: #1c1c1c;
     color: #fff;
@@ -18,4 +14,9 @@ html {
     width: 100%;
     height: 100%;
     text-align: center;
+}
+
+#github-link {
+    all: unset;
+    cursor: pointer;
 }
