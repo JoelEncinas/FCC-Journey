@@ -5,21 +5,36 @@ html {
 }
 
 .title {
+    display: inline;
     font-family: 'Roboto', sans-serif;
     color: #36454F !important;
 }
 
 #editor {
+    max-width: 400px;
+    min-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
     font-family: monospace;
+    resize: none;
 }
 
 #editor, #preview {
-    width: 400px;
-    height: 300px;
+    background-color: #fff3dd !important;
+    border-radius: 5px;
 }
 
 #preview {
+    min-height: 400px;
+    max-height: 400px;
+    max-width: 400px;
     font-family: 'Crimson Text', serif;
-    cursor: auto;
     overflow-y: auto;
+    cursor: auto;
+}
+
+#github-link {
+    all: unset;
+    cursor: pointer;
+    font-size: 0.85rem;
 }

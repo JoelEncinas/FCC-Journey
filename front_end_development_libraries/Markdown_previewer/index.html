@@ -24,13 +24,33 @@
     <title>Markdown previewer</title>
   </head>
   <body>
-    <div id="#main-container" class="container h-100">
+    <div id="#main-container" class="container-fluid h-100">
       <div class="row h-100 justify-content-center align-items-center">
-        <div class="col-8">
-          <h1  class="title">Editor</h1>
-          <textarea id="editor"></textarea>
-          <h1  class="title">Preview</h1>
-          <div id="preview"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 col-sm-12">
+              <div class="d-flex align-items-center justify-content-start">
+                <h1 class="title pr-4">Editor</h1>
+                <button id="clearBtn" class="btn btn-light">Clear</button>
+              </div>
+              <textarea class="p-3" id="editor"></textarea>
+            </div>
+            <div class="col-md-6 col-sm-12">
+              <div class="d-flex align-items-center justify-content-start">
+                <h1 class="title pr-4">Preview</h1>
+                <button id="copyBtn" class="btn btn-light">Copy</button>
+              </div>
+              <div class="p-3" id="preview"></div>
+            </div>
+          </div>
+          <p class="text-center pr-5 mr-5 mt-5">
+            <a
+              id="github-link"
+              href="https://github.com/JoelEncinas"
+              target="_blank"
+              >Made by Joel</a
+            >
+          </p>
         </div>
       </div>
     </div>
