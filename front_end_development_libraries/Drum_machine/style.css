@@ -1,0 +1,18 @@
+body,
+html {
+    height: 100%;
+}
+
+body {
+    background-color: rgb(204, 255, 153) !important;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+#github-link {
+    all: unset;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
