@@ -22,8 +22,10 @@ const zClip = $("#Z");
 const xClip = $("#X");
 const cClip = $("#C");
 
-// display
+// display + power
 const display = $("#display");
+const power = $("#power");
+let powerStatus;
 
 // sound names
 sounds = [
@@ -38,12 +40,26 @@ sounds = [
   "closed-hh",
 ];
 
+// turn on/off machine
+function changePower() {
+  powerStatus = !powerStatus;
+
+  if (powerStatus) {
+    power.text("ON");
+  } else {
+    power.text("OFF");
+    display.text("");
+  }
+}
+
 // play audio
 function playAudio(clip) {
-  if (clip[0].paused) {
-    clip[0].play();
-  } else {
-    clip[0].currentTime = 0;
+  if (powerStatus) {
+    if (clip[0].paused) {
+      clip[0].play();
+    } else {
+      clip[0].currentTime = 0;
+    }
   }
 }
 
@@ -60,42 +76,52 @@ function simulateClick(button) {
 
 // display sound name
 function displaySoundName(button) {
-  switch (button) {
-    case qBtn:
-      display.text(sounds[0]);
-      break;
-    case wBtn:
-      display.text(sounds[1]);
-      break;
-    case eBtn:
-      display.text(sounds[2]);
-      break;
-    case aBtn:
-      display.text(sounds[3]);
-      break;
-    case sBtn:
-      display.text(sounds[4]);
-      break;
-    case dBtn:
-      display.text(sounds[5]);
-      break;
-    case zBtn:
-      display.text(sounds[6]);
-      break;
-    case xBtn:
-      display.text(sounds[7]);
-      break;
-    case cBtn:
-      display.text(sounds[8]);
-      break;
-    default:
-      console.log("A different key was pressed");
-      break;
+  if (powerStatus) {
+    switch (button) {
+      case qBtn:
+        display.text(sounds[0]);
+        break;
+      case wBtn:
+        display.text(sounds[1]);
+        break;
+      case eBtn:
+        display.text(sounds[2]);
+        break;
+      case aBtn:
+        display.text(sounds[3]);
+        break;
+      case sBtn:
+        display.text(sounds[4]);
+        break;
+      case dBtn:
+        display.text(sounds[5]);
+        break;
+      case zBtn:
+        display.text(sounds[6]);
+        break;
+      case xBtn:
+        display.text(sounds[7]);
+        break;
+      case cBtn:
+        display.text(sounds[8]);
+        break;
+      default:
+        console.log("A different key was pressed");
+        break;
+    }
   }
 }
 
 // when document loads initialize logic
 doc.ready(function () {
+  // power
+  powerStatus = true;
+  power.text("ON");
+
+  power.click(function () {
+    changePower();
+  });
+
   // add event listeners for click
   qBtn.click(function () {
     displaySoundName(qBtn);
