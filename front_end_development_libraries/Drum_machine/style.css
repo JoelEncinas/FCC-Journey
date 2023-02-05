@@ -11,6 +11,24 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.drum-pad.clicked {
+    color: #212529;
+    background-color: #e2e6ea;
+    border-color: #dae0e5;
+    box-shadow: 0 0 0 0.2rem rgb(216 217 219 / 50%);
+}
+
+#display {
+    height: 40px;
+    cursor: default;
+}
+
+/* make btn look as default on hover */
+#display:hover {
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
 #github-link {
     all: unset;
     cursor: pointer;
