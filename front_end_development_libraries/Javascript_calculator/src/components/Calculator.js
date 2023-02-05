@@ -13,7 +13,12 @@ const Calculator = () => {
   };
 
   const handleNumberClick = (value) => {
-    setCurrentValue(currentValue === 0 ? value : currentValue + value);
+    if (currentValue === 0 && value === 0) return;
+    if (currentValue === 0) {
+      setCurrentValue(value);
+    } else {
+      setCurrentValue(parseFloat(currentValue + value));
+    }
   };
 
   const handleOperatorClick = (operator) => {
@@ -53,15 +58,17 @@ const Calculator = () => {
 
   return (
     <div className="calculator">
-      <Display value={currentValue} />
-      <div className="keypad">
-        <Keypad
-          handleNumberClick={handleNumberClick}
-          handleOperatorClick={handleOperatorClick}
-          handleEqualClick={handleEqualClick}
-          handleResetClick={handleResetClick}
-          handleDecimalClick={handleDecimalClick}
-        />
+      <div className="container">
+        <Display value={currentValue} />
+        <div className="keypad">
+          <Keypad
+            handleNumberClick={handleNumberClick}
+            handleOperatorClick={handleOperatorClick}
+            handleEqualClick={handleEqualClick}
+            handleResetClick={handleResetClick}
+            handleDecimalClick={handleDecimalClick}
+          />
+        </div>
       </div>
     </div>
   );
