@@ -23,7 +23,7 @@ All the projects from my FreeCodeCamp journey. Watch it visually in my [🌐 pag
 - ####  Projects
   - Random Quote Machine ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/xxJMyGW) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Random_quote_machine)
   - Markdown Previewer ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/jOpdXJP) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Markdown_previewer)
-  - Drum Machine ❌ [code](#)
+  - Drum Machine ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/QWBoaoL) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Drum_machine)
   - Javascript Calculator ❌ [code](#)
   - 25 + 5 Clock ❌ [code](#)
 
