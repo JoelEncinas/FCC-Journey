@@ -13,8 +13,8 @@ const App = () => {
   const [sessionType, setSessionType] = useState("Session");
 
   // get sound
-  let beep = document.getElementById("beep").src;
-  const sound = new Audio(beep);
+  // let beep = document.getElementById("beep").src;
+  // const sound = new Audio(beep);
 
   // handle break length timer
   const handleBreakIncrement = () => {
@@ -55,7 +55,7 @@ const App = () => {
 
     let interval = setInterval(() => {
       if (session === 0) {
-        sound.play();
+        // sound.play();
         setTimeout(() => {
           if (sessionType === "Session") {
             setSession(breakLength);
@@ -71,7 +71,7 @@ const App = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [startSession, session, breakLength, sessionLength, sessionType, beep]);
+  }, [startSession, session, breakLength, sessionLength, sessionType]);
 
   const flipTimer = () => {
     setStartSession(!startSession);
@@ -86,7 +86,7 @@ const App = () => {
     setBreakLength(300);
     setSessionLength(1500);
     setSession(1500);
-    sound.load();
+    // sound.load();
   };
 
   // format time
