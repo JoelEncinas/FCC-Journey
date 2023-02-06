@@ -6,10 +6,12 @@ const Calculator = () => {
   const [currentValue, setCurrentValue] = useState(0);
   const [previousValue, setPreviousValue] = useState(0);
   const [operator, setOperator] = useState(null);
+  const [lastBtnEqual, setLastBtnEqual] = useState(null);
 
   const handleResetClick = () => {
     setCurrentValue(0);
     setPreviousValue(0);
+    setLastBtnEqual(false);
   };
 
   const handleNumberClick = (value) => {
@@ -19,13 +21,14 @@ const Calculator = () => {
     } else {
       setCurrentValue(parseFloat(currentValue + value));
     }
+    setLastBtnEqual(false);
   };
 
   const handleOperatorClick = (operator) => {
     setOperator(operator);
     setPreviousValue(currentValue);
     setCurrentValue(0);
-    console.log(currentValue + ' ' + previousValue);
+    setLastBtnEqual(false);
   };
 
   const handleEqualClick = () => {
@@ -49,13 +52,16 @@ const Calculator = () => {
       default:
         break;
     }
-    console.log(currentValue + ' ' + previousValue);
+    
+    setLastBtnEqual(true);
   };
 
   const handleDecimalClick = () => {
     if (!currentValue.includes(".")) {
       setCurrentValue(currentValue + ".");
     }
+
+    setLastBtnEqual(false);
   };
 
   return (
