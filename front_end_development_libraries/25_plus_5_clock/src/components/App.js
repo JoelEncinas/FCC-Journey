@@ -1,22 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BreakLength } from "./BreakLength";
+import { SessionLength } from "./SessionLength";
+import {Session} from "./Session";
 
 const App = () => {
-  // initialize it at 5
   const [breakLength, setBreakLength] = useState(5);
+  const [sessionLength, setSessionLength] = useState(25);
+  const [session, setSession] = useState(1500);
 
-  // handle breakLength timer
-  const handleIncrement = () => {
+  // handle break length timer
+  const handleBreakIncrement = () => {
     setBreakLength(breakLength + 1);
   };
 
-  const handleDecrement = () => {
+  const handleBreakDecrement = () => {
     if (breakLength === 0) {
       setBreakLength(0);
     } else {
       setBreakLength(breakLength - 1);
     }
   };
+
+  // handle session length timer
+  const handleSessionIncrement = () => {
+    setSessionLength(sessionLength + 1);
+  };
+
+  const handleSessionDecrement = () => {
+    if (sessionLength === 0) {
+      setSessionLength(0);
+    } else {
+      setSessionLength(sessionLength - 1);
+    }
+  };
+
+  useEffect(() => {
+    // check if timer is 0:00 and make a break
+    let interval = setInterval(() => {
+      setSession(session - 1);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [session]);
+
+  // format time
+  let minutes = Math.floor(session / 60);
+  let seconds = session % 60;
+  let formattedSession = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
 
   return (
     <div className="container-fluid h-100">
@@ -27,23 +56,17 @@ const App = () => {
           <div className="d-flex justify-content-center align-items-center">
             <BreakLength
               breakLength={breakLength}
-              handleIncrement={handleIncrement}
-              handleDecrement={handleDecrement}
+              handleBreakIncrement={handleBreakIncrement}
+              handleBreakDecrement={handleBreakDecrement}
             ></BreakLength>
-            <div>
-              <h2 className="text-center">Session Length</h2>
-              <div className="d-flex justify-content-center align-items-center">
-                <button className="btn btn-primary mx-2">+</button>
-                <p className="my-0 mx-2">25</p>
-                <button className="btn btn-primary mx-2">-</button>
-              </div>
-            </div>
+            <SessionLength
+              sessionLength={sessionLength}
+              handleSessionIncrement={handleSessionIncrement}
+              handleSessionDecrement={handleSessionDecrement}
+            ></SessionLength>
           </div>
 
-          <div>
-            <h2 className="text-center">Session</h2>
-            <h1 className="text-center">25:00</h1>
-          </div>
+          <Session session={formattedSession}></Session>
 
           <div className="d-flex justify-content-center align-items-center">
             <button className="btn btn-primary mx-2">Play</button>
