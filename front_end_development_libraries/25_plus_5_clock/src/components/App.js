@@ -12,10 +12,9 @@ const App = () => {
   const [sessionStatus, setSessionStatus] = useState("Play");
   const [sessionType, setSessionType] = useState("Session");
 
-  function playBeep() {
-    let beep = document.getElementById("beep");
-    beep[0].play();
-  }
+  // get sound
+  let beep = document.getElementById("beep").src;
+  const sound = new Audio(beep);
 
   // handle break length timer
   const handleBreakIncrement = () => {
@@ -30,18 +29,21 @@ const App = () => {
     }
   };
 
+  // handle session increment/decrement
+  useEffect(() => {
+    setSession(sessionLength);
+  }, [sessionLength]);
+
   // handle session length timer
   const handleSessionIncrement = () => {
     if (sessionStatus === "Play") {
       setSessionLength(Math.min(sessionLength + 60, 3600));
-      setSession(sessionLength);
     }
   };
 
   const handleSessionDecrement = () => {
     if (sessionStatus === "Play") {
       setSessionLength(Math.max(sessionLength - 60, 60));
-      setSession(sessionLength);
     }
   };
 
@@ -53,22 +55,23 @@ const App = () => {
 
     let interval = setInterval(() => {
       if (session === 0) {
-        if (sessionType === "Session") {
-          playBeep();
-          setSession(breakLength);
-          setSessionType("Break");
-        } else if (sessionType === "Break") {
-          playBeep();
-          setSession(sessionLength);
-          setSessionType("Session");
-        }
+        sound.play();
+        setTimeout(() => {
+          if (sessionType === "Session") {
+            setSession(breakLength);
+            setSessionType("Break");
+          } else if (sessionType === "Break") {
+            setSession(sessionLength);
+            setSessionType("Session");
+          }
+        }, 1000);
       } else {
         setSession(session - 1);
       }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [startSession, session, breakLength, sessionLength, sessionType]);
+  }, [startSession, session, breakLength, sessionLength, sessionType, beep]);
 
   const flipTimer = () => {
     setStartSession(!startSession);
@@ -83,10 +86,7 @@ const App = () => {
     setBreakLength(300);
     setSessionLength(1500);
     setSession(1500);
-
-    // let beep = document.getElementById("beep");
-    // crashes app
-    // beep[0].currentTime = 0;
+    sound.load();
   };
 
   // format time
@@ -138,10 +138,6 @@ const App = () => {
           </div>
         </div>
       </div>
-      <audio
-        id="beep"
-        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
-      ></audio>
     </div>
   );
 };
