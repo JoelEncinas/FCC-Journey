@@ -22,14 +22,13 @@ const Calculator = () => {
   };
 
   const handleOperatorClick = (operator) => {
-    console.log(currentValue + ' ' + previousValue);
     setOperator(operator);
     setPreviousValue(currentValue);
     setCurrentValue(0);
+    console.log(currentValue + ' ' + previousValue);
   };
 
   const handleEqualClick = () => {
-    console.log(currentValue + ' ' + previousValue);
     switch (operator) {
       case "+":
         setCurrentValue(parseFloat(previousValue) + parseFloat(currentValue));
@@ -50,6 +49,7 @@ const Calculator = () => {
       default:
         break;
     }
+    console.log(currentValue + ' ' + previousValue);
   };
 
   const handleDecimalClick = () => {
