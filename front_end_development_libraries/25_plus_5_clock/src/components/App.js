@@ -5,28 +5,44 @@ import { Session } from "./Session";
 import { Controls } from "./Controls";
 
 const App = () => {
-  const [breakLength, setBreakLength] = useState(5);
-  const [sessionLength, setSessionLength] = useState(25);
+  const [breakLength, setBreakLength] = useState(300);
+  const [sessionLength, setSessionLength] = useState(1500);
   const [session, setSession] = useState(1500);
   const [startSession, setStartSession] = useState(false);
   const [sessionStatus, setSessionStatus] = useState("Play");
+  const [sessionType, setSessionType] = useState("Session");
+
+  function playBeep() {
+    let beep = document.getElementById("beep");
+    beep[0].play();
+  }
 
   // handle break length timer
   const handleBreakIncrement = () => {
-    setBreakLength(Math.min(breakLength + 1, 60));
+    if (sessionStatus === "Play") {
+      setBreakLength(Math.min(breakLength + 60, 3600));
+    }
   };
 
   const handleBreakDecrement = () => {
-    setBreakLength(Math.max(breakLength - 1, 1));
+    if (sessionStatus === "Play") {
+      setBreakLength(Math.max(breakLength - 60, 60));
+    }
   };
 
   // handle session length timer
   const handleSessionIncrement = () => {
-    setSessionLength(Math.min(sessionLength + 1, 60));
+    if (sessionStatus === "Play") {
+      setSessionLength(Math.min(sessionLength + 60, 3600));
+      setSession(sessionLength);
+    }
   };
 
   const handleSessionDecrement = () => {
-    setSessionLength(Math.max(sessionLength - 1, 1));
+    if (sessionStatus === "Play") {
+      setSessionLength(Math.max(sessionLength - 60, 60));
+      setSession(sessionLength);
+    }
   };
 
   useEffect(() => {
@@ -36,11 +52,23 @@ const App = () => {
     }
 
     let interval = setInterval(() => {
-      setSession(session - 1);
+      if (session === 0) {
+        if (sessionType === "Session") {
+          playBeep();
+          setSession(breakLength);
+          setSessionType("Break");
+        } else if (sessionType === "Break") {
+          playBeep();
+          setSession(sessionLength);
+          setSessionType("Session");
+        }
+      } else {
+        setSession(session - 1);
+      }
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [startSession, session]);
+  }, [startSession, session, breakLength, sessionLength, sessionType]);
 
   const flipTimer = () => {
     setStartSession(!startSession);
@@ -52,9 +80,13 @@ const App = () => {
   };
 
   const resetApp = () => {
-    setBreakLength(5);
-    setSessionLength(25);
+    setBreakLength(300);
+    setSessionLength(1500);
     setSession(1500);
+
+    // let beep = document.getElementById("beep");
+    // crashes app
+    // beep[0].currentTime = 0;
   };
 
   // format time
@@ -81,7 +113,10 @@ const App = () => {
             ></SessionLength>
           </div>
 
-          <Session session={formattedSession}></Session>
+          <Session
+            sessionType={sessionType}
+            session={formattedSession}
+          ></Session>
 
           <Controls
             sessionStatus={sessionStatus}
@@ -89,7 +124,7 @@ const App = () => {
             resetApp={resetApp}
           ></Controls>
 
-          <div id="author">
+          <div className="mt-5" id="author">
             <p className="text-center mt-3 mb-0">
               <a
                 id="github-link"
@@ -103,6 +138,10 @@ const App = () => {
           </div>
         </div>
       </div>
+      <audio
+        id="beep"
+        src="https://raw.githubusercontent.com/freeCodeCamp/cdn/master/build/testable-projects-fcc/audio/BeepSound.wav"
+      ></audio>
     </div>
   );
 };

@@ -6,10 +6,10 @@ const BreakLength = ({
   handleBreakDecrement,
 }) => {
   return (
-    <div>
-      <h2 id="break-label" className="text-center">
+    <div className="m-5">
+      <h3 id="break-label" className="text-center">
         Break Length
-      </h2>
+      </h3>
       <div className="d-flex justify-content-center align-items-center">
         <button
           id="break-increment"
@@ -19,7 +19,7 @@ const BreakLength = ({
           +
         </button>
         <p id="break-length" className="my-0 mx-2">
-          {breakLength}
+          {breakLength / 60}
         </p>
         <button
           id="break-decrement"

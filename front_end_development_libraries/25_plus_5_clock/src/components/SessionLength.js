@@ -6,8 +6,10 @@ const SessionLength = ({
   handleSessionDecrement,
 }) => {
   return (
-    <div>
-      <h2 id="session-label" className="text-center">Session Length</h2>
+    <div className="m-5">
+      <h3 id="session-label" className="text-center">
+        Session Length
+      </h3>
       <div className="d-flex justify-content-center align-items-center">
         <button
           id="session-increment"
@@ -17,7 +19,7 @@ const SessionLength = ({
           +
         </button>
         <p id="session-length" className="my-0 mx-2">
-          {sessionLength}
+          {sessionLength / 60}
         </p>
         <button
           id="session-decrement"
