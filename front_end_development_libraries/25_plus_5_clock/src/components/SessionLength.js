@@ -7,16 +7,20 @@ const SessionLength = ({
 }) => {
   return (
     <div>
-      <h2 className="text-center">Session Length</h2>
+      <h2 id="session-label" className="text-center">Session Length</h2>
       <div className="d-flex justify-content-center align-items-center">
         <button
+          id="session-increment"
           className="btn btn-primary mx-2"
           onClick={handleSessionIncrement}
         >
           +
         </button>
-        <p className="my-0 mx-2">{sessionLength}</p>
+        <p id="session-length" className="my-0 mx-2">
+          {sessionLength}
+        </p>
         <button
+          id="session-decrement"
           className="btn btn-primary mx-2"
           onClick={handleSessionDecrement}
         >

@@ -1,57 +1,72 @@
 import React, { useState, useEffect } from "react";
 import { BreakLength } from "./BreakLength";
 import { SessionLength } from "./SessionLength";
-import {Session} from "./Session";
+import { Session } from "./Session";
+import { Controls } from "./Controls";
 
 const App = () => {
   const [breakLength, setBreakLength] = useState(5);
   const [sessionLength, setSessionLength] = useState(25);
   const [session, setSession] = useState(1500);
+  const [startSession, setStartSession] = useState(false);
+  const [sessionStatus, setSessionStatus] = useState("Play");
 
   // handle break length timer
   const handleBreakIncrement = () => {
-    setBreakLength(breakLength + 1);
+    setBreakLength(Math.min(breakLength + 1, 60));
   };
 
   const handleBreakDecrement = () => {
-    if (breakLength === 0) {
-      setBreakLength(0);
-    } else {
-      setBreakLength(breakLength - 1);
-    }
+    setBreakLength(Math.max(breakLength - 1, 1));
   };
 
   // handle session length timer
   const handleSessionIncrement = () => {
-    setSessionLength(sessionLength + 1);
+    setSessionLength(Math.min(sessionLength + 1, 60));
   };
 
   const handleSessionDecrement = () => {
-    if (sessionLength === 0) {
-      setSessionLength(0);
-    } else {
-      setSessionLength(sessionLength - 1);
-    }
+    setSessionLength(Math.max(sessionLength - 1, 1));
   };
 
   useEffect(() => {
     // check if timer is 0:00 and make a break
+    if (!startSession) {
+      return;
+    }
+
     let interval = setInterval(() => {
       setSession(session - 1);
     }, 1000);
+
     return () => clearInterval(interval);
-  }, [session]);
+  }, [startSession, session]);
+
+  const flipTimer = () => {
+    setStartSession(!startSession);
+    if (sessionStatus === "Play") {
+      setSessionStatus("Pause");
+    } else if (sessionStatus === "Pause") {
+      setSessionStatus("Play");
+    }
+  };
+
+  const resetApp = () => {
+    setBreakLength(5);
+    setSessionLength(25);
+    setSession(1500);
+  };
 
   // format time
   let minutes = Math.floor(session / 60);
   let seconds = session % 60;
-  let formattedSession = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`;
+  let formattedSession = `${minutes}:${seconds < 10 ? "0" + seconds : seconds}`; // ensures there is always 2 digits
 
   return (
     <div className="container-fluid h-100">
       <div className="row h-100 justify-content-center align-items-center">
         <div className="App">
-          <h1 className="text-center">Pomodoro Clock</h1>
+          <h1 className="text-center">25 + 5 Clock</h1>
 
           <div className="d-flex justify-content-center align-items-center">
             <BreakLength
@@ -68,11 +83,11 @@ const App = () => {
 
           <Session session={formattedSession}></Session>
 
-          <div className="d-flex justify-content-center align-items-center">
-            <button className="btn btn-primary mx-2">Play</button>
-            <button className="btn btn-primary mx-2">Pause</button>
-            <button className="btn btn-primary mx-2">Reset</button>
-          </div>
+          <Controls
+            sessionStatus={sessionStatus}
+            flipTimer={flipTimer}
+            resetApp={resetApp}
+          ></Controls>
 
           <div id="author">
             <p className="text-center mt-3 mb-0">
