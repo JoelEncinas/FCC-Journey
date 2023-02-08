@@ -2,19 +2,18 @@ import React from "react";
 import "./App.css";
 
 const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-const ops = ["/", "*", "−", "+", "="];
+const ops = ["/", "*", "-", "+", "="];
 
 class App extends React.Component {
   state = {
     lastPressed: undefined,
     currentNumber: "0",
-    previousNumber: undefined,
+    calc: undefined,
     operation: undefined,
   };
 
   handleClick = (e) => {
-    const { lastPressed, currentNumber, previousNumber, operation } =
-      this.state;
+    const { lastPressed, currentNumber, calc, operation } = this.state;
     const { innerText } = e.target;
 
     if (!Number.isNaN(Number(innerText))) {
@@ -36,7 +35,7 @@ class App extends React.Component {
         {
           this.setState({
             currentNumber: "0",
-            previousNumber: undefined,
+            calc: undefined,
             operation: undefined,
           });
         }
@@ -54,18 +53,18 @@ class App extends React.Component {
         if (!operation) {
           this.setState({
             operation: innerText,
-            previousNumber: currentNumber,
+            calc: currentNumber,
             currentNumber: "",
           });
         } else {
-          const evaluation = eval(
-            `${previousNumber}${operation}${currentNumber}`
-          );
-          this.setState({
-            operation: innerText,
-            previousNumber: evaluation,
-            currentNumber: innerText === "=" ? evaluation : "0",
-          });
+          if (innerText === "=") {
+            const evaluation = eval(`${calc}${operation}${currentNumber}`);
+            this.setState({
+              operation: undefined,
+              calc: evaluation,
+              currentNumber: evaluation,
+            });
+          }
         }
       }
     }
@@ -76,6 +75,9 @@ class App extends React.Component {
 
     return (
       <div className="App">
+        <p style={{ position: "absolute", top: 0 }}>
+          {JSON.stringify(this.state, null, 2)}
+        </p>
         <div id="display" className="display pr-5">
           {currentNumber}
         </div>
