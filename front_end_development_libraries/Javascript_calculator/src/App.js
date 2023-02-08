@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-const ops = ["/", "x", "−", "+", "="];
+const ops = ["/", "*", "−", "+", "="];
 
 class App extends React.Component {
   state = {
@@ -37,6 +37,7 @@ class App extends React.Component {
           this.setState({
             currentNumber: "0",
             previousNumber: undefined,
+            operation: undefined,
           });
         }
         break;
@@ -54,23 +55,17 @@ class App extends React.Component {
           this.setState({
             operation: innerText,
             previousNumber: currentNumber,
-            currentNumber: "0",
+            currentNumber: "",
           });
         } else {
           const evaluation = eval(
-            `${previousNumber} ${operation} ${currentNumber}`
+            `${previousNumber}${operation}${currentNumber}`
           );
           this.setState({
             operation: innerText,
             previousNumber: evaluation,
-            currentNumber: "0",
+            currentNumber: innerText === "=" ? evaluation : "0",
           });
-
-          if(innerText === '='){
-            this.setState({
-              currentNumber
-            })
-          }
         }
       }
     }
@@ -102,7 +97,10 @@ class App extends React.Component {
                   {num}
                 </button>
               ))}
-              <button className="btn btn-secondary dot-width" onClick={this.handleClick}>
+              <button
+                className="btn btn-secondary dot-width"
+                onClick={this.handleClick}
+              >
                 .
               </button>
             </div>

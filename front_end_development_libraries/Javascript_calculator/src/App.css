@@ -9,17 +9,15 @@ button {
 }
 
 .display {
-  text-align: right;
+  min-height: 40px;
   width: 100%;
-  background-color: bisque;
   padding: 5px;
+  text-align: right;
+  font-weight: bold;
   font-size: 20px;
-}
-
-.display {
   border-radius: 15px 15px 0 0;
   background-color: #D3D3D3;
-  font-weight: bold;
+
 }
 
 .nums-container {
