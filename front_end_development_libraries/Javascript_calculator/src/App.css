@@ -35,3 +35,15 @@ button {
 .ops-container {
   width: 50px;
 }
+
+.c-width {
+  width: 124px !important;
+}
+
+.operation-width {
+  width: 38px !important;
+}
+
+.dot-width {
+  width: 79px !important;
+}

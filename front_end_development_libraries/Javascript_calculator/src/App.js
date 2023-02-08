@@ -2,17 +2,19 @@ import React from "react";
 import "./App.css";
 
 const nums = [9, 8, 7, 6, 5, 4, 3, 2, 1, 0];
-const ops = ["÷", "×", "−", "+", "="];
+const ops = ["/", "x", "−", "+", "="];
 
 class App extends React.Component {
   state = {
     lastPressed: undefined,
     currentNumber: "0",
     previousNumber: undefined,
+    operation: undefined,
   };
 
   handleClick = (e) => {
-    const { lastPressed, currentNumber, previousNumber } = this.state;
+    const { lastPressed, currentNumber, previousNumber, operation } =
+      this.state;
     const { innerText } = e.target;
 
     if (!Number.isNaN(Number(innerText))) {
@@ -25,6 +27,8 @@ class App extends React.Component {
           currentNumber: currentNumber + innerText,
         });
       }
+
+      return;
     }
 
     switch (innerText) {
@@ -36,11 +40,40 @@ class App extends React.Component {
           });
         }
         break;
-    }
+      case ".":
+        {
+          if (!currentNumber.includes(".")) {
+            this.setState({
+              currentNumber: currentNumber + innerText,
+            });
+          }
+        }
+        break;
+      default: {
+        if (!operation) {
+          this.setState({
+            operation: innerText,
+            previousNumber: currentNumber,
+            currentNumber: "0",
+          });
+        } else {
+          const evaluation = eval(
+            `${previousNumber} ${operation} ${currentNumber}`
+          );
+          this.setState({
+            operation: innerText,
+            previousNumber: evaluation,
+            currentNumber: "0",
+          });
 
-    this.setState({
-      lastPressed: innerText,
-    });
+          if(innerText === '='){
+            this.setState({
+              currentNumber
+            })
+          }
+        }
+      }
+    }
   };
 
   render() {
@@ -55,7 +88,7 @@ class App extends React.Component {
           <div className="nums-container mx-3">
             <div className="nums-wrapper">
               <button
-                className="btn btn-block btn-danger"
+                className="btn btn-block btn-danger c-width"
                 onClick={this.handleClick}
               >
                 C
@@ -69,7 +102,7 @@ class App extends React.Component {
                   {num}
                 </button>
               ))}
-              <button className="btn btn-secondary" onClick={this.handleClick}>
+              <button className="btn btn-secondary dot-width" onClick={this.handleClick}>
                 .
               </button>
             </div>
@@ -77,7 +110,7 @@ class App extends React.Component {
           <div className="ops-container mx-3">
             {ops.map((op) => (
               <button
-                className="btn btn-primary"
+                className="btn btn-primary operation-width"
                 key={op}
                 onClick={this.handleClick}
               >
