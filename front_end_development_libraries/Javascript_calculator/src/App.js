@@ -13,7 +13,7 @@ class App extends React.Component {
   };
 
   handleClick = (e) => {
-    const { lastPressed, currentNumber, calc, operation } = this.state;
+    const { currentNumber, calc, operation } = this.state;
     const { innerText } = e.target;
 
     if (!Number.isNaN(Number(innerText))) {
@@ -56,22 +56,27 @@ class App extends React.Component {
             calc: currentNumber,
             currentNumber: "",
           });
+        } else if (innerText === "=") {
+          const evaluation = eval(`${calc}${operation}${currentNumber}`);
+          this.setState({
+            operation: undefined,
+            calc: evaluation,
+            currentNumber: evaluation,
+          });
         } else {
-          if (innerText === "=") {
-            const evaluation = eval(`${calc}${operation}${currentNumber}`);
-            this.setState({
-              operation: undefined,
-              calc: evaluation,
-              currentNumber: evaluation,
-            });
-          }
+          const evaluation = eval(`${calc}${operation}${currentNumber}`);
+          this.setState({
+            operation: innerText,
+            calc: evaluation,
+            currentNumber: evaluation,
+          });
         }
       }
     }
   };
 
   render() {
-    const { currentNumber } = this.state;
+    const { currentNumber, calc, operation } = this.state;
 
     return (
       <div className="App">
@@ -79,7 +84,8 @@ class App extends React.Component {
           {JSON.stringify(this.state, null, 2)}
         </p>
         <div id="display" className="display pr-5">
-          {currentNumber}
+          <small>{calc} {operation}</small>
+          <p>{currentNumber}</p>
         </div>
         <div className="controls d-flex align-items-center justify-content-center p-3">
           <div className="nums-container mx-3">

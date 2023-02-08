@@ -9,7 +9,8 @@ button {
 }
 
 .display {
-  min-height: 40px;
+  position: relative;
+  min-height: 70px;
   width: 100%;
   padding: 5px;
   text-align: right;
@@ -17,7 +18,20 @@ button {
   font-size: 20px;
   border-radius: 15px 15px 0 0;
   background-color: #D3D3D3;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
 
+.display p {
+  margin-bottom: 0;
+}
+
+.display small {
+  position: absolute;
+  top: 3px;
+  right: 49px;
+  font-size: 12px;
 }
 
 .nums-container {
