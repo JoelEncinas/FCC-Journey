@@ -14,7 +14,7 @@ def arithmetic_arranger(problems, solution=False):
             return "Error: Operator must be '+' or '-'."
 
     # conversion
-    arranged_problems = ""
+    arranged_problems = ["", "", "", ""]
     space = " "
     dash = "-"
 
@@ -22,25 +22,49 @@ def arithmetic_arranger(problems, solution=False):
         num1 = problems[i].split(" ")[0]
         num2 = problems[i].split(" ")[2]
         operand = problems[i].split(" ")[1]
+
         num1Length = len(str(num1))
         num2Length = len(str(num2))
-        shortest = num1Length if len(str(num1Length)) > len(
-            str(num2Length)) else num2Length
-        longest = num2Length if len(str(num2Length)) > len(
-            str(num1Length)) else num1Length
-        arranged_problems += f"{space * 2}{num1}\n"
-        arranged_problems += f"{operand}{space}{space * (longest - shortest)}{num2}\n"
-        arranged_problems += f"{dash * (longest + 2)}\n"
+
+        if num1Length > num2Length:
+            longest = num1Length
+            shortest = num2Length
+        else:
+            shortest = num1Length
+            longest = num2Length
+
+        diff = longest - shortest
+
+        # arrange first number depending if it's the longest one
+        if num1Length == longest:
+            arranged_problems[0] += f"{space * 2}{num1}"
+            arranged_problems[1] += f"{operand}{space}{space * diff}{num2}"
+        elif num2Length == longest:
+            arranged_problems[0] += f"{space * 2}{space * diff}{num1}"
+            arranged_problems[1] += f"{operand}{space}{num2}"
+
+        arranged_problems[2] += f"{dash * (longest + 2)}"
 
         if (solution == True):
             if operand == "+":
                 solutionNumber = int(num1) + int(num2)
+                if len(str(solutionNumber)) == 5:
+                    arranged_problems[3] += f"{space}{solutionNumber}"
+                else:
+                    arranged_problems[3] += f"{space * 2}{solutionNumber}"
             else:
                 solutionNumber = int(num1) - int(num2)
+                if len(str(solutionNumber)) == 5:
+                    arranged_problems[3] += f"{space}{solutionNumber}"
+                else:
+                    arranged_problems[3] += f"{space * 2}{solutionNumber}"
 
-            arranged_problems += f"{space * 2}{solutionNumber}"
+        arranged_problems[0] += space * 4
+        arranged_problems[1] += space * 4
+        arranged_problems[2] += space * 4
+        arranged_problems[3] += space * 4
 
-    return arranged_problems
+    return f"{arranged_problems[0]}\n{arranged_problems[1]}\n{arranged_problems[2]}\n{arranged_problems[3]}"
 
 
-print(arithmetic_arranger(["32 + 8"], True))
+print(arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True))
