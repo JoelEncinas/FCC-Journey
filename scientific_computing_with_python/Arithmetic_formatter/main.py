@@ -48,23 +48,36 @@ def arithmetic_arranger(problems, solution=False):
         if (solution == True):
             if operand == "+":
                 solutionNumber = int(num1) + int(num2)
-                if len(str(solutionNumber)) == 5:
+                if len(str(solutionNumber)) > longest:
+                    arranged_problems[3] += f"{space}{solutionNumber}"
+                elif len(str(solutionNumber)) == 5:
                     arranged_problems[3] += f"{space}{solutionNumber}"
                 else:
                     arranged_problems[3] += f"{space * 2}{solutionNumber}"
             else:
                 solutionNumber = int(num1) - int(num2)
-                if len(str(solutionNumber)) == 5:
+                if len(str(solutionNumber)) > longest:
+                    arranged_problems[3] += f"{space}{solutionNumber}"
+                elif len(str(solutionNumber)) == 5:
                     arranged_problems[3] += f"{space}{solutionNumber}"
                 else:
                     arranged_problems[3] += f"{space * 2}{solutionNumber}"
 
-        arranged_problems[0] += space * 4
-        arranged_problems[1] += space * 4
-        arranged_problems[2] += space * 4
-        arranged_problems[3] += space * 4
+        if i == len(problems) - 1:
+            break
+        else: 
+            arranged_problems[0] += space * 4
+            arranged_problems[1] += space * 4
+            arranged_problems[2] += space * 4
+            arranged_problems[3] += space * 4
+        
+    if solution == False:
+        return f"{arranged_problems[0]}\n{arranged_problems[1]}\n{arranged_problems[2]}"
+    else:
+        return f"{arranged_problems[0]}\n{arranged_problems[1]}\n{arranged_problems[2]}\n{arranged_problems[3]}"
 
-    return f"{arranged_problems[0]}\n{arranged_problems[1]}\n{arranged_problems[2]}\n{arranged_problems[3]}"
 
+print(arithmetic_arranger(["3 + 855", "988 + 40"], True))
 
-print(arithmetic_arranger(["32 + 8", "1 - 3801", "9999 + 9999", "523 - 49"], True))
+'    3      988\n+ 855    +  40\n-----    -----\n  858      1028'
+'    3      988\n+ 855    +  40\n-----    -----\n  858     1028'
