@@ -78,6 +78,3 @@ def arithmetic_arranger(problems, solution=False):
 
 
 print(arithmetic_arranger(["3 + 855", "988 + 40"], True))
-
-'    3      988\n+ 855    +  40\n-----    -----\n  858      1028'
-'    3      988\n+ 855    +  40\n-----    -----\n  858     1028'
