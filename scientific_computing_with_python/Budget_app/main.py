@@ -3,6 +3,43 @@ class Category:
         self.instance_category = budget_category
         self.ledger = []
 
+    def __str__(self):
+        ledger_str = ""
+        category_len = len(self.instance_category)
+        line_len = 30
+        center = int(line_len / 2 - (category_len / 2))
+        asterisk = "*"
+        ledger_str = f"{asterisk * center}{self.instance_category}{asterisk * center}\n"
+
+        for entry in self.ledger:
+            space = " "
+            
+            # description
+            desc = entry["description"]
+            description_len = len(desc)
+            printed_desc = ""
+            if description_len > 23:
+                printed_desc = desc[0:23] 
+            else:
+                printed_desc = desc
+
+            # amount
+            amount_int = entry["amount"]
+            amount = f"{entry['amount']:.2f}"
+            amount_len = len(amount)
+            if amount_int < 0:
+                amount_len += 1
+            
+            amount_entry = f"{space * (8 - amount_len) if amount_int < 0 else space * (7 - amount_len)}{amount}"
+
+            # entry
+            ledger_str += f"{printed_desc}{space * (23 - description_len)}{amount_entry}\n"
+
+        # total
+        ledger_str += f"Total: {self.get_balance()}"
+
+        return ledger_str    
+
     def deposit(self, amount, description=""):
         self.ledger.append({"amount": amount, "description": description})
 
@@ -10,7 +47,7 @@ class Category:
         total_amount = 0
 
         for entry in self.ledger:
-            total_amount += entry['amount']
+            total_amount += entry["amount"]
         return total_amount
 
     def withdraw(self, amount, description=""):
@@ -22,9 +59,11 @@ class Category:
             return True
 
     def transfer(self, amount, budget_category):
-        if self.check_funds(amount) and budget_category.check_funds(amount):
-            self.withdraw(amount, f"Transfer to {budget_category.instance_category}")
-            budget_category.deposit(amount, f"Transfer from {self.instance_category}")
+        if self.check_funds(amount):
+            self.withdraw(
+                amount, f"Transfer to {budget_category.instance_category}")
+            budget_category.deposit(
+                amount, f"Transfer from {self.instance_category}")
             return True
         else:
             return False
@@ -37,28 +76,18 @@ class Category:
         else:
             return True
 
+# chart
+
+
+def create_spend_chart():
+    print(1)
+
 
 food = Category("Food")
+clothing = Category("Clothing")
+food.deposit(1000, "initial deposit")
+food.withdraw(10.15, "groceries")
+food.withdraw(15.89, "restaurant and more foo")
+food.transfer(50.00, clothing)
+
 print(food)
-food.deposit(10, "check")
-print(food.get_balance())
-print(food.withdraw(5, "beer"))
-print(food.get_balance())
-print(food.withdraw(20, "cake"))
-print(food.get_balance())
-print(food.ledger)
-
-print(food.get_balance())
-
-clothes = Category("Clothing")
-print(clothes)
-clothes.deposit(50, "check")
-print(clothes.get_balance())
-print(clothes.ledger)
-
-print(food.transfer(10, clothes))
-print(food.transfer(5, clothes))
-print(food.ledger)
-print(food.get_balance())
-print(clothes.ledger)
-print(clothes.get_balance())
