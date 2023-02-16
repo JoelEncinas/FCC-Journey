@@ -1,5 +1,3 @@
-import math
-
 class Category:
     def __init__(self, budget_category):
         self.instance_category = budget_category
@@ -78,88 +76,52 @@ class Category:
         else:
             return True
 
-# test
-food = Category("Food")
-food.deposit(100, "food")
-food.withdraw(5, "chocolate")
-food.withdraw(10, "bananas")
-
-clothes = Category("Clothes")
-clothes.deposit(100, "clothes")
-clothes.withdraw(50, "gloves")
-
-entertainment = Category("Entertainment")
-entertainment.deposit(100, "auto")
-entertainment.withdraw(20, "oil")
-
 # chart
 def create_spend_chart(categories):
-    space = " "
-    dash = "-"
-    categories_info = []
-
-    # data
-    total_withdraws_all = 0
+    # calculate total amount spent
+    total_spent = []
     for category in categories:
-        total_withdraws = 0
-        for entry in category.ledger:
-            if entry["amount"] < 0:
-                total_withdraws += entry["amount"] * -1
-                total_withdraws_all += entry["amount"] * -1
+        total = 0
+        for item in category.ledger:
+            if item['amount'] < 0:
+                total -= item['amount']
+        total_spent.append(total)
 
-        categories_info.append(
-            {"name": category.instance_category, "withdraws": total_withdraws})
+    # calculate percentage spent
+    percentages = []
+    for amount in total_spent:
+        percentage = (amount / sum(total_spent)) * 100
+        percentage = percentage - percentage % 10
+        percentages.append(int(percentage))
 
-    # title
-    str_chart = "Percentage spent by category\n"
-
-    # percentages
-    percentage = 100
-
-    while percentage > -1:
-        if percentage == 100:
-            str_chart += f"{percentage}|"
-        elif percentage > 0 and percentage < 100:
-            str_chart += f"{space}{percentage}|"
-        else:
-            str_chart += f"{space * 2}{percentage}|"
-       
-        for category in categories_info:
-            cat_percentage = int(str(math.floor(int((category["withdraws"] / total_withdraws_all) * 100)))[0]) * 10
-            if cat_percentage >= percentage:
-                str_chart += f"{space}o{space}"
+    # create chart
+    chart = "Percentage spent by category\n"
+    for i in range(100, -10, -10):
+        chart += str(i).rjust(3) + "| "
+        for percentage in percentages:
+            if percentage >= i:
+                chart += "o  "
             else:
-                str_chart += f"{space * 3}"
-        str_chart += "\n"
-        percentage -= 10
+                chart += "   "
+        chart += "\n"
 
-    str_chart += f"{space * 4}{(dash * 3) * len(categories_info)}{dash}\n"
+    chart += "    " + "-" * (len(categories) * 3 + 1) + "\n"
 
-    # get longest word
-    max_len = 0
-    for category in categories_info:
-        if len(category["name"]) > max_len:
-            max_len = len(category["name"])
-
-    # categories in chart
-    count = 0
-    categories_info_len = len(categories_info)
-
-    while count < max_len:
-        str_chart += f"{space * 4}"
-        inner_count = 0
-        for category in categories_info:
-            if count < len(category['name']):
-                str_chart += f"{space}{category['name'][count]}{space}"
+    # get category names and pad with spaces
+    category_names = []
+    max_length = 0
+    for category in categories:
+        category_names.append(category.instance_category)
+        if len(category.instance_category) > max_length:
+            max_length = len(category.instance_category)
+    for i in range(max_length):
+        chart += "     "
+        for name in category_names:
+            if i < len(name):
+                chart += name[i] + "  "
             else:
-                str_chart += f"{space * 3}"
-            if inner_count == categories_info_len - 1:
-                str_chart += f"{space}\n"
-            
-            inner_count += 1
+                chart += "   "
+            if name == category_names[-1]:
+                chart += "" if i == max_length - 1 else "\n"
 
-        count += 1
-
-    return str_chart
-
-print(create_spend_chart([food, clothes, entertainment]))
+    return chart
