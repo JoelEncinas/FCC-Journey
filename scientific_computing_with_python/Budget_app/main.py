@@ -1,8 +1,8 @@
 class Category:
+    name = ''
+    def __init__(self, name):
+        self.name = name
 
-
-
-
-
-def create_spend_chart(categories):
-    print("")
+q = Category('rock')
+q.name = 'pop'
+print(q.name)
