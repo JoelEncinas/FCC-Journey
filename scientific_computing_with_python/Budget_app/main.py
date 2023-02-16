@@ -1,3 +1,5 @@
+import math
+
 class Category:
     def __init__(self, budget_category):
         self.instance_category = budget_category
@@ -13,13 +15,13 @@ class Category:
 
         for entry in self.ledger:
             space = " "
-            
+
             # description
             desc = entry["description"]
             description_len = len(desc)
             printed_desc = ""
             if description_len > 23:
-                printed_desc = desc[0:23] 
+                printed_desc = desc[0:23]
             else:
                 printed_desc = desc
 
@@ -29,7 +31,7 @@ class Category:
             amount_len = len(amount)
             if amount_int < 0:
                 amount_len += 1
-            
+
             amount_entry = f"{space * (8 - amount_len) if amount_int < 0 else space * (7 - amount_len)}{amount}"
 
             # entry
@@ -38,7 +40,7 @@ class Category:
         # total
         ledger_str += f"Total: {self.get_balance()}"
 
-        return ledger_str    
+        return ledger_str
 
     def deposit(self, amount, description=""):
         self.ledger.append({"amount": amount, "description": description})
@@ -76,18 +78,56 @@ class Category:
         else:
             return True
 
-# chart
-
-
-def create_spend_chart():
-    print(1)
-
-
+# test
 food = Category("Food")
-clothing = Category("Clothing")
-food.deposit(1000, "initial deposit")
-food.withdraw(10.15, "groceries")
-food.withdraw(15.89, "restaurant and more foo")
-food.transfer(50.00, clothing)
+food.deposit(100, "food")
+food.withdraw(5, "chocolate")
+food.withdraw(10, "bananas")
 
-print(food)
+clothes = Category("Clothes")
+clothes.deposit(100, "clothes")
+clothes.withdraw(50, "gloves")
+
+auto = Category("Auto")
+auto.deposit(100, "auto")
+auto.withdraw(20, "oil")
+
+# chart
+def create_spend_chart(categories):
+    space = " "
+    str_chart = "Percentage spent by category\n"
+    categories_info = []
+
+    total_withdraws_all = 0
+    for category in categories:
+        total_withdraws = 0
+        for entry in category.ledger:
+            if entry["amount"] < 0:
+                total_withdraws += entry["amount"] * -1
+                total_withdraws_all += entry["amount"] * -1
+
+        categories_info.append(
+            {"name": category.instance_category, "withdraws": total_withdraws})
+    
+    percentage = 100
+
+    while percentage > -1:
+        if percentage == 100:
+            str_chart += f"{percentage}|"
+        elif percentage > 0 and percentage < 100:
+            str_chart += f"{space}{percentage}|"
+        else:
+            str_chart += f"{space * 2}{percentage}|"
+       
+        for category in categories_info:
+            cat_percentage = int(str(math.floor(int((category["withdraws"] / total_withdraws_all) * 100)))[0]) * 10
+            if cat_percentage >= percentage:
+                str_chart += f"{space}o{space}"
+            else:
+                str_chart += f"{space * 3}"
+        str_chart += "\n"
+        percentage -= 10
+
+    return str_chart
+
+print(create_spend_chart([food, clothes, auto]))
