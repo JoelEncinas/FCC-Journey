@@ -88,16 +88,17 @@ clothes = Category("Clothes")
 clothes.deposit(100, "clothes")
 clothes.withdraw(50, "gloves")
 
-auto = Category("Auto")
-auto.deposit(100, "auto")
-auto.withdraw(20, "oil")
+entertainment = Category("Entertainment")
+entertainment.deposit(100, "auto")
+entertainment.withdraw(20, "oil")
 
 # chart
 def create_spend_chart(categories):
     space = " "
-    str_chart = "Percentage spent by category\n"
+    dash = "-"
     categories_info = []
 
+    # data
     total_withdraws_all = 0
     for category in categories:
         total_withdraws = 0
@@ -108,7 +109,11 @@ def create_spend_chart(categories):
 
         categories_info.append(
             {"name": category.instance_category, "withdraws": total_withdraws})
-    
+
+    # title
+    str_chart = "Percentage spent by category\n"
+
+    # percentages
     percentage = 100
 
     while percentage > -1:
@@ -128,6 +133,33 @@ def create_spend_chart(categories):
         str_chart += "\n"
         percentage -= 10
 
+    str_chart += f"{space * 4}{(dash * 3) * len(categories_info)}{dash}\n"
+
+    # get longest word
+    max_len = 0
+    for category in categories_info:
+        if len(category["name"]) > max_len:
+            max_len = len(category["name"])
+
+    # categories in chart
+    count = 0
+    categories_info_len = len(categories_info)
+
+    while count < max_len:
+        str_chart += f"{space * 4}"
+        inner_count = 0
+        for category in categories_info:
+            if count < len(category['name']):
+                str_chart += f"{space}{category['name'][count]}{space}"
+            else:
+                str_chart += f"{space * 3}"
+            if inner_count == categories_info_len - 1:
+                str_chart += f"{space}\n"
+            
+            inner_count += 1
+
+        count += 1
+
     return str_chart
 
-print(create_spend_chart([food, clothes, auto]))
+print(create_spend_chart([food, clothes, entertainment]))
