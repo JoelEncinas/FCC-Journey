@@ -8,23 +8,36 @@ class Category:
     def deposit(self, amount, description = ""):
         self.ledger.append({"amount": amount, "description": description})
 
-    def get_all_amounts(self):
-        amounts = 0
+    def get_balance(self):
+        total_amount = 0
         for entry in self.ledger:
-            amounts += entry['amount']
-        return amounts
+            total_amount += entry['amount']
+        return total_amount
 
     def withdraw(self, amount, description = ""):
-        if amount > self.get_all_amounts():
+        if amount > self.get_balance():
             return False
         else:
             self.ledger.append({"amount": -1 * amount, "description": description})
             return True
-        
-a = Category("food")
-a.deposit(10, "bananas")
-a.deposit(5, "beer")
-print(a.withdraw(60, "skate"))
-print(a.withdraw(3, "chocolate"))
-print(a.get_all_amounts())
-print(a.ledger)
+    
+    def transfer(self, amount, budget_category):
+        if amount < self.get_balance() and budget_category.get_balance() >= amount:
+            self.withdraw(amount, f"Transfer to {budget_category.category}")
+            return True
+        else:
+            return False
+
+food = Category("Food")
+food.deposit(10, "check")
+food.withdraw(5, "beer")
+food.withdraw(20, "cake")
+clothing = Category("Clothing")
+food.transfer(6, clothing)
+food.transfer(2, clothing)
+
+print(food.ledger)
+print(food.get_balance())
+
+print(clothing.ledger)
+print(clothing.get_balance())
