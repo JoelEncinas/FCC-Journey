@@ -32,10 +32,22 @@ class Rectangle:
         cols = self.width // rectangle.width
         return rows * cols
 
+class Square(Rectangle):
+    def __init__(self, length):
+        self.width = length
+        self.height = length
 
-a = Rectangle(5, 5)
-b = Rectangle(2, 2)
-print(a)
-print(a.get_amount_inside(b))
+    def __str__(self):
+        return f"Square(side={self.width})"
 
-# class Square:
+    def set_side(self, side):
+        self.width = side
+        self.height = side
+
+    def set_width(self, width):
+        self.width = width
+        self.height = width
+    
+    def set_height(self, height):
+        self.height = height
+        self.width = height
