@@ -25,7 +25,15 @@ class Rectangle:
         if self.width > 50 or self.height > 50:
             return "Too big for picture."
         else:
-            return ""
+            asterisk = "*"
+            picture = ""
+            picture += f"{asterisk * self.width}\n"
+            for rows in range(1, self.height - 1):
+                picture += f"{asterisk}{asterisk * (self.width - 2)}{asterisk}\n"
+            if self.height > 1:
+                picture += f"{asterisk * self.width}\n"
+            return picture
+
 
     def get_amount_inside(self, rectangle):
         rows = self.height // rectangle.height
