@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+#app {
+    background-color: #F7F799;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculator {
+    height: 465px;
+    max-width: 460px;
+    border-radius: 4px;
+    background-color: #DDD7D7 !important;
+}
+
+.output {
+    height: 80px;
+}
+
+.keys {
+    gap: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.keys button:first-child {
+    color: #ffffff;
+    grid-column-end: 3;
+    grid-column-start: 1;
+    background-color: #A01C29;
+}
+
+.keys button:nth-child(15) {
+    color: #ffffff;
+    grid-row: 4 / 6;
+    grid-column: 4 / 4;
+    background-color: #0054AE;
+}
+
+.keys button:nth-child(16) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+}
+
+.output {
+    margin: 10px
+}
+
+.input,
+.result {
+    color: #000;
+    height: 40px;
+    display: block;
+    font-size: 30px;
+    text-align: right;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 0 10px;
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.result {
+    margin-bottom: 10px;
+    height: 30px;
+    font-size: 22px;
+}
+
+button {
+    border: none;
+    font-size: 28px;
+    min-width: 80px;
+    min-height: 65px;
+    border-radius: 4px;
+}
+
+#github-link {
+    all: unset;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
