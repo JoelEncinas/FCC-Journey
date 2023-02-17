@@ -24,7 +24,7 @@ All the projects from my FreeCodeCamp journey.
   - Random Quote Machine ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/xxJMyGW) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Random_quote_machine)
   - Markdown Previewer ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/jOpdXJP) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Markdown_previewer)
   - Drum Machine ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/QWBoaoL) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Drum_machine)
-  - Javascript Calculator ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/MWqwerR) [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Javascript_calculator)
+  - Javascript Calculator ✔️ [see page](https://codepen.io/JoelEncinasMartin/pen/MWqwerR) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/front_end_development_libraries/Javascript_calculator)
   - 25 + 5 Clock ❌ [code](#)
 
 ## <svg width="20px" height="20px" aria-hidden="true" viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg" class="cert-header-icon"><path d="M112 48h352v48h48V32a32.09 32.09 0 00-32-32H96a32.09 32.09 0 00-32 32v256H16a16 16 0 00-16 16v16a64.14 64.14 0 0063.91 64H352v-96H112zm492 80H420a36 36 0 00-36 36v312a36 36 0 0036 36h184a36 36 0 0036-36V164a36 36 0 00-36-36zm-12 336H432V176h160z"></path></svg> Back End Development and APIs 
