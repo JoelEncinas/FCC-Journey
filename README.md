@@ -44,4 +44,4 @@ All the projects from my FreeCodeCamp journey.
   - Time Calculator ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/scientific_computing_with_python/Time_calculator/main.py)
   - Budget App ✔️ [code](https://github.com/JoelEncinas/fcc-journey/blob/main/scientific_computing_with_python/Budget_app/main.py)
   - Polygon Area Calculator ✔️ [code](https://github.com/JoelEncinas/fcc-journey/tree/main/scientific_computing_with_python/Polygon_area_calculator)
-  - Probability Calculator ❌ [code](#)
+  - Probability Calculator ✔️ [code](https://github.com/JoelEncinas/fcc-journey/tree/main/scientific_computing_with_python/Probability_calculator)
