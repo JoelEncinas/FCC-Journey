@@ -106,17 +106,23 @@ const App = () => {
         <div className="">
           <div className="break-session-length d-flex flex-direction-column justify-content-between mb-5">
             <div>
-              <h3 className="text-center" id="break-label">Break Length</h3>
+              <h3 className="text-center" id="break-label">
+                Break Length
+              </h3>
               <div className="d-flex justify-content-center align-items-center my-3">
-                <button className="btn btn-light rounded-circle"
+                <button
+                  className="btn btn-light rounded-circle"
                   disabled={play}
                   onClick={handleBreakIncrease}
                   id="break-increment"
                 >
                   ➕
                 </button>
-                <span className="lead mx-3" id="break-length">{breakLength}</span>
-                <button className="btn btn-light rounded-circle"
+                <span className="lead mx-3" id="break-length">
+                  {breakLength}
+                </span>
+                <button
+                  className="btn btn-light rounded-circle"
                   disabled={play}
                   onClick={handleBreakDecrease}
                   id="break-decrement"
@@ -126,17 +132,23 @@ const App = () => {
               </div>
             </div>
             <div>
-              <h3 className="text-center" id="session-label">Session Length</h3>
+              <h3 className="text-center" id="session-label">
+                Session Length
+              </h3>
               <div className="d-flex justify-content-center align-items-center my-3">
-                <button className="btn btn-light rounded-circle"
+                <button
+                  className="btn btn-light rounded-circle"
                   disabled={play}
                   onClick={handleSessionIncrease}
                   id="session-increment"
                 >
                   ➕
                 </button>
-                <span className="lead mx-3" id="session-length">{sessionLength}</span>
-                <button className="btn btn-light rounded-circle"
+                <span className="lead mx-3" id="session-length">
+                  {sessionLength}
+                </span>
+                <button
+                  className="btn btn-light rounded-circle"
                   disabled={play}
                   onClick={handleSessionDecrease}
                   id="session-decrement"
@@ -149,16 +161,28 @@ const App = () => {
         </div>
         <div className="timer-controls my-3">
           <div className="timer">
-            <h2 className="text-center" id="timer-label">{title}</h2>
-            <h2 className="text-center display-3" id="time-left">{timeFormatter()}</h2>
+            <h2 className="text-center" id="timer-label">
+              {title}
+            </h2>
+            <h2 className="text-center display-3" id="time-left">
+              {timeFormatter()}
+            </h2>
           </div>
           <div className="time-controls d-flex justify-content-center">
-            <button className="btn btn-primary mx-3" onClick={handlePlay} id="start_stop">
-            {play ? "Stop" : "Play"}
-          </button>
-          <button className="btn btn-danger mx-3" onClick={handleReset} id="reset">
-            Reset
-          </button>
+            <button
+              className="btn btn-primary mx-3"
+              onClick={handlePlay}
+              id="start_stop"
+            >
+              {play ? "Stop" : "Play"}
+            </button>
+            <button
+              className="btn btn-danger mx-3"
+              onClick={handleReset}
+              id="reset"
+            >
+              Reset
+            </button>
           </div>
         </div>
       </div>
