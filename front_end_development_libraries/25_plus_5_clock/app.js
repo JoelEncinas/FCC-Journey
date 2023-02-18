@@ -1,4 +1,10 @@
+import * as ReactDOM from "https://cdn.skypack.dev/react-dom@17.0.1";
+import * as React from "https://cdn.skypack.dev/react@17.0.1";
+
 const App = () => {
+    const { handleBreakIncrease, handleBreakDecrease, breakLength, handleSessionDecrease, handleSessionIncrease
+        , handleReset, handlePlay, play, title, sessionLength, timeFormatter = () => "25:00" } = {}
+
     return (
 
         <div className="container">
@@ -17,7 +23,7 @@ const App = () => {
                         <h2 id="session-label">Session Length</h2>
                         <div>
                             <button disabled={play} onClick={handleSessionIncrease} id="session-increment">Increase</button>
-                            <span id="break-length">{breakLength}</span>
+                            <span id="session-length">{sessionLength}</span>
                             <button disabled={play} onClick={handleSessionDecrease} id="session-decrement">Decrease</button>
                         </div>
                     </div>
@@ -47,5 +53,7 @@ const App = () => {
             </div>
         </div>
 
-    )
+    );
 }
+
+ReactDOM.render(<App />, document.getElementById("app"))
