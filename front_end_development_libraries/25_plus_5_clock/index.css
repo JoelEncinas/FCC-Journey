@@ -1,3 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+#app {
+    background-color: #E5E5E5;
+}
+
+h1 {
+    font-family: "Georgia", "Times New Roman", serif;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 500px !important;
+}
+
 #github-link {
     all: unset;
     cursor: pointer;
