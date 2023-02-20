@@ -2,7 +2,7 @@ body {
 	font-family: 'Roboto', sans-serif;
 	font-size: 16px;
 	color: #222;
-	background-color: #FaFaFa;
+	background-color: #ffa3a3;
 	text-align: center;
 	line-height: 1.4em;
 }
@@ -22,7 +22,7 @@ h3 {
 
 code {
   font-family: monospace;
-  padding: 2px;
+  padding: 4px;
   color: black;
   background-color: #fff;
 }
