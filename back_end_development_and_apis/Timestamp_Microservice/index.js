@@ -1,75 +1,40 @@
-// index.js
-// where your node app starts
-
-// init project
-var express = require('express');
+var express = require("express");
 var app = express();
 
-// enable CORS (https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)
-// so that your API is remotely testable by FCC 
-var cors = require('cors');
-app.use(cors({ optionsSuccessStatus: 200 }));  // some legacy browsers choke on 204
+var cors = require("cors");
+app.use(cors({ optionsSuccessStatus: 200 }));
 
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
+app.use(express.static("public"));
 
-// http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function(req, res) {
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile(__dirname + "/views/index.html");
 });
-
-function isDate(str) {
-  // match "yyyy-mm-dd" format
-  const regex = /^\d{4}-\d{2}-\d{2}$/;
-  return typeof str === "string" && regex.test(str);
-}
 
 // date endpoint
 app.get("/api/:date?", function(req, res) {
-  if(req.params.length === 0){
-    // convert to unix
-    const unixDate = new Date().getTime();
+  const dateParam = req.params.date;
+  let date;
 
-    // convert to utc
-    const UTCDate = new Date().toUTCString();
-    
-    return res.json({ unix: unixDate, utc: UTCDate });
-  }
-  else {
-    // get date
-    const dateStr = req.params.date;
-    const dateObj = new Date(dateStr);
-
-    if(dateObj === undefined){ 
-      return res.json({ err: "Invalid Date" });
+  if (dateParam) {
+    if (/^\d+$/.test(dateParam)) {
+      date = new Date(parseInt(dateParam));
     } else {
-      if (isDate(dateStr)) {
-      // create date
-      const dateObj = new Date(dateStr);
-  
-      // convert to unix
-      const unixDate = dateObj.getTime();
-  
-      // convert to utc
-      const UTCDate = dateObj.toUTCString();
-  
-      return res.json({ unix: unixDate, utc: UTCDate });
-      }
-      else {
-        // create date
-        dateInt = parseInt(dateStr);
-        const dateObj = new Date(dateInt);
-    
-        // convert to utc
-        const UTCDate = dateObj.toUTCString();
-        
-        res.json({ unix: dateInt, utc: UTCDate });
-        }
-      }
+      date = new Date(dateParam);
     }
+  } else {
+    date = new Date();
+  }
+
+  if (isNaN(date.getTime())) {
+    res.status(400).json({ error: "Invalid Date" });
+  } else {
+    res.json({
+      unix: date.getTime(),
+      utc: date.toUTCString(),
+    });
+  }
 });
 
-// listen for requests :)
 var listener = app.listen(3000, function() {
-  console.log('Your app is listening on port ' + listener.address().port);
+  console.log("Your app is listening on port " + listener.address().port);
 });
