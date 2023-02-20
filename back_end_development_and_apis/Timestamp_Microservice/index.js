@@ -23,17 +23,22 @@ app.get("/", function (req, res) {
 app.get("/api/:date", function (req, res) {
   // get date
   const dateStr = req.params.date;
-  const dateObj = new Date(dateStr);
 
-  // convert to unix
-  const unixDate = dateObj.getTime();
+  if(dateStr === "test"){
+    res.json({test: "hello express"});
+  }
+  else {
+    const dateObj = new Date(dateStr);
 
-  // convert to utc
-  const UTCDate = dateObj.toUTCString();
+    // convert to unix
+    const unixDate = dateObj.getTime();
   
-  res.json({unix: unixDate, utc: UTCDate});
+    // convert to utc
+    const UTCDate = dateObj.toUTCString();
+    
+    res.json({unix: unixDate, utc: UTCDate});
+  }
 });
-
 
 // listen for requests :)
 var listener = app.listen(process.env.PORT, function () {
