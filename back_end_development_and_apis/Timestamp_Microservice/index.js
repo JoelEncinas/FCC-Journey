@@ -25,42 +25,48 @@ function isDate(str) {
 }
 
 // date endpoint
-app.get("/api/:date", function(req, res) {
-  // get date
-  const dateStr = req.params.date;
-
-  if (dateStr === "test") {
-    res.json({ test: "hello express" });
-  }
-
-  // check  if can be parsed
-  
-  if (isDate(dateStr)) {
-    // create date
-    const dateObj = new Date(dateStr);
-
+app.get("/api/:date?", function(req, res) {
+  if(req.params.length === 0){
     // convert to unix
-    const unixDate = dateObj.getTime();
-    const unixDateInt = parseInt(unixDate);
+    const unixDate = new Date().getTime();
 
     // convert to utc
-    const UTCDate = dateObj.toUTCString();
-
-    res.json({ unix: unixDateInt, utc: UTCDate });
-  }
-  else if (!isDate(dateStr)) {
-    res.json({ error: "Invalid Date" });
+    const UTCDate = new Date().toUTCString();
+    
+    return res.json({ unix: unixDate, utc: UTCDate });
   }
   else {
-    // create date
-    dateInt = parseInt(dateStr);
-    const dateObj = new Date(dateInt);
+    // get date
+    const dateStr = req.params.date;
+    const dateObj = new Date(dateStr);
 
-    // convert to utc
-    const UTCDate = dateObj.toUTCString();
-
-    res.json({ unix: dateInt, utc: UTCDate });
-  }
+    if(dateObj === undefined){ 
+      return res.json({ err: "Invalid Date" });
+    } else {
+      if (isDate(dateStr)) {
+      // create date
+      const dateObj = new Date(dateStr);
+  
+      // convert to unix
+      const unixDate = dateObj.getTime();
+  
+      // convert to utc
+      const UTCDate = dateObj.toUTCString();
+  
+      return res.json({ unix: unixDate, utc: UTCDate });
+      }
+      else {
+        // create date
+        dateInt = parseInt(dateStr);
+        const dateObj = new Date(dateInt);
+    
+        // convert to utc
+        const UTCDate = dateObj.toUTCString();
+        
+        res.json({ unix: dateInt, utc: UTCDate });
+        }
+      }
+    }
 });
 
 // listen for requests :)
