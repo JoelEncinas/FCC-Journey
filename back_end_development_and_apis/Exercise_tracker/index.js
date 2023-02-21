@@ -1,13 +1,16 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 
 require("dotenv").config();
 
 const app = express();
 
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.json());
 app.use(express.static("public"));
 
 const uri = process.env.MONGODB_URI;
