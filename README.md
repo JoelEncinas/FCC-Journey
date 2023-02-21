@@ -33,7 +33,7 @@ All the projects from my FreeCodeCamp journey.
 - ####  Projects
   - Timestamp Microservice ✔️ [see page](https://project-timestamp.joelencinas.repl.co) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/back_end_development_and_apis/Timestamp_Microservice)
   - Request Header Parser Microservice ✔️ [see page](https://boilerplate-project-headerparser.joelencinas.repl.co) | [code](https://github.com/JoelEncinas/fcc-journey/tree/main/back_end_development_and_apis/Request_header_parser_microservice)
-  - URL Shortener Microservice ❌ [code](#)
+  - URL Shortener Microservice ✔️ [see page](https://boilerplate-project-urlshortener.joelencinas.repl.co) |  [code](https://github.com/JoelEncinas/fcc-journey/tree/main/back_end_development_and_apis/Url_shortener_microservice)
   - Exercise Tracker ❌ [code](#)
   - File Metadata Microservice ❌ [code](#)
   
