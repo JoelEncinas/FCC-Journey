@@ -15,7 +15,13 @@ app.get("/", function (req, res) {
 });
 
 app.post("/api/fileanalyse", upload.single("upfile"), (req, res) => {
-  res.send("file received");
+  // req.file contains information about the uploaded file
+  const fileInfo = {
+    name: req.file.originalname,
+    type: req.file.mimetype,
+    size: req.file.size
+  };
+  res.send(JSON.stringify(fileInfo));
 });
 
 const port = process.env.PORT || 3000;
