@@ -19,6 +19,12 @@ connection.once("open", () => {
   console.log("connected to db");
 });
 
+const exercisesRouter = require("./exercises");
+const usersRouter = require("./users");
+
+app.use("/exercises", exercisesRouter);
+app.use("/users", usersRouter);
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
 });
