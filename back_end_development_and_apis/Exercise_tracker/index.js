@@ -86,8 +86,10 @@ app.post("/api/users/:_id/exercises", (req, res) => {
           .replace(/,/g, "");
       }
 
+      const userId = user._id;
+
       const newExercise = new Exercise({
-        username,
+        userId,
         description,
         duration,
         date,
@@ -109,7 +111,18 @@ app.post("/api/users/:_id/exercises", (req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-app.get("/api/users/:_id/logs", (req, res) => {});
+app.get("/api/users/:_id/logs", (req, res) => {
+  const userId = req.params._id;
+  User.find({ _id: userId })
+    .then((user) => {
+      // const exercises = Exercise.find({ userId: userId });
+
+      // console.log(exercises);
+      console.log(user);
+      return res.json({ user: 3 });
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
+});
 
 const listener = app.listen(3000, () => {
   console.log("Your app is listening on port 3000");
