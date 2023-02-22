@@ -2,18 +2,19 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+let User = require("./userModel");
+let Exercise = require("./exerciseModel");
 
-require("dotenv").config();
+require('dotenv').config()
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(express.static("public"));
 
-const uri = process.env.MONGODB_URI;
+const uri = "mongodb+srv://admin:admin@cluster0.pug2uxj.mongodb.net/?retryWrites=true&w=majority";
 
 mongoose.set("strictQuery", true);
 mongoose.connect(uri, { useNewUrlParser: true });
@@ -22,16 +23,73 @@ connection.once("open", () => {
   console.log("connected to db");
 });
 
-const exercisesRouter = require("./exercises");
-const usersRouter = require("./users");
+app.use(express.static('public'))
 
-app.use("/exercises", exercisesRouter);
-app.use("/users", usersRouter);
-
-app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/views/index.html')
 });
 
-const listener = app.listen(process.env.PORT || 3000, () => {
-  console.log("Your app is listening on port " + listener.address().port);
+app.post("/api/users", (req, res) => {
+  const username = req.body.username;
+
+  const newUser = new User({ username });
+
+  newUser
+    .save()
+    .then((savedUser) => res.json({ username: savedUser.username, _id: savedUser._id }))
+    .catch((err) => res.status(400).json("Error: " + err));
+})
+
+app.get("/api/users", (req, res) => {
+  User.find()
+    .then((users) => res.json(users))
+    .catch((err) => res.status(400).json("Error: " + err));
+})
+
+app.post("/api/users/:_id/exercises", (req, res) => {
+  User.findOne({ _id: req.params._id })
+    .then((user) => {
+      const username = user.username;
+      const _id = req.params._id;
+      const description = req.body.description;
+      const duration = Number(req.body.duration);
+      let date;
+
+      if (typeof req.body.date === "undefined" || req.body.date === "") {
+        let now = new Date();
+        let dd = String(now.getDate()).padStart(2, '0');
+        let mm = String(now.getMonth() + 1).padStart(2, '0');
+        let yyyy = now.getFullYear();
+        dateString = yyyy + '/' + mm + '/' + dd;
+
+        const newDate = new Date(dateString);
+        date = newDate.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" }).replace(/,/g, '');
+      } else {
+        const newDate = new Date(req.body.date);
+        date = newDate.toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric", year: "numeric" }).replace(/,/g, '');
+      }
+
+      const newExercise = new Exercise({
+        username,
+        description,
+        duration,
+        date,
+      });
+
+      newExercise
+        .save()
+        .then((exercise) => res.json({ _id: _id, username: username, date: exercise.date, duration: exercise.duration, description: exercise.description }))
+        .catch((err) => res.status(400).json("Error: " + err));
+    })
+    .catch((err) => res.status(400).json("Error: " + err));
 });
+
+app.get("/api/users/:_id/logs", (req, res) => {
+  User.findOne({ _id: req.params._id })
+    .then
+    .catch((err) => res.status(400).json("Error: " + err));
+})
+
+const listener = app.listen(3000, () => {
+  console.log('Your app is listening on port 3000')
+})

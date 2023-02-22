@@ -7,13 +7,10 @@ const userSchema = new Schema(
     username: {
       type: String,
       required: true,
-      unique: true,
+      unique: false,
       trim: true,
       minlegth: 3,
-    },
-  },
-  {
-    timestamps: true,
+    }
   }
 );
 
