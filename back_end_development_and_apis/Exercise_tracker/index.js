@@ -113,13 +113,26 @@ app.post("/api/users/:_id/exercises", (req, res) => {
 
 app.get("/api/users/:_id/logs", (req, res) => {
   const userId = req.params._id;
-  User.find({ _id: userId })
+  User.findOne({ _id: userId })
     .then((user) => {
-      // const exercises = Exercise.find({ userId: userId });
+      Exercise.find({ userId: user._id })
+        .then((exercises) => {
+          const filteredExercises = exercises.map(
+            ({ description, duration, date }) => ({
+              description,
+              duration,
+              date,
+            })
+          );
 
-      // console.log(exercises);
-      console.log(user);
-      return res.json({ user: 3 });
+          return res.json({
+            _id: user._id,
+            username: user.username,
+            count: exercises.length,
+            log: filteredExercises,
+          });
+        })
+        .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
 });
