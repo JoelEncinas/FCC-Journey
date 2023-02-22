@@ -113,9 +113,26 @@ app.post("/api/users/:_id/exercises", (req, res) => {
 
 app.get("/api/users/:_id/logs", (req, res) => {
   const userId = req.params._id;
+
   User.findOne({ _id: userId })
     .then((user) => {
-      Exercise.find({ userId: user._id })
+      const fromDate = req.query.from;
+      const toDate = req.query.to;
+      const limit = Number(req.query.limit);
+
+      const query = { userId: user._id };
+      if (fromDate) {
+        query.date = { $gte: new Date(fromDate) };
+      }
+      if (toDate) {
+        if (!query.date) {
+          query.date = {};
+        }
+        query.date.$lte = new Date(toDate);
+      }
+
+      Exercise.find(query)
+        .limit(limit)
         .then((exercises) => {
           const filteredExercises = exercises.map(
             ({ description, duration, date }) => ({
