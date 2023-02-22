@@ -99,11 +99,11 @@ app.post("/api/users/:_id/exercises", (req, res) => {
         .save()
         .then((exercise) =>
           res.json({
-            _id: _id,
             username: username,
-            date: exercise.date,
-            duration: exercise.duration,
             description: exercise.description,
+            duration: exercise.duration,
+            date: exercise.date,
+            _id: _id,
           })
         )
         .catch((err) => res.status(400).json("Error: " + err));
