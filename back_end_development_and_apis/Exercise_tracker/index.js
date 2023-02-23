@@ -70,7 +70,7 @@ app.post("/api/users/:_id/exercises", (req, res) => {
           .toLocaleDateString("en-US", {
             weekday: "short",
             month: "short",
-            day: "numeric",
+            day: "2-digit",
             year: "numeric",
           })
           .replace(/,/g, "");
@@ -80,7 +80,7 @@ app.post("/api/users/:_id/exercises", (req, res) => {
           .toLocaleDateString("en-US", {
             weekday: "short",
             month: "short",
-            day: "numeric",
+            day: "2-digit",
             year: "numeric",
           })
           .replace(/,/g, "");
@@ -113,40 +113,44 @@ app.post("/api/users/:_id/exercises", (req, res) => {
 
 app.get("/api/users/:_id/logs", (req, res) => {
   const userId = req.params._id;
-
   User.findOne({ _id: userId })
     .then((user) => {
-      const fromDate = req.query.from;
-      const toDate = req.query.to;
-      const limit = Number(req.query.limit);
-
-      const query = { userId: user._id };
-      if (fromDate) {
-        query.date = { $gte: new Date(fromDate) };
-      }
-      if (toDate) {
-        if (!query.date) {
-          query.date = {};
-        }
-        query.date.$lte = new Date(toDate);
-      }
-
-      Exercise.find(query)
-        .limit(limit)
+      Exercise.find({ userId: user._id })
         .then((exercises) => {
-          const filteredExercises = exercises.map(
+          let filteredExercises = exercises.map(
             ({ description, duration, date }) => ({
               description,
               duration,
-              date,
+              date: new Date(date),
             })
           );
+
+          const { from, to } = req.query;
+          if (from) {
+            filteredExercises = filteredExercises.filter(
+              (exercise) => new Date(exercise.date) >= new Date(from)
+            );
+          }
+          if (to) {
+            filteredExercises = filteredExercises.filter(
+              (exercise) => new Date(exercise.date) <= new Date(to)
+            );
+          }
+
+          const limit = req.query.limit ? parseInt(req.query.limit) : undefined;
+          if (limit) {
+            filteredExercises = filteredExercises.slice(0, limit);
+          }
 
           return res.json({
             _id: user._id,
             username: user.username,
-            count: exercises.length,
-            log: filteredExercises,
+            count: filteredExercises.length,
+            log: filteredExercises.map((exercise) => ({
+              description: exercise.description,
+              duration: exercise.duration,
+              date: exercise.date.toDateString(),
+            })),
           });
         })
         .catch((err) => res.status(400).json("Error: " + err));
