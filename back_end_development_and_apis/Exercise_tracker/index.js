@@ -14,8 +14,7 @@ app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const uri =
-  "mongodb+srv://admin:admin@cluster0.pug2uxj.mongodb.net/?retryWrites=true&w=majority";
+const uri = "DBURI"
 
 mongoose.set("strictQuery", true);
 mongoose.connect(uri, { useNewUrlParser: true });
