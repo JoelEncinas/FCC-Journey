@@ -1,12 +1,12 @@
 /* FONTS */
 @font-face {
     font-family: hsz;
-    src: url("_page_files/Hack-Regular.ttf");
+    src: url("_site/Hack-Regular.ttf");
 }
 
 @font-face {
     font-family: lato;
-    src: url("_page_files/Lato-Regular.ttf");
+    src: url("_site/Lato-Regular.ttf");
 }
 
 .f-hsz {
@@ -106,18 +106,9 @@ i {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(10 ,10 ,35, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E") !important;
 }
 
-.dropdown-menu {
-    padding-bottom: 0;
-}
-
-.dropdown-menu[data-bs-popper] {
-    margin-top: 0.3rem;
-    border-radius: 0;
-    background-color: #0a0a23;
-}
-
-.dropdown-item {
+.nav-item a {
     color: #F5F6F7;
+    text-decoration: none;
 }
 
 /* HEADER */
@@ -152,4 +143,8 @@ i {
 
 .footer-container {
     padding: 30px;
+}
+
+.footer-container p {
+    margin: 0;
 }
