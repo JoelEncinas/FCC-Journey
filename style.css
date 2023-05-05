@@ -4,8 +4,17 @@
     src: url("_page_files/Hack-Regular.ttf");
 }
 
+@font-face {
+    font-family: lato;
+    src: url("_page_files/Lato-Regular.ttf");
+}
+
 .f-hsz {
     font-family: hsz;
+}
+
+a, p, span {
+    font-family: lato;
 }
 
 /* UTILS */
@@ -24,6 +33,10 @@ cite {
 
 .page-wrapper {
     max-width: 750px;
+}
+
+.container-fluid {
+    max-width: 992px;
 }
 
 /* NAVBAR */
@@ -81,4 +94,24 @@ cite {
 /* HEADER */
 .blockquote-footer {
     color: #F5F6F7;
+}
+
+/* CURRICULUM */
+.curriculum-link {
+    margin-bottom: 10px;
+    min-height: 80px;
+    background-color: #3b3b4f;
+    border-color: #F5F6F7;
+    color: #F5F6F7;
+    border-width: 3px;
+    border-radius: 0;
+}
+
+.curriculum-link:hover {
+    background-color: #F5F6F7;
+    color: #3b3b4f;
+}
+
+.curriculum-link-div {
+    gap: 15px;
 }
