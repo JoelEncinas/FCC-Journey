@@ -1,0 +1,24 @@
+/* FONTS */
+@font-face {
+    font-family: hsz;
+    src: url("_page_files/Hack-Regular.ttf");
+}
+
+.f-hsz {
+    font-family: hsz;
+}
+
+/* UTILS */
+body {
+    color: #F5F6F7;
+    background-color: #1B1B32;
+}
+
+/* NAVBAR */
+.navbar-dark {
+    background-color: #0A0A23 !important;
+}
+
+.fcc-logo {
+    height: 24px;
+}
