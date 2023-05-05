@@ -17,6 +17,10 @@ a, p, span {
     font-family: lato;
 }
 
+i {
+    font-size: 22px;
+}
+
 /* UTILS */
 body {
     color: #F5F6F7;
