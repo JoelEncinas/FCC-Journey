@@ -1,12 +1,12 @@
 /* FONTS */
 @font-face {
     font-family: hsz;
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/hack.min.css");
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/hack-font/3.3.0/web/fonts/hack-bold-subset.woff2");
 }
 
 @font-face {
     font-family: lato;
-    src: url("https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css");
+    src: url("https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/fonts/lato-black/lato-black.woff2");
 }
 
 .f-hsz {
