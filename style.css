@@ -13,15 +13,28 @@
     font-family: hsz;
 }
 
-a, p, span {
+a,
+p,
+span {
     font-family: lato;
 }
 
-i {
-    font-size: 22px;
+a:hover {
+    color: #F5F6F7;
+    text-decoration: none;
+}
+
+.main-link {
+    color: #F5F6F7;
 }
 
 /* UTILS */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
 body {
     color: #F5F6F7;
     background-color: #1B1B32;
@@ -35,13 +48,25 @@ cite {
     color: #F5F6F7;
 }
 
+i {
+    font-size: 22px;
+}
+
 .page-wrapper {
     max-width: 750px;
+    min-height: 80%;
+    margin-bottom: -50px;
 }
 
 .container-fluid {
     max-width: 992px;
 }
+
+.spacer {
+    padding: 35px 0;
+    height: 1px;
+}
+
 
 /* NAVBAR */
 .navbar-dark {
@@ -118,4 +143,13 @@ cite {
 
 .curriculum-link-div {
     gap: 15px;
+}
+
+/* FOOTER */
+.main-footer {
+    background-color: #2A2A40;
+}
+
+.footer-container {
+    padding: 30px;
 }
