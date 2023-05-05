@@ -1,12 +1,12 @@
 /* FONTS */
 @font-face {
     font-family: hsz;
-    src: url("_site/Hack-Regular.ttf");
+    src: url("https://github.com/JoelEncinas/FCC-Journey/blob/main/_site/Hack-Regular.ttf");
 }
 
 @font-face {
     font-family: lato;
-    src: url("_site/Lato-Regular.ttf");
+    src: url("https://github.com/JoelEncinas/FCC-Journey/blob/main/_site/Lato-Regular.ttf");
 }
 
 .f-hsz {
