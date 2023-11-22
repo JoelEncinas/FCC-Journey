@@ -18,55 +18,9 @@ const svg = d3
 
 d3.json(dataURL)
   .then(function (data) {
-    // Convert date strings to JavaScript Date objects
-    data.data.forEach(function (d) {
-      d[0] = new Date(d[0]);
-    });
+    let dataToUse = data.data;
 
-    // Create x and y scales
-    const xScale = d3
-      .scaleBand()
-      .domain(data.data.map((d) => d[0]))
-      .range([0, width])
-      .padding(0.1);
-
-    // Extract unique years from the data
-    const uniqueYears = Array.from(
-      new Set(data.data.map((d) => d[0].getFullYear()))
-    );
-
-    // Create x-axis with ticks at 5-year intervals
-    const xTicks = uniqueYears.filter((year) => year % 5 === 0);
-    const xAxis = d3
-      .axisBottom(xScale)
-      .tickValues(xTicks)
-      .tickFormat(d3.timeFormat("%Y"));
-
-    const yScale = d3
-      .scaleLinear()
-      .domain([0, d3.max(data.data, (d) => d[1])])
-      .range([height, 0]);
-
-    // Create bars
-    svg
-      .selectAll("rect")
-      .data(data.data)
-      .enter()
-      .append("rect")
-      .attr("x", (d) => xScale(d[0]))
-      .attr("width", xScale.bandwidth())
-      .attr("y", (d) => yScale(d[1]))
-      .attr("height", (d) => height - yScale(d[1]));
-
-    // Add x-axis
-    svg
-      .append("g")
-      .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-    // Add y-axis
-    svg.append("g").call(d3.axisLeft(yScale));
-    // console.log(data);
+    console.log(dataToUse);
   })
   .catch(function (error) {
     console.error("Error loading data:", error);
