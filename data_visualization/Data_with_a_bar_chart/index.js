@@ -21,6 +21,16 @@ d3.json(dataURL)
     let dataToUse = data.data;
 
     console.log(dataToUse);
+
+    // parse the dates
+    var parseDate = d3.timeParse("%Y-%m-%d");
+    dataToUse.forEach(function (d) {
+      d[0] = parseDate(d[0]);
+    });
+
+    console.log(dataToUse);
+
+    
   })
   .catch(function (error) {
     console.error("Error loading data:", error);
