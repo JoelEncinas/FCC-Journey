@@ -29,6 +29,14 @@ async function fetchData() {
       .range([0, width])
       .padding(0.1);
 
+    // X axis: show ticks and labels at intervals of 5 years
+    const xAxis = d3.axisBottom(xScale).tickValues(
+      xScale.domain().filter(function (d, i) {
+        // Show ticks at intervals of 5 years
+        return i % 5 === 0;
+      })
+    );
+
     // Y scale: from 0 to 18000, in steps of 2000
     const yScale = d3.scaleLinear().domain([0, 18000]).range([height, 0]);
 
@@ -48,7 +56,7 @@ async function fetchData() {
     svg
       .append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(xScale));
+      .call(xAxis);
 
     // Add the Y Axis
     svg.append("g").call(d3.axisLeft(yScale));
