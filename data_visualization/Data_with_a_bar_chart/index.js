@@ -8,6 +8,18 @@ async function fetchData() {
     const response = await d3.json(dataURL);
     const data = response.data;
 
+    console.log(data);
+
+    const years = data.map((e) => {
+      return parseInt(e[0].substring(0, 4));
+    });
+
+    let uniqueYears = [...new Set(years)].filter((e) => {
+      return e % 5 == 0;
+    });
+
+    console.log(uniqueYears);
+
     // set up svg container dimensions
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 600 - margin.left - margin.right;
@@ -29,16 +41,11 @@ async function fetchData() {
       .range([0, width])
       .padding(0.1);
 
-    // X axis: show ticks and labels at intervals of 5 years
-    const xAxis = d3.axisBottom(xScale).tickValues(
-      xScale.domain().filter(function (d, i) {
-        // Show ticks at intervals of 5 years
-        return i % 5 === 0;
-      })
-    );
-
     // Y scale: from 0 to 18000, in steps of 2000
     const yScale = d3.scaleLinear().domain([0, 18000]).range([height, 0]);
+
+    // Create x-axis with custom values
+    const xAxis = d3.axisBottom(xScale).tickValues(data.map((e) => e[0]));
 
     // bars
     svg
