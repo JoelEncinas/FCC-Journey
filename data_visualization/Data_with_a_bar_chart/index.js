@@ -10,16 +10,6 @@ async function fetchData() {
 
     console.log(data);
 
-    const years = data.map((e) => {
-      return parseInt(e[0].substring(0, 4));
-    });
-
-    let uniqueYears = [...new Set(years)].filter((e) => {
-      return e % 5 == 0;
-    });
-
-    console.log(uniqueYears);
-
     // set up svg container dimensions
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 600 - margin.left - margin.right;
