@@ -34,12 +34,30 @@ async function fetchData() {
     // Y scale: from 0 to 18000, in steps of 2000
     const yScale = d3.scaleLinear().domain([0, 18000]).range([height, 0]);
 
+    // custom axis
+    const axisDates = [
+      "1950-01-01",
+      "1955-01-01",
+      "1960-01-01",
+      "1965-01-01",
+      "1970-01-01",
+      "1975-01-01",
+      "1980-01-01",
+      "1985-01-01",
+      "1990-01-01",
+      "1995-01-01",
+      "2000-01-01",
+      "2005-01-01",
+      "2010-01-01",
+      "2015-01-01",
+    ];
+
     // Create x-axis with custom values
     const xAxis = d3
       .axisBottom(xScale)
-      .tickValues(["1947-01-01", "1971-01-01"])
+      .tickValues(axisDates)
       .tickFormat((d) => {
-        return d.substring(0,4);
+        return d.substring(0, 4);
       });
 
     // bars
