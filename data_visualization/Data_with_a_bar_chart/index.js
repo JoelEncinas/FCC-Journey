@@ -60,6 +60,8 @@ async function fetchData() {
         return d.substring(0, 4);
       });
 
+    const tooltip = d3.select("#tooltip");
+
     // bars
     svg
       .selectAll("mybar")
@@ -73,7 +75,30 @@ async function fetchData() {
       .attr("data-gdp", (d) => d[1])
       .attr("width", xScale.bandwidth())
       .attr("height", (d) => height - yScale(d[1]))
-      .attr("fill", "#69b3a2");
+      .attr("fill", "#69b3a2")
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+    function handleMouseOver(e, d) {
+      d3.select(this).attr("fill", "#f7a400");
+
+      console.log(e);
+      console.log(d);
+
+      tooltip
+        .style("visibility", "visible")
+        .style("opacity", 0.9)
+        .attr("data-date", d[0])
+        .style("left", e.pageX + "px")
+        .style("top", e.pageY - 28 + "px")
+        .text(`${d[0]} $${d[1]} Billion`); // the text content
+    }
+
+    function handleMouseOut(e, d) {
+      d3.select(this).attr("fill", "#69b3a2");
+
+      tooltip.style("visibility", "hidden");
+    }
 
     // Add the X Axis
     svg

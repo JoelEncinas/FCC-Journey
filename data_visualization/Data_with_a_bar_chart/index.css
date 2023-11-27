@@ -2,6 +2,20 @@ svg {
     border: 1px solid black;
 }
 
-#gdp-text, #more-info {
+#gdp-text,
+#more-info {
     font-size: 0.75rem;
+}
+
+body {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    background: #f4f4f4;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    opacity: 0;
 }
