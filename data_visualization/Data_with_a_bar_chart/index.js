@@ -35,7 +35,12 @@ async function fetchData() {
     const yScale = d3.scaleLinear().domain([0, 18000]).range([height, 0]);
 
     // Create x-axis with custom values
-    const xAxis = d3.axisBottom(xScale).tickValues(data.map((e) => e[0]));
+    const xAxis = d3
+      .axisBottom(xScale)
+      .tickValues(["1947-01-01", "1971-01-01"])
+      .tickFormat((d) => {
+        return d.substring(0,4);
+      });
 
     // bars
     svg
