@@ -1,3 +1,7 @@
 svg {
     border: 1px solid black;
 }
+
+#gdp-text {
+    font-size: 0.75rem;
+}

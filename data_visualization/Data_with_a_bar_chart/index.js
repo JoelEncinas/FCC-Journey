@@ -84,6 +84,16 @@ async function fetchData() {
 
     // Add the Y Axis
     svg.append("g").attr("id", "y-axis").call(d3.axisLeft(yScale));
+
+    // Insert text into the graph
+    svg
+      .append("text")
+      .attr("id", "gdp-text")
+      .attr("x", 110) // x-coordinate of the text
+      .attr("y", 40) // y-coordinate of the text
+      .attr("transform", "rotate(270, 100, 120)")
+      .style("text-anchor", "middle") // center the text horizontally
+      .text("Gross Domestic Product"); // the text content
   } catch (error) {
     console.error("Error loading data:", error);
   }
