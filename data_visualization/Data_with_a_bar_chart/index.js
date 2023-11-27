@@ -94,6 +94,14 @@ async function fetchData() {
       .attr("transform", "rotate(270, 100, 120)")
       .style("text-anchor", "middle") // center the text horizontally
       .text("Gross Domestic Product"); // the text content
+
+    svg
+      .append("text")
+      .attr("id", "more-info")
+      .attr("x", 325) // x-coordinate of the text
+      .attr("y", 325) // y-coordinate of the text
+      .style("text-anchor", "middle") // center the text horizontally
+      .text("More Information: http://www.bea.gov/national/pdf/nipaguid.pdf"); // the text content
   } catch (error) {
     console.error("Error loading data:", error);
   }

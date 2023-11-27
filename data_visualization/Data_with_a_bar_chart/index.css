@@ -2,6 +2,6 @@ svg {
     border: 1px solid black;
 }
 
-#gdp-text {
+#gdp-text, #more-info {
     font-size: 0.75rem;
 }
