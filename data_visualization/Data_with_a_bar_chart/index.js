@@ -75,11 +75,12 @@ async function fetchData() {
     // Add the X Axis
     svg
       .append("g")
+      .attr("id", "x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
     // Add the Y Axis
-    svg.append("g").call(d3.axisLeft(yScale));
+    svg.append("g").attr("id", "y-axis").call(d3.axisLeft(yScale));
   } catch (error) {
     console.error("Error loading data:", error);
   }
