@@ -82,9 +82,6 @@ async function fetchData() {
     function handleMouseOver(e, d) {
       d3.select(this).attr("fill", "#f7a400");
 
-      console.log(e);
-      console.log(d);
-
       tooltip
         .style("visibility", "visible")
         .style("opacity", 0.9)
@@ -92,7 +89,29 @@ async function fetchData() {
         .style("left", e.pageX + 10 + "px")
         .style("top", 350 + "px");
 
-      document.getElementById("tooltip").innerText = `${d[0]}\n$${d[1]} Billion`; // the text content
+      let quarter = "";
+
+      switch (d[0].substring(5, 7)) {
+        case "01":
+          quarter = "Q1";
+          break;
+        case "04":
+          quarter = "Q2";
+          break;
+        case "07":
+          quarter = "Q3";
+          break;
+        case "10":
+          quarter = "Q4";
+          break;
+      }
+
+      document.getElementById("tooltip").innerText = `${d[0].substring(
+        0,
+        4
+      )} ${quarter}\n$${parseInt(d[1]).toLocaleString("en-US", {
+        style: "decimal",
+      })} Billion`; // the text content
     }
 
     function handleMouseOut(e, d) {
