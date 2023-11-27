@@ -2,7 +2,6 @@
 const dataURL =
   "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
 
-// TODO modularize
 async function fetchData() {
   try {
     const response = await d3.json(dataURL);
@@ -10,12 +9,10 @@ async function fetchData() {
 
     console.log(data);
 
-    // set up svg container dimensions
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
 
-    // append the svg object to the body of the page
     const svg = d3
       .select("body")
       .append("svg")
@@ -24,17 +21,14 @@ async function fetchData() {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // X scale: use the year values from the data
     const xScale = d3
       .scaleBand()
       .domain(data.map((d) => d[0]))
       .range([0, width])
       .padding(0.1);
 
-    // Y scale: from 0 to 18000, in steps of 2000
     const yScale = d3.scaleLinear().domain([0, 18000]).range([height, 0]);
 
-    // custom axis
     const axisDates = [
       "1950-01-01",
       "1955-01-01",
@@ -52,7 +46,6 @@ async function fetchData() {
       "2015-01-01",
     ];
 
-    // Create x-axis with custom values
     const xAxis = d3
       .axisBottom(xScale)
       .tickValues(axisDates)
@@ -62,7 +55,6 @@ async function fetchData() {
 
     const tooltip = d3.select("#tooltip");
 
-    // bars
     svg
       .selectAll("mybar")
       .data(data)
@@ -111,7 +103,7 @@ async function fetchData() {
         4
       )} ${quarter}\n$${parseInt(d[1]).toLocaleString("en-US", {
         style: "decimal",
-      })} Billion`; // the text content
+      })} Billion`;
     }
 
     function handleMouseOut(e, d) {
@@ -120,33 +112,30 @@ async function fetchData() {
       tooltip.style("visibility", "hidden");
     }
 
-    // Add the X Axis
     svg
       .append("g")
       .attr("id", "x-axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis);
 
-    // Add the Y Axis
     svg.append("g").attr("id", "y-axis").call(d3.axisLeft(yScale));
 
-    // Insert text into the graph
     svg
       .append("text")
       .attr("id", "gdp-text")
-      .attr("x", 110) // x-coordinate of the text
-      .attr("y", 40) // y-coordinate of the text
+      .attr("x", 110)
+      .attr("y", 40)
       .attr("transform", "rotate(270, 100, 120)")
-      .style("text-anchor", "middle") // center the text horizontally
-      .text("Gross Domestic Product"); // the text content
+      .style("text-anchor", "middle")
+      .text("Gross Domestic Product");
 
     svg
       .append("text")
       .attr("id", "more-info")
-      .attr("x", 325) // x-coordinate of the text
-      .attr("y", 325) // y-coordinate of the text
-      .style("text-anchor", "middle") // center the text horizontally
-      .text("More Information: http://www.bea.gov/national/pdf/nipaguid.pdf"); // the text content
+      .attr("x", 325)
+      .attr("y", 325)
+      .style("text-anchor", "middle")
+      .text("More Information: http://www.bea.gov/national/pdf/nipaguid.pdf");
   } catch (error) {
     console.error("Error loading data:", error);
   }
