@@ -89,9 +89,10 @@ async function fetchData() {
         .style("visibility", "visible")
         .style("opacity", 0.9)
         .attr("data-date", d[0])
-        .style("left", e.pageX + "px")
-        .style("top", e.pageY - 28 + "px")
-        .text(`${d[0]} $${d[1]} Billion`); // the text content
+        .style("left", e.pageX + 10 + "px")
+        .style("top", 350 + "px");
+
+      document.getElementById("tooltip").innerText = `${d[0]}\n$${d[1]} Billion`; // the text content
     }
 
     function handleMouseOut(e, d) {
