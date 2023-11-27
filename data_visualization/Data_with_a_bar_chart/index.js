@@ -66,8 +66,11 @@ async function fetchData() {
       .data(data)
       .enter()
       .append("rect")
+      .attr("class", "bar")
       .attr("x", (d) => xScale(d[0]))
       .attr("y", (d) => yScale(d[1]))
+      .attr("data-date", (d) => d[0])
+      .attr("data-gdp", (d) => d[1])
       .attr("width", xScale.bandwidth())
       .attr("height", (d) => height - yScale(d[1]))
       .attr("fill", "#69b3a2");
