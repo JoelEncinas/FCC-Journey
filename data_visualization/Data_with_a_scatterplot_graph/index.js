@@ -1,11 +1,11 @@
 // Data
 const dataURL =
-  "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
+  "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json";
 
 async function fetchData() {
   try {
     const response = await d3.json(dataURL);
-    const data = response.data;
+    const data = response;
 
     console.log(data);
 
@@ -20,6 +20,34 @@ async function fetchData() {
       .attr("height", height + margin.top + margin.bottom)
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    const xScale = d3
+      .scaleLinear()
+      .domain(["1993", "2016"])
+      .range([0, width]);
+
+    const yScale = d3
+      .scaleLinear()
+      .domain([0, d3.max(data, (d) => d.Time)])
+      .range([height, 0]);
+
+    // Create circles for each data point
+    svg
+      .selectAll("circle")
+      .data(data)
+      .enter()
+      .append("circle")
+      .attr("cx", (d) => xScale(d.Year))
+      .attr("cy", (d) => yScale(d.Time))
+      .attr("r", 5);
+
+    // Add axes
+    svg
+      .append("g")
+      .attr("transform", `translate(0, ${height})`)
+      .call(d3.axisBottom(xScale));
+
+    svg.append("g").call(d3.axisLeft(yScale));
   } catch (error) {
     console.error("Error loading data:", error);
   }
