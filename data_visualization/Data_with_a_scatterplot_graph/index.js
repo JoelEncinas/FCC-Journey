@@ -21,14 +21,11 @@ async function fetchData() {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    const xScale = d3
-      .scaleLinear()
-      .domain(["1993", "2016"])
-      .range([0, width]);
+    const xScale = d3.scaleLinear().domain([1993, 2016]).range([0, width]);
 
     const yScale = d3
       .scaleLinear()
-      .domain([0, d3.max(data, (d) => d.Time)])
+      .domain(["36:50", "39:50"])
       .range([height, 0]);
 
     // Create circles for each data point
@@ -48,6 +45,16 @@ async function fetchData() {
       .call(d3.axisBottom(xScale));
 
     svg.append("g").call(d3.axisLeft(yScale));
+
+    // Add Y axis label
+    svg
+      .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 10 - margin.left)
+      .attr("x", 60 - height / 2)
+      .attr("dy", "1em")
+      .style("text-anchor", "middle")
+      .text("Time in Minutes");
   } catch (error) {
     console.error("Error loading data:", error);
   }
