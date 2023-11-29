@@ -1,16 +1,15 @@
-// Data
-const dataURL =
+const topologyURL =
   "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json";
 
-const dataURL2 =
+const educationURL =
   "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json";
 
-async function fetchData() {
+async function draw() {
   try {
-    const data = await d3.json(dataURL);
-    const countyData = await d3.json(dataURL2);
+    const topologyData = await d3.json(topologyURL);
+    const countyData = await d3.json(educationURL);
 
-    const counties = topojson.feature(data, data.objects.counties);
+    const counties = topojson.feature(topologyData, topologyData.objects.counties);
 
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 1100 - margin.left - margin.right;
@@ -20,15 +19,12 @@ async function fetchData() {
 
     const tooltip = d3.select("#tooltip");
 
-    // Create a mapping between FIPS codes and data
     const fipsToDataMap = new Map(countyData.map((d) => [d.fips, d]));
 
-    // Choose a color scale based on your data values
-    const colorScale = d3.scaleSequential(d3.interpolateBlues).domain([3, 66]);
+    const colorScale = d3
+      .scaleSequential(d3.interpolateBlues)
+      .domain([2.6, 75.1]);
 
-    console.log(countyData);
-
-    // Draw the map
     svg
       .selectAll("path")
       .data(counties.features)
@@ -65,7 +61,6 @@ async function fetchData() {
       tooltip.style("visibility", "hidden");
     }
 
-    // Add legend
     const legendWidth = 300;
     const legendHeight = 10;
 
@@ -96,7 +91,12 @@ async function fetchData() {
       .append("rect")
       .attr("class", "legend-rect")
       .attr("x", (d) => legendScale(d))
-      .attr("width", legendWidth / legendAxisTicks.length)
+      .attr("width", (d, i) => {
+        if (i === legendAxisTicks.length - 1) {
+          return legendScale.range()[1] - legendScale(d);
+        }
+        return legendScale(legendAxisTicks[i + 1]) - legendScale(d);
+      })
       .attr("height", legendHeight)
       .style("fill", (d) => colorScale(d));
 
@@ -104,10 +104,9 @@ async function fetchData() {
       .append("g")
       .attr("transform", `translate(0, ${legendHeight})`)
       .call(legendAxis);
-      
   } catch (error) {
     console.error("Error loading data:", error);
   }
 }
 
-fetchData();
+draw();
