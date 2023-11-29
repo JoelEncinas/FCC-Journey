@@ -29,10 +29,7 @@ async function fetchData() {
 
     console.log(data);
 
-    const xScale = d3
-      .scaleLinear()
-      .domain(d3.extent(data, (d) => d.Year))
-      .range([0, width]);
+    const xScale = d3.scaleLinear().domain([1993, 2016]).range([0, width]);
 
     const yScale = d3
       .scaleTime()
@@ -63,7 +60,7 @@ async function fetchData() {
     svg
       .append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 10 - margin.left)
+      .attr("y", 0 - margin.left)
       .attr("x", 60 - height / 2)
       .attr("dy", "1em")
       .style("text-anchor", "middle")
