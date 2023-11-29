@@ -20,6 +20,8 @@ async function fetchData() {
 
     const svg = d3.select("#map").attr("width", width).attr("height", height);
 
+    const tooltip = d3.select("#tooltip");
+
     // Draw the map
     svg
       .selectAll("path")
@@ -29,7 +31,22 @@ async function fetchData() {
       .attr("d", path)
       .style("fill", "steelblue")
       .style("stroke", "black")
-      .style("stroke-width", 1);
+      .style("stroke-width", 1)
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+    function handleMouseOver(e, d) {
+      tooltip
+        .style("visibility", "visible")
+        .style("opacity", 0.95)
+        // .attr("data-year", d.Year)
+        .style("left", e.pageX + 10 + "px")
+        .style("top", e.pageY - 30 + "px");
+    }
+
+    function handleMouseOut(e, d) {
+      tooltip.style("visibility", "hidden");
+    }
   } catch (error) {
     console.error("Error loading data:", error);
   }
