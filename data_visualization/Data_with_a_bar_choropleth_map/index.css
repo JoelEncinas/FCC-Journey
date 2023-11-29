@@ -1,0 +1,19 @@
+#map {
+    border: 1px solid black;
+    background-color: blanchedalmond;
+}
+
+body {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    background: #f4f4f4;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    opacity: 0;
+    text-align: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
