@@ -2,32 +2,35 @@
 const dataURL =
   "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json";
 
+const dataURL2 =
+  "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/for_user_education.json";
+
 async function fetchData() {
   try {
-    const geojson = await d3.json(dataURL);
-
-    console.log(geojson);
+    const data = await d3.json(dataURL);
+    const countyData = await d3.json(dataURL2);
 
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
-    const width = 1000 - margin.left - margin.right;
+    const width = 1200 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
 
     const svg = d3.select("#map").attr("width", width).attr("height", height);
 
     const tooltip = d3.select("#tooltip");
 
-    // Create a GeoPath function
-    const path = d3.geoPath();
+    const counties = topojson.feature(data, data.objects.counties);
+
+    console.log(countyData);
 
     // Draw the map
     svg
       .selectAll("path")
-      .data(geojson.objects.counties.geometries)
+      .data(counties.features)
       .enter()
       .append("path")
-      .attr("d", path)
-      .style("fill", "steelblue")
-      .style("stroke", "black")
+      .attr("d", d3.geoPath())
+      .attr("fill", "fff")
+      .style("stroke", "white")
       .style("stroke-width", 1)
       .on("mouseover", handleMouseOver)
       .on("mouseout", handleMouseOut);
