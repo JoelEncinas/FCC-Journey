@@ -8,6 +8,11 @@ async function fetchData() {
 
     console.log(geojson);
 
+    const statesResponse = await fetch("states.json");
+    const states = await statesResponse.json();
+
+    console.log(states);
+
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 1000 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
@@ -43,7 +48,9 @@ async function fetchData() {
         .style("left", e.pageX + 10 + "px")
         .style("top", e.pageY - 30 + "px");
 
-      document.getElementById("tooltip").innerText = `${d.properties.NAME} ${d.properties.LSAD}`;
+      document.getElementById("tooltip").innerText = `${d.properties.NAME} ${
+        d.properties.LSAD === "CA" ? "Census Area" : d.properties.LSAD
+      }, ${d.properties.STATE} `;
     }
 
     function handleMouseOut(e, d) {
