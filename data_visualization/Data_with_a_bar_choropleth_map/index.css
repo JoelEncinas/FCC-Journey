@@ -2,10 +2,19 @@ body {
     position: relative;
 }
 
-.tooltip {
+#title {
+    font-size: 3rem;
+}
+
+#subtitle {
+    font-weight: lighter;
+}
+
+#tooltip {
     position: absolute;
-    background: #f4f4f4;
-    padding: 5px;
+    background: #b5e8ff;
+    font-weight: bold;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 2px;
     opacity: 0;
