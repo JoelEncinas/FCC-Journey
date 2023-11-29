@@ -34,6 +34,8 @@ async function fetchData() {
       .domain(d3.extent(data, (d) => d.Time))
       .range([0, height]);
 
+    const tooltip = d3.select("#tooltip");
+
     svg
       .selectAll("circle")
       .data(data)
@@ -53,7 +55,33 @@ async function fetchData() {
       .attr("class", "dot")
       .attr("fill", (d) => {
         return d.Doping === "" ? "#008128" : "#E31106";
-      });
+      })
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+    function handleMouseOver(e, d) {
+      tooltip
+        .style("visibility", "visible")
+        .style("opacity", 0.95)
+        .attr("data-year", d.Year)
+        .style("left", e.pageX + 10 + "px")
+        .style("top", e.pageY - 30 + "px");
+
+      document.getElementById("tooltip").innerText =
+        d.Doping === ""
+          ? `${d.Name}: ${d.Nationality}\nYear: ${
+              d.Year
+            }, Time: ${d.Time.getMinutes()}:${d.Time.getSeconds()}`
+          : `${d.Name}: ${d.Nationality}\nYear: ${
+              d.Year
+            }, Time: ${d.Time.getMinutes()}:${d.Time.getSeconds()}\n\n${
+              d.Doping
+            }`;
+    }
+
+    function handleMouseOut(e, d) {
+      tooltip.style("visibility", "hidden");
+    }
 
     const legend = svg
       .append("g")
@@ -62,7 +90,7 @@ async function fetchData() {
 
     const legendItems = legend
       .selectAll(".legend-item")
-      .data(["No doping allegations", "Riders with doping allegations"]) // Add the unique categories here
+      .data(["No doping allegations", "Riders with doping allegations"]) 
       .enter()
       .append("g")
       .attr("class", "legend-item")
@@ -93,7 +121,6 @@ async function fetchData() {
       .attr("id", "y-axis")
       .call(d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S")));
 
-    // Add Y axis label
     svg
       .append("text")
       .attr("transform", "rotate(-90)")

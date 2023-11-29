@@ -5,3 +5,14 @@ body {
 .legend-item {
     font-size: 0.7rem;
 }
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    font-size: 0.75rem;
+    background: #a1e3e6;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
