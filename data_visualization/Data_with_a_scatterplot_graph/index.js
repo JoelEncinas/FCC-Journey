@@ -5,7 +5,7 @@ const dataURL =
 async function fetchData() {
   try {
     const response = await d3.json(dataURL);
-    const data = response;
+    let data = response;
 
     console.log(data);
 
@@ -21,12 +21,23 @@ async function fetchData() {
       .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    const xScale = d3.scaleLinear().domain([1993, 2016]).range([0, width]);
+    const parseTime = d3.timeParse("%M:%S");
+
+    data.forEach((d) => {
+      d.Time = parseTime(d.Time);
+    });
+
+    console.log(data);
+
+    const xScale = d3
+      .scaleLinear()
+      .domain(d3.extent(data, (d) => d.Year))
+      .range([0, width]);
 
     const yScale = d3
-      .scaleLinear()
-      .domain(["36:50", "39:50"])
-      .range([height, 0]);
+      .scaleTime()
+      .domain(d3.extent(data, (d) => d.Time))
+      .range([0, height]);
 
     // Create circles for each data point
     svg
@@ -44,7 +55,9 @@ async function fetchData() {
       .attr("transform", `translate(0, ${height})`)
       .call(d3.axisBottom(xScale));
 
-    svg.append("g").call(d3.axisLeft(yScale));
+    svg
+      .append("g")
+      .call(d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S")));
 
     // Add Y axis label
     svg
