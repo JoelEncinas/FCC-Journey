@@ -105,7 +105,7 @@ async function draw() {
       .attr("transform", `translate(0, ${legendHeight})`)
       .call(legendAxis);
   } catch (error) {
-    console.error("Error loading data:", error);
+    console.error("Error", error);
   }
 }
 

@@ -1,13 +1,10 @@
-// Data
 const dataURL =
   "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/GDP-data.json";
 
-async function fetchData() {
+async function draw() {
   try {
     const response = await d3.json(dataURL);
     const data = response.data;
-
-    console.log(data);
 
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 600 - margin.left - margin.right;
@@ -137,8 +134,8 @@ async function fetchData() {
       .style("text-anchor", "middle")
       .text("More Information: http://www.bea.gov/national/pdf/nipaguid.pdf");
   } catch (error) {
-    console.error("Error loading data:", error);
+    console.error("Error", error);
   }
 }
 
-fetchData();
+draw();

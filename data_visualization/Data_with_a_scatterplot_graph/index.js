@@ -1,8 +1,7 @@
-// Data
 const dataURL =
   "https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json";
 
-async function fetchData() {
+async function draw() {
   try {
     const response = await d3.json(dataURL);
     let data = response;
@@ -130,8 +129,8 @@ async function fetchData() {
       .style("text-anchor", "middle")
       .text("Time in Minutes");
   } catch (error) {
-    console.error("Error loading data:", error);
+    console.error("Error", error);
   }
 }
 
-fetchData();
+draw();
