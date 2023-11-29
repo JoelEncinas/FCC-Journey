@@ -1,36 +1,28 @@
 // Data
-const dataURL = "./gz_2010_us_050_00_20m.json";
+const dataURL =
+  "https://cdn.freecodecamp.org/testable-projects-fcc/data/choropleth_map/counties.json";
 
 async function fetchData() {
   try {
-    const response = await d3.json(dataURL);
-    const geojson = response;
+    const geojson = await d3.json(dataURL);
 
     console.log(geojson);
-
-    const statesResponse = await fetch("states.json");
-    const states = await statesResponse.json();
-
-    console.log(states);
 
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 1000 - margin.left - margin.right;
     const height = 700 - margin.top - margin.bottom;
 
-    // Create a projection
-    const projection = d3.geoAlbersUsa().fitSize([width, height], geojson);
-
-    // Create a GeoPath function with the projection
-    const path = d3.geoPath().projection(projection);
-
     const svg = d3.select("#map").attr("width", width).attr("height", height);
 
     const tooltip = d3.select("#tooltip");
 
+    // Create a GeoPath function
+    const path = d3.geoPath();
+
     // Draw the map
     svg
       .selectAll("path")
-      .data(geojson.features)
+      .data(geojson.objects.counties.geometries)
       .enter()
       .append("path")
       .attr("d", path)
@@ -47,10 +39,6 @@ async function fetchData() {
         // .attr("data-year", d.Year)
         .style("left", e.pageX + 10 + "px")
         .style("top", e.pageY - 30 + "px");
-
-      document.getElementById("tooltip").innerText = `${d.properties.NAME} ${
-        d.properties.LSAD === "CA" ? "Census Area" : d.properties.LSAD
-      }, ${d.properties.STATE} `;
     }
 
     function handleMouseOut(e, d) {
