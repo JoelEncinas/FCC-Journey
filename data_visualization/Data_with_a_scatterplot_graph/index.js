@@ -44,7 +44,39 @@ async function fetchData() {
       .append("circle")
       .attr("cx", (d) => xScale(d.Year))
       .attr("cy", (d) => yScale(d.Time))
-      .attr("r", 5);
+      .attr("r", 5)
+      .attr("fill", (d) => {
+        return d.Doping === "" ? "#008128" : "#E31106";
+      });
+
+    // Add legend
+    const legend = svg
+      .append("g")
+      .attr("class", "legend")
+      .attr("transform", `translate(${width - 100}, 100)`);
+
+    // Create legend items
+    const legendItems = legend
+      .selectAll(".legend-item")
+      .data(["No doping allegations", "Riders with doping allegations"]) // Add the unique categories here
+      .enter()
+      .append("g")
+      .attr("class", "legend-item")
+      .attr("transform", (d, i) => `translate(0, ${i * 20})`);
+
+    // Add labels to legend
+    legendItems
+      .append("text")
+      .attr("x", 20)
+      .attr("y", 10)
+      .text((d) => `${d}`);
+
+    // Add colored boxes to legend
+    legendItems
+      .append("rect")
+      .attr("width", 10)
+      .attr("height", 10)
+      .attr("fill", (d) => (d === "No doping allegations" ? "#008128" : "#E31106"));
 
     // Add axes
     svg

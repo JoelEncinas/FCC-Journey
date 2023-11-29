@@ -1,3 +1,7 @@
 body {
     position: relative;
 }
+
+.legend-item {
+    font-size: 0.7rem;
+}
