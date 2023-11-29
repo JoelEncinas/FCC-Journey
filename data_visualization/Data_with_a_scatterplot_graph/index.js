@@ -7,8 +7,6 @@ async function fetchData() {
     const response = await d3.json(dataURL);
     let data = response;
 
-    console.log(data);
-
     const margin = { top: 60, right: 60, bottom: 60, left: 60 };
     const width = 600 - margin.left - margin.right;
     const height = 400 - margin.top - margin.bottom;
@@ -36,7 +34,6 @@ async function fetchData() {
       .domain(d3.extent(data, (d) => d.Time))
       .range([0, height]);
 
-    // Create circles for each data point
     svg
       .selectAll("circle")
       .data(data)
@@ -45,17 +42,24 @@ async function fetchData() {
       .attr("cx", (d) => xScale(d.Year))
       .attr("cy", (d) => yScale(d.Time))
       .attr("r", 5)
+      .attr("data-xvalue", (d) => d.Year)
+      .attr(
+        "data-yvalue",
+        (d) =>
+          `Mon Jan 01 ${
+            d.Year
+          } 00:${d.Time.getMinutes()}:${d.Time.getSeconds()}`
+      )
+      .attr("class", "dot")
       .attr("fill", (d) => {
         return d.Doping === "" ? "#008128" : "#E31106";
       });
 
-    // Add legend
     const legend = svg
       .append("g")
-      .attr("class", "legend")
+      .attr("id", "legend")
       .attr("transform", `translate(${width - 100}, 100)`);
 
-    // Create legend items
     const legendItems = legend
       .selectAll(".legend-item")
       .data(["No doping allegations", "Riders with doping allegations"]) // Add the unique categories here
@@ -64,28 +68,29 @@ async function fetchData() {
       .attr("class", "legend-item")
       .attr("transform", (d, i) => `translate(0, ${i * 20})`);
 
-    // Add labels to legend
     legendItems
       .append("text")
       .attr("x", 20)
       .attr("y", 10)
       .text((d) => `${d}`);
 
-    // Add colored boxes to legend
     legendItems
       .append("rect")
       .attr("width", 10)
       .attr("height", 10)
-      .attr("fill", (d) => (d === "No doping allegations" ? "#008128" : "#E31106"));
+      .attr("fill", (d) =>
+        d === "No doping allegations" ? "#008128" : "#E31106"
+      );
 
-    // Add axes
     svg
       .append("g")
+      .attr("id", "x-axis")
       .attr("transform", `translate(0, ${height})`)
-      .call(d3.axisBottom(xScale));
+      .call(d3.axisBottom(xScale).tickFormat(d3.format("d")));
 
     svg
       .append("g")
+      .attr("id", "y-axis")
       .call(d3.axisLeft(yScale).tickFormat(d3.timeFormat("%M:%S")));
 
     // Add Y axis label
