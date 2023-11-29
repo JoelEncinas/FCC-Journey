@@ -26,7 +26,7 @@ async function fetchData() {
     // Choose a color scale based on your data values
     const colorScale = d3.scaleSequential(d3.interpolateBlues).domain([3, 66]);
 
-console.log(countyData);
+    console.log(countyData);
 
     // Draw the map
     svg
@@ -71,6 +71,7 @@ console.log(countyData);
 
     const legend = svg
       .append("g")
+      .attr("id", "legend")
       .attr(
         "transform",
         `translate(${width - legendWidth - 20}, ${height - legendHeight - 20})`
@@ -81,41 +82,29 @@ console.log(countyData);
       .domain([3, 66])
       .range([0, legendWidth]);
 
+    const legendAxisTicks = [3, 12, 21, 30, 39, 48, 57, 66];
+
     const legendAxis = d3
       .axisBottom(legendScale)
-      .tickValues([3, 12, 21, 30, 39, 48, 57, 66])
+      .tickValues(legendAxisTicks)
       .tickFormat((d) => `${d}%`);
 
     legend
+      .selectAll(".legend-rect")
+      .data(legendAxisTicks)
+      .enter()
       .append("rect")
-      .attr("id", "legend")
-      .attr("width", legendWidth)
+      .attr("class", "legend-rect")
+      .attr("x", (d) => legendScale(d))
+      .attr("width", legendWidth / legendAxisTicks.length)
       .attr("height", legendHeight)
-      .style("fill", "url(#legendGradient)");
+      .style("fill", (d) => colorScale(d));
 
     legend
       .append("g")
       .attr("transform", `translate(0, ${legendHeight})`)
       .call(legendAxis);
-
-    // Add gradient to the legend
-    const defs = svg.append("defs");
-
-    const linearGradient = defs
-      .append("linearGradient")
-      .attr("id", "legendGradient")
-      .attr("x1", "0%")
-      .attr("y1", "0%")
-      .attr("x2", "100%")
-      .attr("y2", "0%");
-
-    linearGradient
-      .selectAll("stop")
-      .data(colorScale.range())
-      .enter()
-      .append("stop")
-      .attr("offset", (d, i) => i / (colorScale.range().length - 1))
-      .attr("stop-color", (d) => d);
+      
   } catch (error) {
     console.error("Error loading data:", error);
   }
