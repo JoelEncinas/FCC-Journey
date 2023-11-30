@@ -28,14 +28,29 @@ async function draw() {
       .domain(data.map((d) => d.year))
       .range([0, width]);
 
+    const months = [
+      "December",
+      "November",
+      "October",
+      "September",
+      "August",
+      "July",
+      "June",
+      "May",
+      "April",
+      "March",
+      "February",
+      "January",
+    ];
+
     const yScale = d3
       .scaleBand()
       .domain(data.map((d) => d.month))
       .range([height, 0]);
 
     const colorScale = d3
-      .scaleLinear()
-      .domain([2.8, 12.8])
+      .scaleThreshold()
+      .domain([2.8, 3.8, 4.9, 6.7, 8.5, 10.7, 11.7, 12.8])
       .range([
         "#4575B4",
         "#74ADD1",
@@ -54,7 +69,10 @@ async function draw() {
       .attr("id", "x-axis")
       .call(d3.axisBottom(xScale));
 
-    svg.append("g").attr("id", "y-axis").call(d3.axisLeft(yScale));
+    svg
+      .append("g")
+      .attr("id", "y-axis")
+      .call(d3.axisLeft(yScale).tickFormat((d, i) => months[i]));
 
     svg
       .selectAll("rect")
@@ -67,7 +85,12 @@ async function draw() {
       .attr("data-month", (d) => yScale(d.month))
       .attr("width", xScale.bandwidth())
       .attr("height", yScale.bandwidth())
-      .attr("fill", (d) => colorScale(baseTemp - d.variance));
+      .attr("fill", (d) => {
+        const fillValue = colorScale(baseTemp + d.variance);
+        // console.log((baseTemp + d.variance).toFixed(1));
+        console.log(d.variance);
+        return fillValue;
+      });
 
     const legendContainer = svg.append("g").attr("id", "legend");
   } catch (error) {
