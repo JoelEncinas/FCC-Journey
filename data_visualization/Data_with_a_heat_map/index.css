@@ -3,10 +3,11 @@ body {
 }
 
 .tooltip {
+    visibility: visible;
     position: absolute;
-    background: #f4f4f4;
+    background: #000000;
+    color: #fff;
     padding: 5px;
-    border: 1px solid #ccc;
     border-radius: 2px;
     opacity: 0;
     text-align: center;

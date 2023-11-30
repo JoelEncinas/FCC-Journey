@@ -90,7 +90,25 @@ async function draw() {
         // console.log((baseTemp + d.variance).toFixed(1));
         console.log(d.variance);
         return fillValue;
-      });
+      })
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
+
+    function handleMouseOver(e, d) {
+      d3.select(this).style("stroke", "#000").style("stroke-width", "1px");
+
+      tooltip
+        .style("visibility", "visible")
+        .style("opacity", 0.75)
+        .style("left", e.pageX - 30 + "px")
+        .style("top", e.pageY - 70 + "px");
+    }
+
+    function handleMouseOut(e, d) {
+      d3.select(this).style("stroke", "none").style("stroke-width", "0");
+
+      tooltip.style("visibility", "hidden");
+    }
 
     const legendContainer = svg.append("g").attr("id", "legend");
   } catch (error) {
