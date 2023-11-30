@@ -6,8 +6,6 @@ async function draw() {
     const response = await d3.json(dataURL);
     const data = response.children;
 
-    console.log(data);
-
     const margin = { top: 20, right: 120, bottom: 60, left: 0 };
     const width = 800 - margin.left - margin.right;
     const height = 600 - margin.top - margin.bottom;
@@ -25,31 +23,10 @@ async function draw() {
 
     treemap(root);
 
-    const customOrangeScale = [
-      "#FFD700",
-      "#FFD200",
-      "#FFCD00",
-      "#FFC800",
-      "#FFC300",
-      "#FFBE00",
-      "#FFB900",
-      "#FFB400",
-      "#FFAF00",
-      "#FFAA00",
-      "#FFA500",
-      "#FFA000",
-      "#FF9B00",
-      "#FF9600",
-      "#FF9100",
-      "#FF8C00",
-      "#FF8700",
-      "#FF8200",
-    ];
-
     const colorScale = d3
       .scaleOrdinal()
       .domain(data.map((d) => d.name))
-      .range(customOrangeScale);
+      .range(d3.schemePaired);
 
     const cells = svg
       .selectAll("g")
