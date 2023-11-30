@@ -44,23 +44,27 @@ async function draw() {
       .attr("data-name", (d) => d.data.name)
       .attr("data-category", (d) => d.data.category)
       .attr("data-value", (d) => d.data.value)
-      .attr("fill", "steelblue"); // You can set colors based on your data
+      .attr("fill", "steelblue") // You can set colors based on your data
+      .on("mouseover", handleMouseOver)
+      .on("mouseout", handleMouseOut);
 
     // Tooltip
     const tooltip = d3.select("#tooltip");
 
-    cells
-      .on("mouseover", (event, d) => {
-        tooltip.style("visibility", "visible");
-        tooltip
-          .html(`${d.data.name}<br>${d.data.value}`)
-          .attr("data-name", d.data.name)
-          .style("left", event.pageX + "px")
-          .style("top", event.pageY - 28 + "px");
-      })
-      .on("mouseout", () => {
-        tooltip.style("visibility", "hidden");
-      });
+    function handleMouseOver(e, d) {
+      tooltip
+        .style("visibility", "visible")
+        .style("opacity", 0.8)
+        .attr("data-name", d.data.name)
+        .style("left", e.pageX + 10 + "px")
+        .style("top", e.pageY - 30 + "px");
+
+      tooltip.html(`${d.data.name}<br>${d.data.value}`);
+    }
+
+    function handleMouseOut(e, d) {
+      tooltip.style("visibility", "hidden");
+    }
   } catch (error) {
     console.error("Error", error);
   }
