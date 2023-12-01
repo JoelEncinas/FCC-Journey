@@ -50,7 +50,7 @@ async function draw() {
 
     let yearsArray = [];
 
-    for (let year = 1753; year <= 2015; year++) {
+    for (let year = 1760; year <= 2015; year += 10) {
       yearsArray.push(year);
     }
 
