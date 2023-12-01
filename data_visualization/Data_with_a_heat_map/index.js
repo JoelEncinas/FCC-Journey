@@ -48,6 +48,21 @@ async function draw() {
       .domain(data.map((d) => d.month))
       .range([height, 0]);
 
+    let yearsArray = [];
+
+    for (let year = 1753; year <= 2015; year++) {
+      yearsArray.push(year);
+    }
+
+    console.log(yearsArray);
+
+    const xAxis = d3
+      .axisBottom(xScale)
+      .tickValues(yearsArray)
+      .tickFormat((d) => {
+        return d;
+      });
+
     const colorScale = d3
       .scaleThreshold()
       .domain([2.8, 3.8, 4.9, 6.7, 8.5, 10.7, 11.7, 12.8])
@@ -67,7 +82,7 @@ async function draw() {
       .append("g")
       .attr("transform", "translate(0," + height + ")")
       .attr("id", "x-axis")
-      .call(d3.axisBottom(xScale));
+      .call(xAxis);
 
     svg
       .append("g")
@@ -88,7 +103,7 @@ async function draw() {
       .attr("fill", (d) => {
         const fillValue = colorScale(baseTemp + d.variance);
         // console.log((baseTemp + d.variance).toFixed(1));
-        console.log(d.variance);
+        // console.log(d.variance);
         return fillValue;
       })
       .on("mouseover", handleMouseOver)
@@ -101,7 +116,7 @@ async function draw() {
         .style("visibility", "visible")
         .style("opacity", 0.75)
         .style("left", e.pageX - 30 + "px")
-        .style("top", e.pageY - 70 + "px");
+        .style("top", e.pageY - 90 + "px");
     }
 
     function handleMouseOut(e, d) {
