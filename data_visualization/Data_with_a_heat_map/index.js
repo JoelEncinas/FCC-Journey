@@ -118,9 +118,12 @@ async function draw() {
         .style("left", e.pageX - 30 + "px")
         .style("top", e.pageY - 90 + "px");
 
-      // 1872 - July \n 8.5 ºC \n -0.2 ªC
-
       console.log(d);
+      tooltip.html(
+        `${d.year} - ${months[d.month - 1]}<br>${(
+          baseTemp + d.variance
+        ).toFixed(1)} ºC<br>${d.variance.toFixed(1)} ºC`
+      );
     }
 
     function handleMouseOut(e, d) {
