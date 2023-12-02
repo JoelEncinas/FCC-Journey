@@ -29,24 +29,24 @@ async function draw() {
       .range([0, width]);
 
     const months = [
-      "December",
-      "November",
-      "October",
-      "September",
-      "August",
-      "July",
-      "June",
-      "May",
-      "April",
-      "March",
-      "February",
       "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
 
     const yScale = d3
       .scaleBand()
       .domain(data.map((d) => d.month))
-      .range([height, 0]);
+      .range([0, height]);
 
     let yearsArray = [];
 
@@ -117,6 +117,10 @@ async function draw() {
         .style("opacity", 0.75)
         .style("left", e.pageX - 30 + "px")
         .style("top", e.pageY - 90 + "px");
+
+      // 1872 - July \n 8.5 ºC \n -0.2 ªC
+
+      console.log(d);
     }
 
     function handleMouseOut(e, d) {
