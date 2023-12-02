@@ -7,11 +7,9 @@ async function draw() {
     const data = response.monthlyVariance;
     const baseTemp = response.baseTemperature;
 
-    console.log(data, baseTemp);
-
-    const margin = { top: 60, right: 60, bottom: 60, left: 60 };
+    const margin = { top: 60, right: 60, bottom: 150, left: 60 };
     const width = 1600 - margin.left - margin.right;
-    const height = 500 - margin.top - margin.bottom;
+    const height = 550 - margin.top - margin.bottom;
 
     const svg = d3
       .select("body")
@@ -54,8 +52,6 @@ async function draw() {
       yearsArray.push(year);
     }
 
-    console.log(yearsArray);
-
     const xAxis = d3
       .axisBottom(xScale)
       .tickValues(yearsArray)
@@ -65,8 +61,9 @@ async function draw() {
 
     const colorScale = d3
       .scaleThreshold()
-      .domain([2.8, 3.8, 4.9, 6.7, 8.5, 10.7, 11.7, 12.8])
+      .domain([2.8, 3.9, 5.0, 6.1, 7.2, 8.3, 9.5, 10.6, 11.7, 12.8])
       .range([
+        "#313695",
         "#4575B4",
         "#74ADD1",
         "#ABD9E9",
@@ -132,7 +129,41 @@ async function draw() {
       tooltip.style("visibility", "hidden");
     }
 
-    const legendContainer = svg.append("g").attr("id", "legend");
+    const legendContainer = svg
+      .append("g")
+      .attr("id", "legend")
+      .attr("transform", "translate(" + 0 + "," + (height + margin.top) + ")");
+
+    const legendWidth = 300;
+    const legendHeight = 20;
+
+    const legend = legendContainer
+      .selectAll("g")
+      .data(colorScale.range())
+      .enter()
+      .append("g")
+      .attr(
+        "transform",
+        (d, i) => "translate(" + (i * legendWidth) / 11.05 + ", 0)"
+      )
+      .style("display", (d, i) => (i === 0 ? "none" : "block"));
+
+    legend
+      .append("rect")
+      .attr("width", legendWidth / 10)
+      .attr("height", legendHeight)
+      .style("fill", (d) => d);
+
+    const legendAxis = d3
+      .axisBottom()
+      .scale(d3.scaleLinear().domain([1.7, 13.9]).range([0, legendWidth]))
+      .tickValues(colorScale.domain())
+      .tickFormat(d3.format(".1f"));
+
+    legendContainer
+      .append("g")
+      .attr("transform", "translate(0," + legendHeight + ")")
+      .call(legendAxis);
   } catch (error) {
     console.error("Error", error);
   }
