@@ -115,8 +115,8 @@ async function draw() {
       tooltip
         .style("visibility", "visible")
         .style("opacity", 0.75)
-        .style("left", e.pageX - 30 + "px")
-        .style("top", e.pageY - 90 + "px");
+        .style("left", e.pageX - 60 + "px")
+        .style("top", e.pageY - 120 + "px");
 
       console.log(d);
       tooltip.html(
