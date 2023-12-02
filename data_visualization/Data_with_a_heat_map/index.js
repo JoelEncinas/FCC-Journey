@@ -97,13 +97,13 @@ async function draw() {
       .attr("class", "cell")
       .attr("x", (d) => xScale(d.year))
       .attr("y", (d) => yScale(d.month))
-      .attr("data-month", (d) => yScale(d.month))
+      .attr("data-month", (d) => d.month - 1)
+      .attr("data-year", (d) => d.year)
+      .attr("data-temp", (d) => (baseTemp + d.variance).toFixed(1))
       .attr("width", xScale.bandwidth())
       .attr("height", yScale.bandwidth())
       .attr("fill", (d) => {
         const fillValue = colorScale(baseTemp + d.variance);
-        // console.log((baseTemp + d.variance).toFixed(1));
-        // console.log(d.variance);
         return fillValue;
       })
       .on("mouseover", handleMouseOver)
@@ -116,9 +116,9 @@ async function draw() {
         .style("visibility", "visible")
         .style("opacity", 0.75)
         .style("left", e.pageX - 60 + "px")
-        .style("top", e.pageY - 120 + "px");
+        .style("top", e.pageY - 120 + "px")
+        .attr("data-year", d.year);
 
-      console.log(d);
       tooltip.html(
         `${d.year} - ${months[d.month - 1]}<br>${(
           baseTemp + d.variance
