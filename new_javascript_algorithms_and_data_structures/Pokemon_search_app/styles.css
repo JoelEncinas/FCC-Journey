@@ -33,7 +33,7 @@ button:hover {
 }
 
 #sprite-container {
-    height: 200px;
+    height: 100px;
 }
 
 .container {
@@ -42,4 +42,94 @@ button:hover {
     display: flex;
     justify-content: center;
     text-align: left;
+}
+
+#hp,
+#attack,
+#defense,
+#special-attack,
+#special-defense,
+#speed {
+    text-align: center;
+}
+
+#pokemon-name {
+    text-transform: capitalize;
+}
+
+#pokemon-name, #pokemon-id {
+    font-size: 1.2rem;
+}
+
+#types {
+    margin: 30px auto;
+}
+
+.type {
+    margin: 5px;
+    padding: 5px;
+    border-radius: 3px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.normal {
+    background-color: #AAAA99;
+}
+
+.fire {
+    background-color: #EC4225;
+}
+
+.water {
+    background-color: #4E9AFF;
+}
+
+.electric {
+    background-color: #F5CC34;
+}
+
+.grass {
+    background-color: #77CC55;
+}
+
+.ice {
+    background-color: #66CCFF;
+}
+
+.fighting {
+    background-color: #BB5545;
+}
+
+.poison {
+    background-color: #AA5599;
+}
+
+.ground {
+    background-color: #DDBB55;
+}
+
+.flying {
+    background-color: #8899FF;
+}
+
+.psychic {
+    background-color: #EE5499;
+}
+
+.bug {
+    background-color: #AABB22;
+
+}
+
+.rock {
+    background-color: #BBAA66;
+}
+
+.ghost {
+    background-color: #6667BC;
+}
+
+.dragon {
+    background-color: #7867EE;
 }
