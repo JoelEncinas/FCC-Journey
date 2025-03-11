@@ -11,11 +11,14 @@
   <body>
     <h1>Pokemon Search App</h1>
     <p>Search for Pokemon Name or ID</p>
-    <input id="search-input" type="text" />
-    <button id="search-btn">Search</button>
+    <input id="search-input" type="text" required />
+    <button id="search-button">Search</button>
 
-    <p id="name-id"></p>
-    <p id="size"></p>
+    <p id="pokemon-name"><span id="pokemon-id"></span></p>
+    <p id="size">
+      <span id="weight"></span>
+      <span id="height"></span>
+    </p>
     <div id="sprite-container">
       <img id="sprite" />
     </div>
